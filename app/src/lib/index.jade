@@ -1,0 +1,35 @@
+//- Page variables
+- var companyName = "GrayBox"
+
+//- Included elements
+include ./snippets/header/nav01
+include ./snippets/common/button01
+include ./snippets/common/list01
+
+//- index.jade
+doctype html
+html(lang="en")
+  include ./snippets/head01
+  body
+    section 
+      header
+        //+nav01("Project name", "dropdown_menu")
+    section
+      aside
+        h3 Snippet Search
+        ul
+          li Components
+            ul
+              li Button
+      article 
+        h1 Button
+        p These are notes associated with this button component.
+        p #[+button01]
+        +list01('test', 1, 2, 3, 4)
+        code Lorem ipsum dolor sit amet, erat nostrud probatus duo at, iisque constituam ut pro, eam purto nostro lobortis ex. Ne minim oblique nostrum sed. Epicuri interpretaris concludaturque id vix, vix iisque intellegat no, nostrum explicari at usu. Vidit luptatum dissentias an his, et nam recteque dissentiunt, nec ex dico gloriatur.
+    
+    section
+      include ./snippets/foot01.jade
+    
+    script()
+    script()
