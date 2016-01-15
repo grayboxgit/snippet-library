@@ -1,6 +1,7 @@
 {
   "name": "gbx-ui-toolkit",
   "version": "1.0.0",
+  "private": true,
   "description": "",
   "main": "gulpfile.js",
   "scripts": {
@@ -9,12 +10,15 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "express": "2.5.10",
     "gulp": "^3.9.0",
     "gulp-concat": "^2.6.0",
     "gulp-jade": "^1.1.0",
     "gulp-sass": "^2.1.1",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-uglify": "^1.5.1",
-    "gulp-watch": "^4.3.5"
+    "gulp-watch": "^4.3.5",
+    "jade": ">= 0.0.1",
+    "node-neat": "^1.7.2"
   }
 }
