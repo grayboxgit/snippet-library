@@ -3,15 +3,24 @@ html(ng-app="myApp")
 	head
 		meta(charset='utf8')
 		base(href='/')
-		title Angular Express Seed App
+		title GRAYBOX Front-End Snippet Library
 		link(rel='stylesheet', href='/css/app.css')
 		link(rel='stylesheet', href='/css/style.css')
 	body
 		block body
+		footer#footer.footer(role='contentinfo')
+			.footer-logo
+				img(src='/img/logo.png', alt='Logo Image')
+			.footer-links
+				ul
+					li
+						a(href='/') Home
+					li
+						a(href='/addPost') Add a new post
 
-
-		#footer
-		p Website Design and Development by GRAYBOX in Portland, OR
+			hr
+			p
+				| Website Design and Development by GRAYBOX in Portland, OR
 
 		script(src='/js/lib/angular/angular.js')
 		script(src='/js/app.js')
