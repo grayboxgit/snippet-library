@@ -2,172 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4647ece2-4b86-4db1-91c7-262c10666d61" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/dist/assets/js/zeroclipboard/dist/ZeroClipboard.swf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/zeroclipboard/dist/ZeroClipboard.swf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/angular/angular.min.js.gzip" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/delegate/.editorconfig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/good-listener/.editorconfig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/ng-clip/.editorconfig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/ngclipboard/.editorconfig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/select/.editorconfig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/ngclipboard/.jscsrc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/ngclipboard/.jshintrc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/ngclipboard/src/.jshintrc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/angular-clipboard/.npmignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/closest/.npmignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/delegate/.npmignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/good-listener/.npmignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/matches-selector/.npmignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/ng-clip/.npmignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/ngclipboard/.npmignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/select/.npmignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/tiny-emitter/.npmignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/angular-clipboard/.travis.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/good-listener/.travis.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/ngclipboard/.travis.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/select/.travis.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/ng-clip/Gruntfile.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/ngclipboard/Gruntfile.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/dist/assets/js/zeroclipboard/LICENSE" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/angular-clipboard/LICENSE" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/ng-clip/LICENSE" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/ngclipboard/LICENSE" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/zeroclipboard/LICENSE" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/matches-selector/Makefile" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/dist/assets/js/zeroclipboard/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/angular/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/angular-clipboard/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/angular-sanitize/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/closest/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/ng-clip/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/ngclipboard/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/tiny-emitter/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/zeroclipboard/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/matches-selector/Readme.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/dist/assets/js/zeroclipboard/dist/ZeroClipboard.Core.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/zeroclipboard/dist/ZeroClipboard.Core.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/dist/assets/js/zeroclipboard/dist/ZeroClipboard.Core.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/zeroclipboard/dist/ZeroClipboard.Core.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/dist/assets/js/zeroclipboard/dist/ZeroClipboard.Core.min.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/zeroclipboard/dist/ZeroClipboard.Core.min.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/dist/assets/js/ZeroClipboard.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/dist/assets/js/zeroclipboard/dist/ZeroClipboard.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/zeroclipboard/dist/ZeroClipboard.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/dist/assets/js/zeroclipboard/dist/ZeroClipboard.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/zeroclipboard/dist/ZeroClipboard.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/dist/assets/js/zeroclipboard/dist/ZeroClipboard.min.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/zeroclipboard/dist/ZeroClipboard.min.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/angular-clipboard/angular-clipboard.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/angular-clipboard/test/angular-clipboard.spec.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/angular/angular-csp.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/angular-sanitize/angular-sanitize.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/angular-sanitize/angular-sanitize.min.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/angular-sanitize/angular-sanitize.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/angular/angular.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/angular/angular.min.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/angular/angular.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/ng-clip/example/bootstrap-tooltip.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/angular/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/angular-clipboard/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/angular-sanitize/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/delegate/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/good-listener/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/ng-clip/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/ngclipboard/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/select/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/tiny-emitter/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/clipboard/lib/clipboard-action.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/clipboard/dist/clipboard.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/clipboard/lib/clipboard.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/clipboard/dist/clipboard.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/closest/component.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/matches-selector/component.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/select/demo/contenteditable.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/clipboard/contributing.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/ngclipboard/contributing.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/delegate/demo/delegate.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/delegate/dist/delegate.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/delegate/src/delegate.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/delegate/test/delegate.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/angular-clipboard/demo/demo.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/good-listener/demo/destroy.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/select/demo/disabled.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/select/demo/editable.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/good-listener/dist/good-listener.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/matches-selector/test/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/ng-clip/example/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/snippets/library/nav1/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/angular/index.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/angular-sanitize/index.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/closest/index.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/matches-selector/index.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/tiny-emitter/index.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/tiny-emitter/test/index.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/good-listener/src/is.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/good-listener/test/is.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/angular-clipboard/karma.conf.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/delegate/karma.conf.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/good-listener/karma.conf.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/select/karma.conf.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/good-listener/src/listen.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/good-listener/test/listen.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/matches-selector/test/mocha.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/matches-selector/test/mocha.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/delegate/demo/multiple.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/good-listener/demo/multiple.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/select/demo/multiple.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/select/demo/nested.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/ng-clip/dest/ng-clip.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/ng-clip/example/ng-repeat.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/ng-clip/src/ngClip.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/ngclipboard/dist/ngclipboard.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/ngclipboard/src/ngclipboard.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/ngclipboard/dist/ngclipboard.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/good-listener/demo/node.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/good-listener/demo/nodelist.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/select/demo/non-editable.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/clipboard/package.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/dist/assets/js/zeroclipboard/package.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/angular/package.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/angular-clipboard/package.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/angular-sanitize/package.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/clipboard/package.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/closest/package.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/delegate/package.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/good-listener/package.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/matches-selector/package.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/ng-clip/package.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/ngclipboard/package.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/select/package.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/tiny-emitter/package.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/zeroclipboard/package.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/json/posts.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/clipboard/readme.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/delegate/readme.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/good-listener/readme.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/select/readme.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/select/saucelabs.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/select/dist/select.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/select/src/select.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/select/test/select.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/good-listener/demo/selector.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/ngclipboard/test/test.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/matches-selector/test/tests.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/tiny-emitter/dist/tinyemitter.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/tiny-emitter/dist/tinyemitter.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/node_modules/delegate/demo/undelegate.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/partials/addPost.jade" afterPath="$PROJECT_DIR$/app/views/partials/addPost.jade" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/routes/api.js" afterPath="$PROJECT_DIR$/app/routes/api.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.js" afterPath="$PROJECT_DIR$/app/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/dist/assets/js/controllers.js" afterPath="$PROJECT_DIR$/app/dist/assets/js/controllers.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/partials/deletePost.jade" afterPath="$PROJECT_DIR$/app/views/partials/deletePost.jade" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/dist/assets/js/directives.js" afterPath="$PROJECT_DIR$/app/dist/assets/js/directives.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/partials/editPost.jade" afterPath="$PROJECT_DIR$/app/views/partials/editPost.jade" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/partials/index.jade" afterPath="$PROJECT_DIR$/app/views/partials/index.jade" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/dist/layout.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/gulpfile.js" afterPath="$PROJECT_DIR$/app/gulpfile.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/dist/index.html" afterPath="$PROJECT_DIR$/app/dist/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/index.jade" afterPath="$PROJECT_DIR$/app/views/index.jade" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layout.jade" afterPath="$PROJECT_DIR$/app/views/layout.jade" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/package.json" afterPath="$PROJECT_DIR$/app/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/partials/readPost.jade" afterPath="$PROJECT_DIR$/app/views/partials/readPost.jade" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/dist/assets/js/scripts.js" afterPath="$PROJECT_DIR$/app/dist/assets/js/scripts.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/dist/assets/sass/style.scss" afterPath="$PROJECT_DIR$/app/dist/assets/sass/style.scss" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="angulard3.iws" />
@@ -224,11 +64,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="addPost.jade" pinned="false" current-in-tab="true">
+      <file leaf-file-name="addPost.jade" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/partials/addPost.jade">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.10817308">
-              <caret line="6" column="32" selection-start-line="6" selection-start-column="32" selection-end-line="6" selection-end-column="32" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="6" column="45" selection-start-line="6" selection-start-column="45" selection-end-line="6" selection-end-column="45" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="layout.jade" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/views/layout.jade">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.43269232">
+              <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -298,10 +148,10 @@
         <option value="$PROJECT_DIR$/app/dist/assets/js/controllers.js" />
         <option value="$PROJECT_DIR$/app/views/partials/index.jade" />
         <option value="$PROJECT_DIR$/app/dist/assets/js/scripts.js" />
-        <option value="$PROJECT_DIR$/app/views/layout.jade" />
         <option value="$PROJECT_DIR$/app/views/json/posts.json" />
         <option value="$PROJECT_DIR$/app/views/snippets/library/nav1/index.html" />
         <option value="$PROJECT_DIR$/app/routes/api.js" />
+        <option value="$PROJECT_DIR$/app/views/layout.jade" />
       </list>
     </option>
   </component>
@@ -882,14 +732,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/layout.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5949519">
-          <caret line="33" column="36" selection-start-line="33" selection-start-column="36" selection-end-line="33" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/json/posts.json">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.055693068">
@@ -946,8 +788,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/partials/addPost.jade">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.10817308">
-          <caret line="6" column="32" selection-start-line="6" selection-start-column="32" selection-end-line="6" selection-end-column="32" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="6" column="45" selection-start-line="6" selection-start-column="45" selection-end-line="6" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/layout.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.43269232">
+          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
           <folding />
         </state>
       </provider>
