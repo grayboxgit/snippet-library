@@ -1,0 +1,20 @@
+{
+  "posts": [
+    {
+      "title": "Nav 11",
+      "rendered_output": "index.html",
+      "jade_source": "/snippets/jade/nav1.jade",
+      "html_source": "<div style='width:200px; height:200px; border:1px solid blue;'></div>",
+      "scss_source": "/snippets/scss/nav1.scss",
+      "js_source": "/snippets/js/nav1.js"
+    },
+    {
+      "title": "Nav 2",
+      "rendered_output": "index.html",
+      "jade_source": "/snippets/nav2.jade",
+      "html_source": "<div style='width:200px; height:200px; border:1px solid blue;'></div>",
+      "scss_source": "/snippets/nav2.scss",
+      "js_source": "/snippets/nav2.js"
+    }
+  ]
+}

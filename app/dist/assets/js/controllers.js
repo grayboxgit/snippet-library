@@ -3,6 +3,7 @@
 /* Controllers */
 
 function IndexCtrl($scope, $http) {
+
   $http.get('/api/posts').
     success(function(data, status, headers, config) {
       $scope.posts = data.posts;
@@ -12,13 +13,14 @@ function IndexCtrl($scope, $http) {
 function AddPostCtrl($scope, $http, $location) {
   $scope.form = {};
   $scope.submitPost = function () {
+
     $http.post('/api/post', $scope.form).
       success(function(data) {
         $location.path('/');
       });
+
   };
 }
-
 function ReadPostCtrl($scope, $http, $routeParams) {
   $http.get('/api/post/' + $routeParams.id).
     success(function(data) {
