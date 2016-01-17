@@ -504,3 +504,93 @@ header.navigation {
     margin: auto;
     max-width: 35em;
     text-align: center; }
+
+.refill-control {
+  display: block;
+  margin-bottom: 2em;
+  text-align: center;
+  width: 100%; }
+  .refill-control a {
+    line-height: 1.5em;
+    text-decoration: none; }
+
+.refill-snippet {
+  margin-top: 4.5em;
+  padding: 0 1em; }
+  .refill-snippet table {
+    border-collapse: collapse;
+    margin: 0.75em 0;
+    table-layout: fixed;
+    width: 100%; }
+  .refill-snippet th {
+    font-weight: bold;
+    padding: 0.75em 0;
+    text-align: left;
+    vertical-align: middle; }
+  .refill-snippet td {
+    padding: 0.75em 0;
+    vertical-align: middle; }
+  .refill-snippet tr {
+    vertical-align: middle; }
+
+pre[class*="language-"] {
+  background-color: #f8f8f8;
+  border-top: 2px solid silver;
+  height: 300px;
+  line-height: 1em; }
+
+.snippets-table td {
+  border-bottom: 0; }
+
+.snippets-table .snippet:nth-child(4n) {
+  display: none; }
+
+.snippet .copy-source-container {
+  min-height: 3.4em; }
+
+.snippet .copy-source {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 0;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  color: #fff;
+  display: inline-block;
+  font-size: 0.5em;
+  font-weight: 800;
+  padding: 0.4em 1em;
+  text-transform: uppercase; }
+  .snippet .copy-source:hover {
+    background-color: #666666;
+    color: #fff; }
+  .snippet .copy-source:active {
+    background-color: #666666;
+    color: #fff; }
+
+.snippet a {
+  text-decoration: none; }
+
+.snippet code {
+  font-size: 0.6em;
+  line-height: 1.4em;
+  max-height: 25em;
+  overflow: scroll; }
+
+.snippet:nth-of-type(1) .copy-source {
+  background: #e98065; }
+
+.snippet:nth-of-type(2) .copy-source {
+  background: #55a1d4; }
+
+.snippet:nth-of-type(3) .copy-source:nth-of-type(1) {
+  background: #e9c05b; }
+
+.snippet:nth-of-type(3) .copy-source:nth-of-type(2) {
+  background: #89b981; }
+
+@media screen and (min-width: 40em) {
+  .snippet .copy-source-container {
+    min-height: 2.5em; } }
+
+@media screen and (min-width: 53.75em) {
+  .snippet .copy-source-container {
+    min-height: 1em; } }

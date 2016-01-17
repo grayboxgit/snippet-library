@@ -8,6 +8,10 @@ function IndexCtrl($scope, $http) {
     success(function(data, status, headers, config) {
       $scope.posts = data.posts;
     });
+    console.log('hello');
+
+    Prism.highlightAll(); // Only this that you need do!
+    $scope.code = 'body { \n\tcolor: red;\n}';
 }
 
 function AddPostCtrl($scope, $http, $location) {

@@ -4,13 +4,15 @@ html(ng-app="myApp")
 		meta(charset='utf8')
 		base(href='/')
 		title GRAYBOX Front-End Snippet Library
-		link(rel='stylesheet', href='/css/app.css')
+		//link(rel='stylesheet', href='/css/app.css')
 		link(rel='stylesheet', href='/css/style.css')
+		link(rel='stylesheet', href='/js/prismjs/themes/prism.css')
+
 	body
 		block body
 		footer#footer.footer(role='contentinfo')
 			.footer-logo
-				img(src='/assets/img/logo.png', alt='Logo Image')
+				img(src='/img/logo.png', alt='Logo Image')
 			.footer-links
 				ul
 					li
@@ -21,14 +23,14 @@ html(ng-app="myApp")
 			hr
 			p
 				| Website Design and Development by GRAYBOX in Portland, OR
-
 		script(src='/js/lib/angular/angular.js')
-		script(src='/js/lib/angular/angular-sanitize.js')
 		script(src='/js/app.js')
+		script(src='/js/lib/angular/angular-sanitize.js')
 		script(src='/js/services.js')
 		script(src='/js/controllers.js')
 		script(src='/js/filters.js')
 		script(src='/js/directives.js')
 		script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js")
+		script(src='http://prismjs.com/prism.js')
 		script(src='/js/zeroclipboard/dist/ZeroClipboard.js')
 		script(src='/js/scripts.js')

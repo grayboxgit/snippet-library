@@ -425,3 +425,124 @@ header.navigation {
     text-align: center;
   }
 }
+//colors
+$color_desert_storm_approx: #f8f8f8;
+$silver:  silver;
+
+.refill-control {
+  display: block;
+  margin-bottom: 2em;
+  text-align: center;
+  width: 100%;
+  a {
+    line-height: 1.5em;
+    text-decoration: none;
+  }
+}
+.refill-snippet {
+  margin-top: 4.5em;
+  padding: 0 1em;
+  table {
+    border-collapse: collapse;
+    margin: 0.75em 0;
+    table-layout: fixed;
+    width: 100%;
+  }
+  th {
+    font-weight: bold;
+    padding: 0.75em 0;
+    text-align: left;
+    vertical-align: middle;
+  }
+  td {
+    padding: 0.75em 0;
+    vertical-align: middle;
+  }
+  tr {
+    vertical-align: middle;
+  }
+}
+pre[class*="language-"] {
+  background-color: $color_desert_storm_approx;
+  border-top: 2px solid $silver;
+  height: 300px;
+  line-height: 1em;
+}
+.snippets-table {
+  td {
+    border-bottom: 0;
+  }
+  .snippet:nth-child(4n) {
+    display: none;
+  }
+}
+//colors
+$color_japonica_approx: #e98065;
+$color_shakespeare_approx: #55a1d4;
+$color_equator_approx: #e9c05b;
+$color_de_york_approx: #89b981;
+$white: #fff;
+$color_storm_dust_approx: #666666;
+
+.snippet {
+  .copy-source-container {
+    min-height: 3.4em;
+  }
+  .copy-source {
+    //Instead of the line below you could use @include border-bottom-left-radius($radius)
+    border-bottom-left-radius: 10px;
+    //Instead of the line below you could use @include border-bottom-right-radius($radius)
+    border-bottom-right-radius: 0;
+    //Instead of the line below you could use @include border-top-left-radius($radius)
+    border-top-left-radius: 10px;
+    //Instead of the line below you could use @include border-top-right-radius($radius)
+    border-top-right-radius: 10px;
+    color: $white;
+    display: inline-block;
+    font-size: 0.5em;
+    font-weight: 800;
+    padding: 0.4em 1em;
+    text-transform: uppercase;
+    &:hover {
+      background-color: $color_storm_dust_approx;
+      color: $white;
+    }
+    &:active {
+      background-color: $color_storm_dust_approx;
+      color: $white;
+    }
+  }
+  a {
+    text-decoration: none;
+  }
+  code {
+    font-size: 0.6em;
+    line-height: 1.4em;
+    max-height: 25em;
+    overflow: scroll;
+  }
+  &:nth-of-type(1) .copy-source {
+    background: $color_japonica_approx;
+  }
+  &:nth-of-type(2) .copy-source {
+    background: $color_shakespeare_approx;
+  }
+  &:nth-of-type(3) .copy-source {
+    &:nth-of-type(1) {
+      background: $color_equator_approx;
+    }
+    &:nth-of-type(2) {
+      background: $color_de_york_approx;
+    }
+  }
+}
+@media screen and(min-width: 40em) {
+  .snippet .copy-source-container {
+    min-height: 2.5em;
+  }
+}
+@media screen and(min-width: 53.75em) {
+  .snippet .copy-source-container {
+    min-height: 1em;
+  }
+}
