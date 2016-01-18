@@ -1,6 +1,6 @@
-div.alert There are {{posts.length}} snippets
+p There are {{posts.length}} snippets
 div
-	div.snippet-block(ng-repeat='post in posts')
+	div(ng-repeat='post in posts')
 
 		h3 {{post.title}}
 		div {{post.rendered_output}}

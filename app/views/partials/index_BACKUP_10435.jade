@@ -7,6 +7,7 @@ div
 		div {{post.jade_source}}
 		div {{post.html_source}}
 			input(type="text" id="clipboard_text" value="Clipboard Text")
+<<<<<<< Updated upstream
 			button.clip_button(data-clipboard-target="clipboard_text") Copy to Clipboard
 			button.clip_button#my-button_textarea(data-clipboard-target="clipboard_textarea") Copy to Clipboard
 			button.clip_button#my-button_pre(data-clipboard-target="clipboard_pre") Copy to Clipboard
@@ -26,6 +27,12 @@ div
 								code.language-markup( prism )
 									include ../snippets/library/nav1/index.html
 			textarea#clipboard_textarea(rows="20")
+=======
+			//button.clip_button(data-clipboard-target="clipboard_text") Copy to Clipboard
+			//button.clip_button#my-button_textarea(data-clipboard-target="clipboard_textarea") Copy to Clipboard
+			//button.clip_button#my-button_pre(data-clipboard-target="clipboard_pre") Copy to Clipboard
+			textarea#lipboard_textarea
+>>>>>>> Stashed changes
 				| Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 				| tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
 				| quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo

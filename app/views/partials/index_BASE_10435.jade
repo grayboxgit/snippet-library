@@ -1,6 +1,6 @@
-div.alert There are {{posts.length}} snippets
+p There are {{posts.length}} snippets
 div
-	div.snippet-block(ng-repeat='post in posts')
+	div(ng-repeat='post in posts')
 
 		h3 {{post.title}}
 		div {{post.rendered_output}}
@@ -10,22 +10,7 @@ div
 			button.clip_button(data-clipboard-target="clipboard_text") Copy to Clipboard
 			button.clip_button#my-button_textarea(data-clipboard-target="clipboard_textarea") Copy to Clipboard
 			button.clip_button#my-button_pre(data-clipboard-target="clipboard_pre") Copy to Clipboard
-			table.snippets-table
-				tbody
-					tr
-						td.snippet
-							.copy-source-container
-								a.copy-source(href="javascript:void(0)") Copy Scss
-							ng-prism.language-scss
-								include ../snippets/library/nav1/scss/styles.scss
-
-						td.snippet
-							.copy-source-container
-								a.copy-source(href="javascript:void(0)") Copy HTML
-							pre.language-markup
-								code.language-markup( prism )
-									include ../snippets/library/nav1/index.html
-			textarea#clipboard_textarea(rows="20")
+			textarea#lipboard_textarea
 				| Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 				| tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
 				| quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
