@@ -1,4 +1,10 @@
 $(document).ready(function() {
+
+    codeToggle.on('click', function(e) {
+      e.preventDefault();
+      console.log("Figure out why this isn't running");
+    });
+
     var menuToggle = $('#js-mobile-menu').unbind();
     $('#js-navigation-menu').removeClass("show");
 
@@ -28,4 +34,5 @@ $(document).ready(function() {
         // console.log( 'ZeroClipboard error of type "' + event.name + '": ' + event.message );
         ZeroClipboard.destroy();
     } );
+
 });

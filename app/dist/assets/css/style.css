@@ -181,7 +181,7 @@ html {
 /* SITE FONTS */
 /* SITE COLORS */
 body {
-  background: #fff;
+  background: #f7f7f7;
   font-family: Helvetica, Verdana, Arial, sans-serif;
   margin: 0px; }
 
@@ -436,9 +436,11 @@ header.navigation {
           display: block; } }
 
 .footer {
-  background: #333;
+  background: #f7f7f7;
   padding: 3em 1.618em;
-  width: 100%; }
+  width: 100%;
+  color: red;
+  border-top: 1px solid #C3C3C3; }
   .footer .footer-logo {
     margin-bottom: 2em;
     text-align: center; }
@@ -469,24 +471,29 @@ header.navigation {
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
     margin-bottom: 1.5em; }
+    .footer .footer-links ul {
+      margin-bottom: 0; }
   .footer ul {
-    -webkit-flex-basis: 13em;
-    -moz-flex-basis: 13em;
-    flex-basis: 13em;
-    -ms-flex-preferred-size: 13em;
     -webkit-flex-shrink: 0;
     -moz-flex-shrink: 0;
     flex-shrink: 0;
     -ms-flex-negative: 0;
     margin-bottom: 3em;
-    padding: 0; }
+    padding: 0;
+    text-align: center;
+    width: 100%; }
   .footer li {
     line-height: 1.5em;
     list-style: none;
-    text-align: center; }
+    text-align: center;
+    display: inline;
+    border-right: 1px solid #777; }
+    .footer li:last-child {
+      border-right: none; }
   .footer li a {
-    color: rgba(255, 255, 255, 0.4);
-    text-decoration: none; }
+    color: #777;
+    text-decoration: none;
+    padding: 0 15px; }
     .footer li a:focus, .footer li a:hover {
       color: white; }
   .footer li h3 {
@@ -498,7 +505,7 @@ header.navigation {
     margin: 0 auto 1.5em;
     width: 12em; }
   .footer p {
-    color: rgba(255, 255, 255, 0.4);
+    color: #777;
     font-size: 0.9em;
     line-height: 1.5em;
     margin: auto;
@@ -594,3 +601,64 @@ pre[class*="language-"] {
 @media screen and (min-width: 53.75em) {
   .snippet .copy-source-container {
     min-height: 1em; } }
+
+/****************************************
+/*  GLOBAL TEXT STYLES
+****************************************/
+/****************************************
+/*  PAGE HEADER STYLES
+****************************************/
+div.page-header {
+  background: #D2E01D;
+  padding: 100px 0; }
+  div.page-header h1 {
+    text-align: center;
+    margin: 0;
+    font-size: 4.0em;
+    font-weight: 400; }
+  div.page-header h3 {
+    text-align: center; }
+
+/****************************************
+/*  SNIPPET BLOCK STYLES
+****************************************/
+.snippet-block {
+  margin: 200px 0; }
+  .snippet-block h2 {
+    text-align: center;
+    font-size: 1.6rem;
+    position: relative;
+    text-transform: uppercase;
+    color: #777; }
+    .snippet-block h2:before {
+      position: absolute;
+      content: '';
+      height: 1px;
+      width: 100%;
+      background: #c7c7c7;
+      top: 49%;
+      left: 0;
+      right: 0; }
+    .snippet-block h2 span {
+      background: #f7f7f7;
+      z-index: 2;
+      position: relative;
+      padding: 0 15px; }
+  .snippet-block .snippet-toggle {
+    text-align: center;
+    margin-bottom: 35px; }
+    .snippet-block .snippet-toggle a.snippet-link-toggle {
+      padding: 8px 25px;
+      color: #fff;
+      background: #89C637;
+      border-radius: 4px;
+      -webkit-border-radius: 4px;
+      color: #283a10;
+      text-transform: uppercase;
+      font-weight: 600;
+      font-size: 12px; }
+      .snippet-block .snippet-toggle a.snippet-link-toggle:hover {
+        background: #7bb231; }
+
+.hidden {
+  display: none; }
