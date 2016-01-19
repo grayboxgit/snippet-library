@@ -6,7 +6,7 @@
 @import "var";
 
 body {
-  background: $white;
+  background: #f7f7f7;
   font-family: $font-default;
   margin: 0px;
 }
@@ -361,9 +361,12 @@ header.navigation {
   $footer-link-color: transparentize($footer-color, 0.6);
   $footer-disclaimer-color: transparentize($footer-color, 0.6);
 
-  background: $dark-gray;
+  //background: $dark-gray;
+  background: #f7f7f7;
   padding: ($base-spacing * 2) $gutter;
   width: 100%;
+  color: red;
+  border-top: 1px solid #C3C3C3;
 
   .footer-logo {
     margin-bottom: 2em;
@@ -379,24 +382,38 @@ header.navigation {
     @include justify-content(center);
     @include flex-wrap(wrap);
     margin-bottom: $base-spacing;
+    ul {
+      margin-bottom: 0;
+    }
   }
 
   ul {
-    @include flex-basis(13em);
+    //@include flex-basis(13em);
     @include flex-shrink(0);
     margin-bottom: $base-spacing * 2;
     padding: 0;
+    //border: 1px solid red;
+    text-align: center;
+    width: 100%;
   }
 
   li {
     line-height: 1.5em;
     list-style: none;
     text-align: center;
+    display: inline;
+    //border: 1px solid blue;
+    border-right: 1px solid #777;
+    &:last-child {
+      border-right: none;
+    }
   }
 
   li a {
-    color: $footer-link-color;
+    //color: $footer-link-color;
+    color: #777;
     text-decoration: none;
+    padding: 0 15px;
 
     &:focus,
     &:hover {
@@ -417,7 +434,8 @@ header.navigation {
   }
 
   p {
-    color: $footer-disclaimer-color;
+    //color: $footer-disclaimer-color;
+    color: #777;
     font-size: 0.9em;
     line-height: 1.5em;
     margin: auto;
@@ -545,4 +563,90 @@ $color_storm_dust_approx: #666666;
   .snippet .copy-source-container {
     min-height: 1em;
   }
+}
+
+
+/****************************************
+/*  GLOBAL TEXT STYLES
+****************************************/
+
+
+
+
+/****************************************
+/*  PAGE HEADER STYLES
+****************************************/
+
+div.page-header {
+  background: #D2E01D;
+  padding: 100px 0;
+  h1 {
+    text-align: center;
+    margin: 0;
+    font-size: 4.0em;
+    font-weight: 400;
+  }
+  h3 {
+    text-align: center;
+  }
+}
+
+
+/****************************************
+/*  SNIPPET BLOCK STYLES
+****************************************/
+
+.snippet-block {
+  //border: 1px solid red;
+  margin: 200px 0;
+  h2 {
+    text-align: center;
+    font-size: 1.6rem;
+    position: relative;
+    text-transform: uppercase;
+    color: #777;
+    &:before {
+      position: absolute;
+      content: '';
+      height: 1px;
+      width: 100%;
+      background: #c7c7c7;
+      top: 49%;
+      left: 0;
+      right: 0;
+    }
+    span {
+      background: #f7f7f7;
+      z-index: 2;
+      position: relative;
+      padding: 0 15px;
+    }
+  }
+  .snippet-preview {
+
+  }
+  .snippet-toggle {
+    text-align: center;
+    margin-bottom: 35px;
+    a.snippet-link-toggle {
+      padding: 8px 25px;
+      color: $white;
+      background: #89C637;
+      border-radius: 4px;
+      -webkit-border-radius: 4px;
+      color: darken(#89C637, 35%);
+      text-transform: uppercase;
+      font-weight: 600;
+      font-size: 12px;
+      &:hover {
+        background: darken(#89C637, 5%);
+      }
+    }
+  }
+  .snippet-code {
+
+  }
+}
+.hidden {
+  display: none;
 }

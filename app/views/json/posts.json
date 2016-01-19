@@ -15,6 +15,14 @@
       "html_source": "<div style='width:200px; height:200px; border:1px solid blue;'></div>",
       "scss_source": "/snippets/nav2.scss",
       "js_source": "/snippets/nav2.js"
+    },
+    {
+      "title": "Nav 1",
+      "rendered_output": "index.html",
+      "jade_source": "/snippets/001-nav-01/jade/*.jade",
+      "html_source": "/snippets/001-nav-01/html/*.html",
+      "scss_source": "/snippets/001-nav-01/scss/*.scss",
+      "js_source": "/snippets/001-nav-01/js/*.js"
     }
   ]
 }
