@@ -8,10 +8,20 @@ function IndexCtrl($scope, $http) {
     success(function(data, status, headers, config) {
       $scope.posts = data.posts;
     });
-    console.log('hello');
+    //Prism.highlightAll(); // Only this that you need do!
 
-    Prism.highlightAll(); // Only this that you need do!
-    $scope.code = 'body { \n\tcolor: red;\n}';
+    $scope.complete = function(e) {
+        console.log('copy complete', e);
+        $scope.copied = true
+    };
+
+    $scope.$watch('input', function(v) {
+        $scope.copied = false
+    });
+
+    $scope.clipError = function(e) {
+        console.log('Error: ' + e.name + ' - ' + e.message);
+    };
 }
 
 function AddPostCtrl($scope, $http, $location) {
