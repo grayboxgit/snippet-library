@@ -1,0 +1,43 @@
+[
+  {
+    "resourceName": "Resource Name",
+    "resourceType": "Video",
+    "duration": "45",
+    "pageLength": "",
+    "fileSize": "371 mb",
+    "placedBy": "Benedictine"
+  },
+  {
+    "resourceName": "Resource Name 2",
+    "resourceType": "Article",
+    "duration": "",
+    "pageLength": "45",
+    "fileSize": "371 mb",
+    "placedBy": "Benedictine"
+  },
+  {
+    "resourceName": "Resource Name 3",
+    "resourceType": "Download",
+    "duration": "",
+    "pageLength": "",
+    "fileSize": "371 mb",
+    "placedBy": "Benedictine"
+  },
+  {
+    "resourceName": "Resource Name 4",
+    "resourceType": "Document",
+    "duration": "",
+    "pageLength": "",
+    "fileSize": "371 mb",
+    "placedBy": "Benedictine"
+  },
+  {
+    "resourceName": "Resource Name 5",
+    "resourceType": "Download",
+    "duration": "",
+    "pageLength": "",
+    "fileSize": "764 mb",
+    "placedBy": "Benedictine"
+  }
+
+]
