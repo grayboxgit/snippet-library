@@ -2,8 +2,8 @@
 @import "../bower_components/bourbon/app/assets/stylesheets/base/base";
 @import "../bower_components/neat/app/assets/stylesheets/neat";
 
-
 @import "var";
+
 body {
   background: #fff;
   font-family: $font-default;
@@ -64,6 +64,7 @@ header.navigation {
       margin-left: 15px;
       position: relative;
       top: 8px;
+      font-size: 1.25em;
     }
   }
 
@@ -486,10 +487,10 @@ div.page-content {
 
 span.style-header {
   font-size: 3.0em;
-  color: #777;
+  color: #BBBBBB;
   margin: 15px 0 35px;
   padding-bottom: 25px;
-  border-bottom: 1px solid #777;
+  border-bottom: 1px solid #BBBBBB;
   display: block;
 }
 
@@ -512,9 +513,10 @@ div.page-header {
   }
   h3 {
     text-align: left;
-    margin-bottom:5px;
+    margin-bottom: 5px;
     color: #777;
     text-transform: uppercase;
+    font-size: 1em;
   }
   p {
     font-size: 12px;
@@ -932,3 +934,7 @@ pre.line-numbers {
     text-align: right;
   }
 }
+
+
+
+@import "starter";

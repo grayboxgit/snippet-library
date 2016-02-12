@@ -1,3 +1,4 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800,300italic,400italic,600italic,700italic,800italic);
 button, input[type="button"], input[type="reset"], input[type="submit"] {
   appearance: none;
   background-color: #1565c0;
@@ -291,6 +292,7 @@ header.navigation .navigation-wrapper h3 {
   margin-left: 15px;
   position: relative;
   top: 8px;
+  font-size: 1.25em;
 }
 header.navigation .logo {
   float: left;
@@ -644,10 +646,10 @@ div.page-content::after {
 
 span.style-header {
   font-size: 3.0em;
-  color: #777;
+  color: #BBBBBB;
   margin: 15px 0 35px;
   padding-bottom: 25px;
-  border-bottom: 1px solid #777;
+  border-bottom: 1px solid #BBBBBB;
   display: block;
 }
 
@@ -679,6 +681,7 @@ div.page-header h3 {
   margin-bottom: 5px;
   color: #777;
   text-transform: uppercase;
+  font-size: 1em;
 }
 div.page-header p {
   font-size: 12px;
@@ -1075,4 +1078,82 @@ pre.line-numbers > code {
   display: block;
   padding-right: 0.8em;
   text-align: right;
+}
+
+/****************************************
+/*
+/*  Graybox Starter Styles
+/*  Started:  Feb 12, 2016
+/*  Last Updated:  Feb 12, 2016 by JH
+/*
+****************************************/
+/****************************************
+/*  FONT IMPORT
+****************************************/
+/****************************************
+/*  FONT VARIABLES
+****************************************/
+/****************************************
+/*  FONT SETTINGS
+****************************************/
+body, h1, h2, h3, h4, h5, h6, p, li, td, th, blockquote {
+  font-family: "Open Sans", sans-serif;
+}
+
+h1 {
+  font-size: 3.0em;
+}
+
+h2 {
+  font-size: 2.5em;
+}
+
+h3 {
+  font-size: 2.0em;
+}
+
+h4 {
+  font-size: 1.5em;
+}
+
+h5 {
+  font-size: 1.25em;
+}
+
+h6 {
+  font-size: 1.25em;
+}
+
+p, li {
+  font-size: 1em;
+  line-height: 150%;
+}
+
+blockquote {
+  background: #cfcfcf;
+  margin: 35px 0;
+  padding: 35px;
+}
+
+/****************************************
+/*  LIST STYLES
+****************************************/
+ul {
+  list-style-type: square;
+  margin-left: 1.2em;
+  margin-bottom: 1.5em;
+  margin-top: 1.5em;
+}
+ul li {
+  margin-bottom: .25em;
+}
+
+ol {
+  list-style-type: decimal;
+  margin-left: 1.2em;
+  margin-bottom: 1.5em;
+  margin-top: 1.5em;
+}
+ol li {
+  margin-bottom: .25em;
 }

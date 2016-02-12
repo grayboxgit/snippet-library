@@ -1,0 +1,83 @@
+/****************************************
+/*
+/*  Graybox Starter Styles
+/*  Started:  Feb 12, 2016
+/*  Last Updated:  Feb 12, 2016 by JH
+/*
+****************************************/
+
+
+/****************************************
+/*  FONT IMPORT
+****************************************/
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800,300italic,400italic,600italic,700italic,800italic);
+
+
+/****************************************
+/*  FONT VARIABLES
+****************************************/
+$font-default:      'Open Sans', sans-serif;
+
+$font-sans-serif:   $font-default;
+$font-serif:        serif;
+
+
+
+/****************************************
+/*  FONT SETTINGS
+****************************************/
+
+body, h1, h2, h3, h4, h5, h6, p, li, td, th, blockquote {
+  font-family: $font-default;
+}
+h1 {
+  font-size: 3.0em;
+}
+h2 {
+  font-size: 2.5em;
+}
+h3 {
+  font-size: 2.0em;
+}
+h4 {
+  font-size: 1.5em;
+}
+h5 {
+  font-size: 1.25em;
+}
+h6 {
+  font-size: 1.25em;
+}
+p, li {
+  font-size: 1em;
+  line-height: 150%;
+}
+blockquote {
+  background: #cfcfcf;
+  margin: 35px 0;
+  padding: 35px;
+}
+
+
+/****************************************
+/*  LIST STYLES
+****************************************/
+
+ul {
+  list-style-type: square;
+  margin-left: 1.2em;
+  margin-bottom: 1.5em;
+  margin-top: 1.5em;
+  li {
+    margin-bottom:.25em;
+  }
+}
+ol {
+  list-style-type: decimal;
+  margin-left: 1.2em;
+  margin-bottom: 1.5em;
+  margin-top: 1.5em;
+  li {
+    margin-bottom:.25em;
+  }
+}
