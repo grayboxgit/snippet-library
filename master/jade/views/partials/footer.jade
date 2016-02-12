@@ -1,9 +1,4 @@
-footer#footer.footer(role='contentinfo')
+.footer-wrapper
 	.footer-logo
 		img(src='app/img/logo.png', alt='Logo Image')
-	.footer-links
-		ul
-			li
-				a(href='/') Home
-			li
-				a(href='/addPost') Add New Snippet
+	ul(ng-include="'app/views/navigation/navigation-items.html'")

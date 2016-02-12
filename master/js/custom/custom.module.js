@@ -4,7 +4,7 @@
     angular
         .module('custom', [
             // request the the entire framework
-            'mentor',
+            'graybox',
             // or just modules
             'app.core',
             'app.sidebar'

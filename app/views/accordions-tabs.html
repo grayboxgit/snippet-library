@@ -1,0 +1,37 @@
+<section>
+   <div class="snippet-container">
+      <!-- Title of Snippet-->
+      <div class="line-behind-text">
+         <h6>Tabs 1</h6>
+      </div>
+      <!-- Snippet Markup (HTML)-->
+      <div ng-include="'app/snippets/accordions-tabs/accordion-1/markup.html'" class="snippet-markup"></div>
+      <script type="text/javascript" ng-include="'app/snippets/accordions-tabs/accordion-1/_js.js'"></script>
+   </div>
+</section>
+<!-- Snippet Copy Table / Raw Resources-->
+<div class="refill-snippet">
+   <div class="refill-control"><a ng-click="showSnippet=true" ng-hide="showSnippet" class="snippet-link-toggle">Show Code</a><a ng-click="showSnippet=false" ng-show="showSnippet" class="snippet-link-toggle">Hide Code</a>
+   </div>
+   <table ng-show="showSnippet" class="snippets-table">
+      <tbody>
+         <tr>
+            <!-- Markup Column HTML / Jade-->
+            <td class="snippet">
+               <div class="copy-source-container"><a ngclipboard="" data-clipboard-target="#jade" class="copy-source">Copy Jade</a>
+               </div><pre class="language-markup"><code id="jade" prism="prism" ng-include="'master/snippets/accordions-tabs/accordion-1/_jade.html'" class="language-jade"></code></pre>
+            </td>
+            <!-- Styles Column SCSS,SASS/LESS/CSS-->
+            <td class="snippet">
+               <div class="copy-source-container"><a ngclipboard="" data-clipboard-target="#scss" class="copy-source">Copy Scss</a>
+               </div><pre class="language-markup"><code id="scss" prism="prism" ng-include="'master/snippets/accordions-tabs/accordion-1/_scss.scss'" class="language-sass"></code></pre>
+            </td>
+            <!-- Scripts Column Javascript, jQuery, Coffeescript-->
+            <td class="snippet">
+               <div class="copy-source-container"><a ngclipboard="" data-clipboard-target="#js-1" class="copy-source">Copy JavaScript</a>
+               </div><pre class="language-markup"><code id="js-1" prism="prism" ng-include="'master/snippets/accordions-tabs/accordion-1/_js.js'" class="language-javascript"></code></pre>
+            </td>
+         </tr>
+      </tbody>
+   </table>
+</div>

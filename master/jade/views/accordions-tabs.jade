@@ -1,0 +1,45 @@
+section
+	.snippet-container
+
+		// Title of Snippet
+
+		.line-behind-text
+			h6 Tabs 1
+
+		// Snippet Markup (HTML)
+
+		.snippet-markup(ng-include="'app/snippets/accordions-tabs/accordion-1/markup.html'")
+		script(type="text/javascript" ng-include="'app/snippets/accordions-tabs/accordion-1/_js.js'")
+// Snippet Copy Table / Raw Resources
+
+.refill-snippet
+	.refill-control
+		a.snippet-link-toggle(ng-click="showSnippet=true" ng-hide="showSnippet") Show Code
+		a.snippet-link-toggle(ng-click="showSnippet=false" ng-show="showSnippet") Hide Code
+	table.snippets-table(ng-show="showSnippet")
+		tbody
+			tr
+				// Markup Column HTML / Jade
+
+				td.snippet
+					.copy-source-container
+						a.copy-source(ngclipboard='', data-clipboard-target='#jade') Copy Jade
+					pre.language-markup
+						code#jade.language-jade(prism ng-include="'master/snippets/accordions-tabs/accordion-1/_jade.html'")
+
+
+				// Styles Column SCSS,SASS/LESS/CSS
+
+				td.snippet
+					.copy-source-container
+						a.copy-source(ngclipboard='', data-clipboard-target='#scss') Copy Scss
+					pre.language-markup
+						code#scss.language-sass(prism ng-include="'master/snippets/accordions-tabs/accordion-1/_scss.scss'")
+
+				// Scripts Column Javascript, jQuery, Coffeescript
+
+				td.snippet
+					.copy-source-container
+						a.copy-source(ngclipboard='', data-clipboard-target='#js-1') Copy JavaScript
+					pre.language-markup
+						code#js-1.language-javascript(prism ng-include="'master/snippets/accordions-tabs/accordion-1/_js.js'")

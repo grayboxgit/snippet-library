@@ -85,12 +85,6 @@
   "bower_components/textAngular/dist/*",
   "bower_components/textAngular/src/*",
   "bower_components/raphael/raphael.js",
-  "bower_components/angular-chartist.js/dist/angular-chartist.js",
-  "bower_components/chartist/dist/chartist.min.css",
-  "bower_components/chartist/dist/chartist.js",
-  "bower_components/dc/dc.js",
-  "bower_components/crossfilter/crossfilter.min.js",
-  "bower_components/angular-dc/angular-dc.js",
   "bower_components/colorbrewer/colorbrewer.js",
   "bower_components/angular-ui-map/ui-map.js",
   "bower_components/loaders.css/loaders.css",
@@ -102,9 +96,6 @@
   "bower_components/angular-knob/src/angular-knob.js",
   "bower_components/jquery-knob/dist/jquery.knob.min.js",
   "bower_components/jquery.easy-pie-chart/dist/angular.easypiechart.min.js",
-  "bower_components/angular-bootstrap-colorpicker/css/colorpicker.css",
-  "bower_components/angular-bootstrap-colorpicker/js/bootstrap-colorpicker-module.js",
-  "bower_components/angular-bootstrap-colorpicker/img/*",
   "bower_components/load-google-maps/load-google-maps.js",
   "bower_components/sparkline/index.js"
 ]

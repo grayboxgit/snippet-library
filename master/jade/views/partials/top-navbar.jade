@@ -1,41 +1,21 @@
 header.navigation(role='banner')
-	.navigation-wrapper
-		a.logo(href='javascript:void(0)')
+	button.js-menu-trigger.sliding-panel-button(type='button' style="float:left;")
+		svg(xmlns='http://www.w3.org/2000/svg', x='0px', y='0px', width='12.6px', height='9px', viewbox='0 0 12.6 9')
+			path(d='M0,0.9C0,0.4,0.4,0,0.9,0h10.8c0.5,0,0.9,0.4,0.9,0.9c0,0.5-0.4,0.9-0.9,0.9H0.9C0.4,1.8,0,1.4,0,0.9z M12.6,4.5c0,0.5-0.4,0.9-0.9,0.9H0.9C0.4,5.4,0,5,0,4.5C0,4,0.4,3.6,0.9,3.6h10.8C12.2,3.6,12.6,4,12.6,4.5z M12.6,8.1c0,0.5-0.4,0.9-0.9,0.9H0.9C0.4,9,0,8.6,0,8.1c0-0.5,0.4-0.9,0.9-0.9h10.8C12.2,7.2,12.6,7.6,12.6,8.1z')
+	nav.js-menu.sliding-panel-content
+		ul(ng-include="'app/views/navigation/navigation-items.html'")
+
+	.js-menu-screen.sliding-panel-fade-screen
+	.navigation-wrapper(ng-controller="SortableController")
+		a.logo(ui-sref="app.dashboard")
 			img(src='app/img/logo.png', alt='Logo Image')
 		a#js-mobile-menu.navigation-menu-button(href='javascript:void(0)') MENU
-		nav(role='navigation')
-			ul#js-navigation-menu.navigation-menu.show
-				li.nav-link
-					a(href='/') Home
-				li.nav-link
-					a(href='/addPost') Add New Snippet
-				li.nav-link.more
-					a(href='javascript:void(0)') More
-					ul.submenu
-						li
-							a(href='javascript:void(0)') Submenu Item
-						li
-							a(href='javascript:void(0)') Another Item
-						li.more
-							a(href='javascript:void(0)') Item with submenu
-							ul.submenu
-								li
-									a(href='javascript:void(0)') Sub-submenu Item
-								li
-									a(href='javascript:void(0)') Another Item
-						li.more
-							a(href='javascript:void(0)') Another submenu
-							ul.submenu
-								li
-									a(href='javascript:void(0)') Sub-submenu
-								li
-									a(href='javascript:void(0)') An Item
 		.navigation-tools
 			.search-bar
 				form(role='search')
-					input(type='search', placeholder='Enter Search')
+					input(type='search', ng-model="search" placeholder="Search Snippets" )
 					button(type='submit')
 						img(src='https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/search-icon.png', alt='Search Icon')
 div.page-header
 	h1 GrayBox Snippet Library
-	h3 Logo, subtitle or instructions
+	h3(ng-bind="currTitle") Logo, subtitle or instructions

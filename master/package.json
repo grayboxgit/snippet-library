@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "SupportNet - Placement Manager",
   "author": "GRAYBOX - Kevin",
-  "dependencies": {},
+  "dependencies": {
+    "ngclipboard": "^1.1.0"
+  },
   "devDependencies": {
     "css-flip": "git://github.com/geedmo/css-flip",
     "del": "^1.2.0",

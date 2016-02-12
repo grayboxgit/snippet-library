@@ -29,7 +29,7 @@
                 url: '/app',
                 abstract: true,
                 templateUrl: helper.basepath('app.html'),
-                resolve: helper.resolveFor('fastclick', 'modernizr', 'icons', 'screenfull', 'animo', 'sparklines', 'slimscroll', 'classyloader', 'toaster', 'whirl', 'bs-collapse', 'angular-animate', 'localytics.directives', 'datatables', 'htmlSortable', 'sortable-table', 'ngDialog', 'ui.select', 'inputmask', 'highcharts-ng', 'custom')
+                resolve: helper.resolveFor('fastclick', 'modernizr', 'icons', 'screenfull', 'animo', 'sparklines', 'slimscroll', 'classyloader', 'toaster', 'whirl', 'bs-collapse', 'angular-animate', 'ngDialog', 'ui.select', 'inputmask', 'clipboard', 'ngclipboard', 'prismjs', 'custom')
             })
             .state('app.dashboard', {
                 url: '/dashboard',
@@ -37,62 +37,57 @@
                 templateUrl: helper.basepath('dashboard.html'),
                 resolve: helper.resolveFor('datatables')
             })
-            .state('app.product-listing', {
-                url: '/products',
-                title: 'Products',
-                templateUrl: helper.basepath('product-listing.html'),
-                controller: 'SortableController',
-                resolve: helper.resolveFor('flot-chart', 'flot-chart-plugins', 'morris')
+            .state('app.accordions-tabs', {
+                url: '/accordions-tabs',
+                title: 'Accordions / Tabs',
+                templateUrl: helper.basepath('accordions-tabs.html')
             })
-            .state('app.product-detail', {
-                url: '/product-detail',
-                title: 'Product Details',
-                templateUrl: helper.basepath('product-detail.html'),
-                controller: 'SortableController',
-                resolve: helper.resolveFor('flot-chart', 'flot-chart-plugins', 'morris')
+            .state('app.device', {
+                url: '/device',
+                title: 'Device',
+                templateUrl: helper.basepath('device.html')
             })
-            .state('app.resource-listing', {
-                url: '/resources',
-                title: 'Resources',
-                templateUrl: helper.basepath('resource-listing.html'),
-                controller: 'SortableController',
-                resolve: helper.resolveFor('flot-chart', 'flot-chart-plugins', 'morris')
+            .state('app.flex-boxes', {
+                url: '/flex-boxes',
+                title: 'Flex Boxes',
+                templateUrl: helper.basepath('flex-boxes.html')
             })
-            .state('app.resource-detail', {
-                url: '/resource-detail',
-                title: 'Resource Details',
-                templateUrl: helper.basepath('resource-detail.html'),
-                controller: 'SortableController',
-                resolve: helper.resolveFor('flot-chart', 'flot-chart-plugins', 'morris')
+            .state('app.grid-items', {
+                url: '/grid-items',
+                title: 'Grid Items',
+                templateUrl: helper.basepath('grid-items.html')
             })
-            .state('app.product-detail-activity', {
-                url: '/product-detail/activity-feed',
-                title: 'Product Details - Activity Feed',
-                templateUrl: helper.basepath('product-detail-activity.html'),
-                controller: 'SortableController',
-                resolve: helper.resolveFor('flot-chart', 'flot-chart-plugins', 'morris')
+            .state('app.maps', {
+                url: '/maps',
+                title: 'Maps',
+                templateUrl: helper.basepath('maps.html')
             })
-            .state('app.buttons', {
-                url: '/buttons',
-                title: 'Buttons',
-                templateUrl: helper.basepath('buttons.html')
+            .state('app.navigation', {
+                url: '/navigation',
+                title: 'Navigation',
+                templateUrl: helper.basepath('navigation.html')
             })
-            .state('app.infinite-scroll', {
-                url: '/infinite-scroll',
-                title: 'Infinite Scroll',
-                templateUrl: helper.basepath('infinite-scroll.html'),
-                resolve: helper.resolveFor('infinite-scroll')
+            .state('app.search', {
+                url: '/search',
+                title: 'Search',
+                templateUrl: helper.basepath('search.html')
             })
+            .state('app.tables', {
+                url: '/tables',
+                title: 'Tables',
+                templateUrl: helper.basepath('tables.html')
+            })
+            .state('app.forms', {
+                url: '/forms',
+                title: 'Form',
+                templateUrl: helper.basepath('forms.html')
+            })
+
             .state('app.sortable', {
                 url: '/sortable',
                 title: 'Sortable',
                 templateUrl: helper.basepath('sortable.html'),
                 resolve: helper.resolveFor('htmlSortable')
-            })
-            .state('app.notifications', {
-                url: '/notifications',
-                title: 'Notifications',
-                templateUrl: helper.basepath('notifications.html')
             })
             .state('app.ngdialog', {
                 url: '/ngdialog',
@@ -105,85 +100,9 @@
                 }),
                 controller: 'DialogIntroCtrl'
             })
-            .state('app.sweetalert', {
-                url: '/sweetalert',
-                title: 'SweetAlert',
-                templateUrl: helper.basepath('sweetalert.html'),
-                resolve: helper.resolveFor('oitozero.ngSweetAlert')
-            })
-            .state('app.typo', {
-                url: '/typo',
-                title: 'Typo',
-                templateUrl: helper.basepath('typo.html')
-            })
-            .state('app.icons-font', {
-                url: '/icons-font',
-                title: 'Icons Font',
-                templateUrl: helper.basepath('icons-font.html'),
-                resolve: helper.resolveFor('icons')
-            })
-            .state('app.product-details', {
-                url: '/product-details',
-                title: 'Product Details',
-                templateUrl: helper.basepath('product-details.html'),
-                resolve: helper.resolveFor('angular-dc')
-            })
-
-            .state('app.search', {
-                url: '/search',
-                title: 'Search',
-                templateUrl: helper.basepath('search.html'),
-                resolve: helper.resolveFor('moment', 'localytics.directives', 'ui.bootstrap-slider')
-            })
-            .state('app.template', {
-                url: '/template',
-                title: 'Blank Template',
-                templateUrl: helper.basepath('template.html')
-            })
-
-            // Single Page Routes
-            // -----------------------------------
             .state('page', {
                 url: '/page',
-                templateUrl: 'app/pages/page.html',
-                resolve: helper.resolveFor('modernizr', 'icons'),
-                controller: ['$rootScope', function ($rootScope) {
-                    $rootScope.app.layout.isBoxed = false;
-                }]
-            })
-            .state('page.login', {
-                url: '/login',
-                title: 'Login',
-                templateUrl: 'app/pages/login.html'
-            })
-            .state('page.register', {
-                url: '/register',
-                title: 'Register',
-                templateUrl: 'app/pages/register.html'
-            })
-            .state('page.recover', {
-                url: '/recover',
-                title: 'Recover',
-                templateUrl: 'app/pages/recover.html'
-            })
-            .state('page.lock', {
-                url: '/lock',
-                title: 'Lock',
-                templateUrl: 'app/pages/lock.html'
-            })
-            .state('page.404', {
-                url: '/404',
-                title: 'Not Found',
-                templateUrl: 'app/pages/404.html'
-            })
-            //
-            // Horizontal layout
-            // -----------------------------------
-            .state('app-h', {
-                url: '/app-h',
-                abstract: true,
-                templateUrl: helper.basepath('app-h.html'),
-                resolve: helper.resolveFor('fastclick', 'modernizr', 'icons', 'screenfull', 'animo', 'sparklines', 'slimscroll', 'classyloader', 'toaster', 'whirl')
+                templateUrl: helper.basepath('page.html')
             })
             //
             // CUSTOM RESOLVES

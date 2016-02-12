@@ -74,7 +74,9 @@
                 'colorbrewer': ['vendor/colorbrewer/colorbrewer.js'],
                 'loaders.css': ['vendor/loaders.css/loaders.css'],
                 'custom': ['app/js/custom.js'],
-                'spinkit': ['vendor/spinkit/css/spinkit.css']
+                'spinkit': ['vendor/spinkit/css/spinkit.css'],
+                'prismjs': ['vendor/prismjs/prism.js'],
+                'clipboard': ['master/node_modules/clipboard/dist/clipboard.min.js']
             },
             // Angular based script (use the right module name)
             modules: [
@@ -167,26 +169,6 @@
                     'vendor/textAngular/dist/textAngularSetup.js'
                 ], serie: true
                 },
-                {
-                    name: 'angular-rickshaw', files: [
-                    'vendor/d3/d3.js',
-                    'vendor/rickshaw/rickshaw.js',
-                    'vendor/rickshaw/rickshaw.min.css',
-                    'vendor/angular-rickshaw/rickshaw.js',
-                    'vendor/angular-dc/angular-dc.js'
-                ], serie: true
-                },
-                {
-                    name: 'angular-dc', files: [
-                    'vendor/lodash/lodash.js', 'vendor/d3/d3.js', 'vendor/crossfilter/crossfilter.min.js', 'vendor/dc/dc.js', 'vendor/colorbrewer/colorbrewer.js',
-                    'vendor/angular-dc/angular-dc.js'
-                ], serie: true
-                },
-                {
-                    name: 'angular-chartist', files: ['vendor/chartist/dist/chartist.min.css',
-                    'vendor/chartist/dist/chartist.js',
-                    'vendor/angular-chartist.js/dist/angular-chartist.js'], serie: true
-                },
                 {name: 'ui.map', files: ['vendor/angular-ui-map/ui-map.js']},
                 {
                     name: 'datatables', files: ['vendor/datatables/media/css/jquery.dataTables.css',
@@ -222,6 +204,9 @@
                 {
                     name: 'ui.knob', files: ['vendor/angular-knob/src/angular-knob.js',
                     'vendor/jquery-knob/dist/jquery.knob.min.js']
+                },
+                {
+                    name: 'ngclipboard', files: ['master/node_modules/ngclipboard/dist/ngclipboard.min.js']
                 },
                 {name: 'easypiechart', files: ['vendor/jquery.easy-pie-chart/dist/angular.easypiechart.min.js']},
                 {

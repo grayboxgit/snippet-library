@@ -12,8 +12,8 @@
       // Global Settings
       // -----------------------------------
       $rootScope.app = {
-        name: 'Mentor',
-        description: 'SupportNet - Placement Manager',
+        name: 'GRAYBOX Snippet Library',
+        description: 'GRAYBOX - Snippet Library',
         year: ((new Date()).getFullYear()),
         layout: {
           isFixed: false,

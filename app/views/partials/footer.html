@@ -1,13 +1,6 @@
-<footer id="footer" role="contentinfo" class="footer">
+<div class="footer-wrapper">
    <div class="footer-logo">
       <img src="app/img/logo.png" alt="Logo Image" />
    </div>
-   <div class="footer-links">
-      <ul>
-         <li><a href="/">Home</a>
-         </li>
-         <li><a href="/addPost">Add New Snippet</a>
-         </li>
-      </ul>
-   </div>
-</footer>
+   <ul ng-include="'app/views/navigation/navigation-items.html'"></ul>
+</div>
