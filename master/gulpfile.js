@@ -157,7 +157,6 @@ gulp.task('scripts:app', function () {
         .pipe(gulp.dest(build.scripts));
 });
 
-
 // VENDOR BUILD
 gulp.task('vendor', gulpsync.sync(['vendor:base', 'vendor:app']));
 
@@ -196,7 +195,7 @@ gulp.task('styles:app', function() {
     log('Building application styles..');
     return gulp.src(source.styles.app)
         .pipe( $.if( useSourceMaps, $.sourcemaps.init() ))
-        .pipe( useSass ? $.compass(compassOpts) : $.less() )
+        .pipe( $.compass(compassOpts) )
         .on('error', handleError)
         .pipe( $.if( isProduction, $.minifyCss() ))
         .pipe( $.if( useSourceMaps, $.sourcemaps.write() ))
@@ -207,7 +206,7 @@ gulp.task('styles:app', function() {
 gulp.task('styles:themes', function () {
     log('Building application theme styles..');
     return gulp.src(source.styles.themes)
-        .pipe(useSass ? $.compass(compassOptsThemes) : $.less())
+        .pipe( $.compass(compassOptsThemes) )
         .on('error', handleError)
         .pipe(gulp.dest(build.styles));
 });

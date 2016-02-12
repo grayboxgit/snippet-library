@@ -29,7 +29,7 @@
                 url: '/app',
                 abstract: true,
                 templateUrl: helper.basepath('app.html'),
-                resolve: helper.resolveFor('fastclick', 'modernizr', 'icons', 'screenfull', 'animo', 'sparklines', 'slimscroll', 'classyloader', 'toaster', 'whirl', 'bs-collapse', 'angular-animate', 'ngDialog', 'ui.select', 'inputmask', 'clipboard', 'ngclipboard', 'prismjs', 'custom')
+                resolve: helper.resolveFor('fastclick', 'modernizr', 'icons', 'screenfull', 'animo', 'sparklines', 'slimscroll', 'toaster', 'whirl', 'bs-collapse', 'angular-animate', 'ngDialog', 'ui.select', 'inputmask', 'clipboard', 'ngclipboard', 'prismjs', 'custom')
             })
             .state('app.dashboard', {
                 url: '/dashboard',
