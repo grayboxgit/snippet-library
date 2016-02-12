@@ -33,13 +33,13 @@
     'use strict';
 
     angular
-        .module('app.colors', []);
+        .module('app.bootstrapui', []);
 })();
 (function() {
     'use strict';
 
     angular
-        .module('app.bootstrapui', []);
+        .module('app.colors', []);
 })();
 (function() {
     'use strict';
@@ -71,25 +71,25 @@
     'use strict';
 
     angular
-        .module('app.forms', []);
-})();
-(function() {
-    'use strict';
-
-    angular
-        .module('app.lazyload', []);
-})();
-(function() {
-    'use strict';
-
-    angular
         .module('app.elements', []);
 })();
 (function() {
     'use strict';
 
     angular
+        .module('app.forms', []);
+})();
+(function() {
+    'use strict';
+
+    angular
         .module('app.icons', []);
+})();
+(function() {
+    'use strict';
+
+    angular
+        .module('app.lazyload', []);
 })();
 (function() {
     'use strict';
@@ -129,7 +129,7 @@
     'use strict';
 
     angular
-        .module('app.translate', []);
+        .module('app.settings', []);
 })();
 (function() {
     'use strict';
@@ -141,7 +141,7 @@
     'use strict';
 
     angular
-        .module('app.settings', []);
+        .module('app.translate', []);
 })();
 (function() {
     'use strict';
@@ -166,56 +166,6 @@
 })();
 
 
-
-(function() {
-    'use strict';
-
-    angular
-        .module('app.colors')
-        .constant('APP_COLORS', {
-          'primary':                '#5d9cec',
-          'success':                '#27c24c',
-          'info':                   '#2E5790',
-          'warning':                '#ff902b',
-          'danger':                 '#f05050',
-          'inverse':                '#131e26',
-          'green':                  '#37bc9b',
-          'pink':                   '#f532e5',
-          'purple':                 '#7266ba',
-          'dark':                   '#3a3f51',
-          'yellow':                 '#fad732',
-          'gray-darker':            '#232735',
-          'gray-dark':              '#3a3f51',
-          'gray':                   '#dde6e9',
-          'gray-light':             '#e4eaec',
-          'gray-lighter':           '#edf1f2'
-        })
-        ;
-})();
-/**=========================================================
- * Module: colors.js
- * Services to retrieve global colors
- =========================================================*/
-
-(function() {
-    'use strict';
-
-    angular
-        .module('app.colors')
-        .service('Colors', Colors);
-
-    Colors.$inject = ['APP_COLORS'];
-    function Colors(APP_COLORS) {
-        this.byName = byName;
-
-        ////////////////
-
-        function byName(name) {
-          return (APP_COLORS[name] || '#fff');
-        }
-    }
-
-})();
 
 /**=========================================================
  * Module: demo-alerts.js
@@ -781,6 +731,56 @@
     'use strict';
 
     angular
+        .module('app.colors')
+        .constant('APP_COLORS', {
+          'primary':                '#5d9cec',
+          'success':                '#27c24c',
+          'info':                   '#2E5790',
+          'warning':                '#ff902b',
+          'danger':                 '#f05050',
+          'inverse':                '#131e26',
+          'green':                  '#37bc9b',
+          'pink':                   '#f532e5',
+          'purple':                 '#7266ba',
+          'dark':                   '#3a3f51',
+          'yellow':                 '#fad732',
+          'gray-darker':            '#232735',
+          'gray-dark':              '#3a3f51',
+          'gray':                   '#dde6e9',
+          'gray-light':             '#e4eaec',
+          'gray-lighter':           '#edf1f2'
+        })
+        ;
+})();
+/**=========================================================
+ * Module: colors.js
+ * Services to retrieve global colors
+ =========================================================*/
+
+(function() {
+    'use strict';
+
+    angular
+        .module('app.colors')
+        .service('Colors', Colors);
+
+    Colors.$inject = ['APP_COLORS'];
+    function Colors(APP_COLORS) {
+        this.byName = byName;
+
+        ////////////////
+
+        function byName(name) {
+          return (APP_COLORS[name] || '#fff');
+        }
+    }
+
+})();
+
+(function() {
+    'use strict';
+
+    angular
         .module('app.core')
         .config(coreConfig);
 
@@ -1112,6 +1112,699 @@
         }
     }
 })();
+
+(function() {
+    'use strict';
+
+    angular
+        .module('app.elements')
+        .controller('AngularCarouselController', AngularCarouselController);
+
+    function AngularCarouselController() {
+        var vm = this;
+
+        activate();
+
+        ////////////////
+
+        function activate() {
+          vm.colors = ['#fc0003', '#f70008', '#f2000d', '#ed0012', '#e80017', '#e3001c', '#de0021', '#d90026', '#d4002b', '#cf0030', '#c90036', '#c4003b', '#bf0040', '#ba0045', '#b5004a', '#b0004f', '#ab0054', '#a60059', '#a1005e', '#9c0063', '#960069', '#91006e', '#8c0073', '#870078', '#82007d', '#7d0082', '#780087', '#73008c', '#6e0091', '#690096', '#63009c', '#5e00a1', '#5900a6', '#5400ab', '#4f00b0', '#4a00b5', '#4500ba', '#4000bf', '#3b00c4', '#3600c9', '#3000cf', '#2b00d4', '#2600d9', '#2100de', '#1c00e3', '#1700e8', '#1200ed', '#0d00f2', '#0800f7', '#0300fc'];
+
+          function getSlide(target, style) {
+              var i = target.length;
+              return {
+                  id: (i + 1),
+                  label: 'slide #' + (i + 1),
+                  img: 'http://lorempixel.com/1200/500/' + style + '/' + ((i + 1) % 10) ,
+                  color: vm.colors[ (i*10) % vm.colors.length],
+                  odd: (i % 2 === 0)
+              };
+          }
+
+          function addSlide(target, style) {
+              target.push(getSlide(target, style));
+          }
+
+          vm.carouselIndex = 3;
+          vm.carouselIndex2 = 0;
+          vm.carouselIndex2 = 1;
+          vm.carouselIndex3 = 5;
+          vm.carouselIndex4 = 5;
+
+          function addSlides(target, style, qty) {
+              for (var i=0; i < qty; i++) {
+                  addSlide(target, style);
+              }
+          }
+
+          // 1st ngRepeat demo
+          vm.slides = [];
+          addSlides(vm.slides, 'sports', 50);
+
+          // 2nd ngRepeat demo
+          vm.slides2 = [];
+          addSlides(vm.slides2, 'sports', 10);
+
+          // 3rd ngRepeat demo
+          vm.slides3 = [];
+          addSlides(vm.slides3, 'people', 50);
+
+          // 4th ngRepeat demo
+          vm.slides4 = [];
+          addSlides(vm.slides4, 'city', 50);
+
+
+          // 5th ngRepeat demo
+          vm.slides6 = [];
+          vm.carouselIndex6 = 0;
+          addSlides(vm.slides6, 'sports', 10);
+          vm.addSlide = function(at) {
+              if(at==='head') {
+                  vm.slides6.unshift(getSlide(vm.slides6, 'people'));
+              } else {
+                  vm.slides6.push(getSlide(vm.slides6, 'people'));
+              }
+          };
+        }
+    }
+})();
+
+/**=========================================================
+ * Module: demo-dialog.js
+ * Demo for multiple ngDialog Usage
+ * - ngDialogProvider for default values not supported 
+ *   using lazy loader. Include plugin in base.js instead.
+ =========================================================*/
+
+(function() {
+    'use strict';
+
+    angular
+        .module('app.elements')
+        .controller('DialogIntroCtrl', DialogIntroCtrl)
+        .controller('DialogMainCtrl', DialogMainCtrl)
+        .controller('InsideCtrl', InsideCtrl)
+        .controller('SecondModalCtrl', SecondModalCtrl);
+
+    DialogIntroCtrl.$inject = ['$scope', 'ngDialog', 'tpl'];
+    // Called from the route state. 'tpl' is resolved before
+    function DialogIntroCtrl($scope, ngDialog, tpl) {
+        
+        activate();
+
+        ////////////////
+
+        function activate() {
+          // share with other controllers
+          $scope.tpl = tpl;
+          // open dialog window
+          ngDialog.open({
+            template: tpl.path,
+            // plain: true,
+            className: 'ngdialog-theme-default'
+          });
+        }
+    }
+
+    DialogMainCtrl.$inject = ['$scope', '$rootScope', 'ngDialog'];
+    // Loads from view
+    function DialogMainCtrl($scope, $rootScope, ngDialog) {
+
+        activate();
+
+        ////////////////
+
+        function activate() {
+            //$rootScope.jsonData = [
+            //    { name: "Peter",   age: 20 },
+            //    { name: "Pablo",   age: 55 },
+            //    { name: "Linda",   age: 20 },
+            //    { name: "Marta",   age: 37 },
+            //    { name: "Othello", age: 20 },
+            //    { name: "Markus",  age: 32 }
+            //];
+          //$rootScope.jsonData = '{"foo": "bar"}';
+          $rootScope.theme = 'ngdialog-theme-default';
+
+          $scope.directivePreCloseCallback = function (value) {
+            if(confirm('Close it? MainCtrl.Directive. (Value = ' + value + ')')) {
+              return true;
+            }
+            return false;
+          };
+
+          $scope.preCloseCallbackOnScope = function (value) {
+            if(confirm('Close it? MainCtrl.OnScope (Value = ' + value + ')')) {
+              return true;
+            }
+            return false;
+          };
+
+          $scope.open = function () {
+            ngDialog.open({ template: 'firstDialogId', controller: 'InsideCtrl', data: {foo: 'some data'} });
+          };
+
+          $scope.openDefault = function () {
+            ngDialog.open({
+              template: 'firstDialogId',
+              controller: 'InsideCtrl',
+              className: 'ngdialog-theme-default'
+            });
+          };
+
+          $scope.openDefaultWithPreCloseCallbackInlined = function () {
+            ngDialog.open({
+              template: 'firstDialogId',
+              controller: 'InsideCtrl',
+              className: 'ngdialog-theme-default',
+              preCloseCallback: function(value) {
+                if (confirm('Close it?  (Value = ' + value + ')')) {
+                  return true;
+                }
+                return false;
+              }
+            });
+          };
+
+          $scope.openConfirm = function () {
+            ngDialog.openConfirm({
+              template: 'modalDialogId',
+              className: 'ngdialog-theme-default'
+            }).then(function (value) {
+              console.log('Modal promise resolved. Value: ', value);
+            }, function (reason) {
+              console.log('Modal promise rejected. Reason: ', reason);
+            });
+          };
+
+          $scope.openConfirmWithPreCloseCallbackOnScope = function () {
+            ngDialog.openConfirm({
+              template: 'modalDialogId',
+              className: 'ngdialog-theme-default',
+              preCloseCallback: 'preCloseCallbackOnScope',
+              scope: $scope
+            }).then(function (value) {
+              console.log('Modal promise resolved. Value: ', value);
+            }, function (reason) {
+              console.log('Modal promise rejected. Reason: ', reason);
+            });
+          };
+
+          $scope.openConfirmWithPreCloseCallbackInlinedWithNestedConfirm = function () {
+            ngDialog.openConfirm({
+              template: 'dialogWithNestedConfirmDialogId',
+              className: 'ngdialog-theme-default',
+              preCloseCallback: function(/*value*/) {
+
+                var nestedConfirmDialog = ngDialog.openConfirm({
+                  template:
+                      '<p>Are you sure you want to close the parent dialog?</p>' +
+                      '<div>' +
+                        '<button type="button" class="btn btn-default" ng-click="closeThisDialog(0)">No' +
+                        '<button type="button" class="btn btn-primary" ng-click="confirm(1)">Yes' +
+                      '</button></div>',
+                  plain: true,
+                  className: 'ngdialog-theme-default'
+                });
+
+                return nestedConfirmDialog;
+              },
+              scope: $scope
+            })
+            .then(function(value){
+              console.log('resolved:' + value);
+              // Perform the save here
+            }, function(value){
+              console.log('rejected:' + value);
+
+            });
+          };
+
+          $scope.openInlineController = function () {
+            $rootScope.theme = 'ngdialog-theme-default';
+
+            ngDialog.open({
+              template: 'withInlineController',
+              controller: ['$scope', '$timeout', function ($scope, $timeout) {
+                var counter = 0;
+                var timeout;
+                function count() {
+                  $scope.exampleExternalData = 'Counter ' + (counter++);
+                  timeout = $timeout(count, 450);
+                }
+                count();
+                $scope.$on('$destroy', function () {
+                  $timeout.cancel(timeout);
+                });
+              }],
+              className: 'ngdialog-theme-default'
+            });
+          };
+
+          $scope.openTemplate = function () {
+            $scope.value = true;
+
+            ngDialog.open({
+              template: $scope.tpl.path,
+              className: 'ngdialog-theme-default',
+              scope: $scope
+            });
+          };
+
+          $scope.openTemplateNoCache = function () {
+            $scope.value = true;
+
+            ngDialog.open({
+              template: $scope.tpl.path,
+              className: 'ngdialog-theme-default',
+              scope: $scope,
+              cache: false
+            });
+          };
+
+          $scope.openTimed = function () {
+            var dialog = ngDialog.open({
+              template: '<p>Just passing through!</p>',
+              plain: true,
+              closeByDocument: false,
+              closeByEscape: false
+            });
+            setTimeout(function () {
+              dialog.close();
+            }, 2000);
+          };
+
+          $scope.openNotify = function () {
+            var dialog = ngDialog.open({
+              template:
+                '<p>You can do whatever you want when I close, however that happens.</p>' +
+                '<div><button type="button" class="btn btn-primary" ng-click="closeThisDialog(1)">Close Me</button></div>',
+              plain: true
+            });
+            dialog.closePromise.then(function (data) {
+              console.log('ngDialog closed' + (data.value === 1 ? ' using the button' : '') + ' and notified by promise: ' + data.id);
+            });
+          };
+
+          $scope.openWithoutOverlay = function () {
+            ngDialog.open({
+              template: '<h2>Notice that there is no overlay!</h2>',
+              className: 'ngdialog-theme-default',
+              plain: true,
+              overlay: false
+            });
+          };
+
+          $rootScope.$on('ngDialog.opened', function (e, $dialog) {
+            console.log('ngDialog opened: ' + $dialog.attr('id'));
+          });
+
+          $rootScope.$on('ngDialog.closed', function (e, $dialog) {
+            console.log('ngDialog closed: ' + $dialog.attr('id'));
+          });
+
+          $rootScope.$on('ngDialog.closing', function (e, $dialog) {
+            console.log('ngDialog closing: ' + $dialog.attr('id'));
+          });
+        $scope.sortType     = 'product'; // set the default sort type
+        $scope.sortReverse  = false;  // set the default sort order
+        $scope.searchName   = '';     // set the default search/filter term
+
+        $scope.products = [
+            { product: 'Product Name' },
+            { product: 'Product Name Two' },
+            { product: 'Product Name Three' },
+            { product: 'Product Name Four' },
+            { product: 'Product Name Five' },
+            { product: 'Product Name Six' },
+            { product: 'Product Name Seven' },
+            { product: 'Product Name Eight' },
+            { product: 'Product Name Nine' },
+            { product: 'Product Name Ten' }
+        ];
+        $scope.addData = function() {
+            $scope.names.push({ 'fname': $scope.fname, 'lname': $scope.lname });
+        };
+        }
+    
+    } // DialogMainCtrl
+
+
+    InsideCtrl.$inject = ['$scope', 'ngDialog'];
+    function InsideCtrl($scope, ngDialog) {
+
+        activate();
+
+        ////////////////
+
+        function activate() {
+            $scope.jsonData = {};
+            $scope.jsonData.products = ['product1','product2','product3'];
+          $scope.dialogModel = {
+            message : 'message from passed scope'
+          };
+          $scope.openSecond = function () {
+            ngDialog.open({
+              template: '<p class="lead m0"><a href="" ng-click="closeSecond()">Close all by click here!</a></h3>',
+              plain: true,
+              closeByEscape: false,
+              controller: 'SecondModalCtrl'
+            });
+          };
+        }
+    }
+
+    SecondModalCtrl.$inject = ['$scope', 'ngDialog'];
+    function SecondModalCtrl($scope, ngDialog) {
+
+        activate();
+
+        ////////////////
+
+        function activate() {
+          $scope.closeSecond = function () {
+            ngDialog.close();
+          };
+        }
+
+    }
+
+
+})();
+
+
+
+
+/**=========================================================
+ * Module: access-login.js
+ * Demo for login api
+ =========================================================*/
+
+(function() {
+    'use strict';
+
+    angular
+        .module('app.elements')
+        .controller('AbnTestController', AbnTestController);
+
+    AbnTestController.$inject = ['$timeout', '$resource'];
+    function AbnTestController($timeout, $resource) {
+        var vm = this;
+
+        activate();
+
+        ////////////////
+
+        /*jshint -W106*/
+        function activate() {
+          vm.my_tree_handler = function(branch) {
+
+            vm.output = 'You selected: ' + branch.label;
+
+            if (branch.data && branch.data.description) {
+              vm.output += '(' + branch.data.description + ')';
+              return vm.output;
+            }
+          };
+
+          // onSelect event handlers
+          var apple_selected = function(branch) {
+            vm.output = 'APPLE! : ' + branch.label;
+            return vm.output;
+          };
+
+          var treedata_avm = [
+            {
+              label: 'Animal',
+              children: [
+                {
+                  label: 'Dog',
+                  data: {
+                    description: 'man\'s best friend'
+                  }
+                }, {
+                  label: 'Cat',
+                  data: {
+                    description: 'Felis catus'
+                  }
+                }, {
+                  label: 'Hippopotamus',
+                  data: {
+                    description: 'hungry, hungry'
+                  }
+                }, {
+                  label: 'Chicken',
+                  children: ['White Leghorn', 'Rhode Island Red', 'Jersey Giant']
+                }
+              ]
+            }, {
+              label: 'Vegetable',
+              data: {
+                definition: 'A plant or part of a plant used as food, typically as accompaniment to meat or fish, such as a cabbage, potato, carrot, or bean.',
+                data_can_contain_anything: true
+              },
+              onSelect: function(branch) {
+                vm.output = 'Vegetable: ' + branch.data.definition;
+                return vm.output;
+              },
+              children: [
+                {
+                  label: 'Oranges'
+                }, {
+                  label: 'Apples',
+                  children: [
+                    {
+                      label: 'Granny Smith',
+                      onSelect: apple_selected
+                    }, {
+                      label: 'Red Delicous',
+                      onSelect: apple_selected
+                    }, {
+                      label: 'Fuji',
+                      onSelect: apple_selected
+                    }
+                  ]
+                }
+              ]
+            }, {
+              label: 'Mineral',
+              children: [
+                {
+                  label: 'Rock',
+                  children: ['Igneous', 'Sedimentary', 'Metamorphic']
+                }, {
+                  label: 'Metal',
+                  children: ['Aluminum', 'Steel', 'Copper']
+                }, {
+                  label: 'Plastic',
+                  children: [
+                    {
+                      label: 'Thermoplastic',
+                      children: ['polyethylene', 'polypropylene', 'polystyrene', ' polyvinyl chloride']
+                    }, {
+                      label: 'Thermosetting Polymer',
+                      children: ['polyester', 'polyurethane', 'vulcanized rubber', 'bakelite', 'urea-formaldehyde']
+                    }
+                  ]
+                }
+              ]
+            }
+          ];
+          
+          var treedata_geography = [
+            {
+              label: 'North America',
+              children: [
+                {
+                  label: 'Canada',
+                  children: ['Toronto', 'Vancouver']
+                }, {
+                  label: 'USA',
+                  children: ['New York', 'Los Angeles']
+                }, {
+                  label: 'Mexico',
+                  children: ['Mexico City', 'Guadalajara']
+                }
+              ]
+            }, {
+              label: 'South America',
+              children: [
+                {
+                  label: 'Venezuela',
+                  children: ['Caracas', 'Maracaibo']
+                }, {
+                  label: 'Brazil',
+                  children: ['Sao Paulo', 'Rio de Janeiro']
+                }, {
+                  label: 'Argentina',
+                  children: ['Buenos Aires', 'Cordoba']
+                }
+              ]
+            }
+          ];
+
+          vm.my_data = treedata_avm;
+          vm.try_changing_the_tree_data = function() {
+            if (vm.my_data === treedata_avm) {
+              vm.my_data = treedata_geography;
+            } else {
+              vm.my_data = treedata_avm;
+            }
+            return vm.my_data;
+          };
+          
+          var tree;
+          // This is our API control variable
+          vm.my_tree = tree = {};
+          vm.try_async_load = function() {
+            
+            vm.my_data = [];
+            vm.doing_async = true;
+            
+            // Request tree data via $resource
+            var remoteTree = $resource('server/treedata.json');
+            
+            return remoteTree.get(function(res){
+              
+              vm.my_data = res.data;
+
+              vm.doing_async = false;
+            
+              return tree.expand_all();
+            
+            // we must return a promise so the plugin 
+            // can watch when it's resolved
+            }).$promise;
+          };
+          
+          // Adds a new branch to the tree
+          vm.try_adding_a_branch = function() {
+            var b;
+            b = tree.get_selected_branch();
+            return tree.add_branch(b, {
+              label: 'New Branch',
+              data: {
+                something: 42,
+                'else': 43
+              }
+            });
+          };
+
+        }
+    }
+})();
+
+
+/**=========================================================
+ * Module: scroll.js
+ * Make a content box scrollable
+ =========================================================*/
+
+(function() {
+    'use strict';
+
+    angular
+        .module('app.elements')
+        .directive('scrollable', scrollable);
+
+    function scrollable () {
+        var directive = {
+            link: link,
+            restrict: 'EA'
+        };
+        return directive;
+
+        function link(scope, element, attrs) {
+          var defaultHeight = 250;
+          element.slimScroll({
+              height: (attrs.height || defaultHeight)
+          });
+        }
+    }
+
+})();
+
+/**=========================================================
+ * Module: sortable.js
+ * Sortable controller
+ =========================================================*/
+(function() {
+    'use strict';
+
+    angular
+        .module('app.elements')
+        .directive('prism', [function() {
+        return {
+            restrict: 'A',
+            link: function ($scope, element, attrs) {
+                element.ready(function() {
+                    Prism.highlightElement(element[0]);
+                });
+            }
+        }
+    }])
+        .controller('SortableController', SortableController);
+    SortableController.$inject = ['$scope'];
+    function SortableController($scope) {
+        var vm = this;
+
+        activate();
+
+        function activate() {
+
+            angular.element(document).ready(function () {
+                //Base Functionality for off-canvas sidebar
+                $('.sliding-panel-button,.sliding-panel-fade-screen,.sliding-panel-close').on('click touchstart',function (e) {
+                    $('.sliding-panel-content,.sliding-panel-fade-screen').toggleClass('is-visible');
+                    e.preventDefault();
+                });
+                //Close off-canvas menu when option is selected
+                //$('.sliding-panel-content ul li a').on('click touchstart',function (e) {
+                //    $('.sliding-panel-content,.sliding-panel-fade-screen').toggleClass('is-visible');
+                //    //e.preventDefault();
+                //});
+            });
+
+
+        }
+    }
+
+})();
+
+/**=========================================================
+ * Module: demo-toaster.js
+ * Demos for toaster notifications
+ =========================================================*/
+
+(function() {
+    'use strict';
+
+    angular
+        .module('app.elements')
+        .controller('ToasterDemoCtrl', ToasterDemoCtrl);
+
+    ToasterDemoCtrl.$inject = ['toaster'];
+    function ToasterDemoCtrl(toaster) {
+        var vm = this;
+
+        activate();
+
+        ////////////////
+
+        function activate() {
+          vm.toaster = {
+              type:  'success',
+              title: 'Title',
+              text:  'Message'
+          };
+
+          vm.pop = function() {
+            toaster.pop(vm.toaster.type, vm.toaster.title, vm.toaster.text);
+          };
+        }
+    }
+})();
+
 (function() {
     'use strict';
 
@@ -2298,699 +2991,6 @@
 
 })();
 
-
-(function() {
-    'use strict';
-
-    angular
-        .module('app.elements')
-        .controller('AngularCarouselController', AngularCarouselController);
-
-    function AngularCarouselController() {
-        var vm = this;
-
-        activate();
-
-        ////////////////
-
-        function activate() {
-          vm.colors = ['#fc0003', '#f70008', '#f2000d', '#ed0012', '#e80017', '#e3001c', '#de0021', '#d90026', '#d4002b', '#cf0030', '#c90036', '#c4003b', '#bf0040', '#ba0045', '#b5004a', '#b0004f', '#ab0054', '#a60059', '#a1005e', '#9c0063', '#960069', '#91006e', '#8c0073', '#870078', '#82007d', '#7d0082', '#780087', '#73008c', '#6e0091', '#690096', '#63009c', '#5e00a1', '#5900a6', '#5400ab', '#4f00b0', '#4a00b5', '#4500ba', '#4000bf', '#3b00c4', '#3600c9', '#3000cf', '#2b00d4', '#2600d9', '#2100de', '#1c00e3', '#1700e8', '#1200ed', '#0d00f2', '#0800f7', '#0300fc'];
-
-          function getSlide(target, style) {
-              var i = target.length;
-              return {
-                  id: (i + 1),
-                  label: 'slide #' + (i + 1),
-                  img: 'http://lorempixel.com/1200/500/' + style + '/' + ((i + 1) % 10) ,
-                  color: vm.colors[ (i*10) % vm.colors.length],
-                  odd: (i % 2 === 0)
-              };
-          }
-
-          function addSlide(target, style) {
-              target.push(getSlide(target, style));
-          }
-
-          vm.carouselIndex = 3;
-          vm.carouselIndex2 = 0;
-          vm.carouselIndex2 = 1;
-          vm.carouselIndex3 = 5;
-          vm.carouselIndex4 = 5;
-
-          function addSlides(target, style, qty) {
-              for (var i=0; i < qty; i++) {
-                  addSlide(target, style);
-              }
-          }
-
-          // 1st ngRepeat demo
-          vm.slides = [];
-          addSlides(vm.slides, 'sports', 50);
-
-          // 2nd ngRepeat demo
-          vm.slides2 = [];
-          addSlides(vm.slides2, 'sports', 10);
-
-          // 3rd ngRepeat demo
-          vm.slides3 = [];
-          addSlides(vm.slides3, 'people', 50);
-
-          // 4th ngRepeat demo
-          vm.slides4 = [];
-          addSlides(vm.slides4, 'city', 50);
-
-
-          // 5th ngRepeat demo
-          vm.slides6 = [];
-          vm.carouselIndex6 = 0;
-          addSlides(vm.slides6, 'sports', 10);
-          vm.addSlide = function(at) {
-              if(at==='head') {
-                  vm.slides6.unshift(getSlide(vm.slides6, 'people'));
-              } else {
-                  vm.slides6.push(getSlide(vm.slides6, 'people'));
-              }
-          };
-        }
-    }
-})();
-
-/**=========================================================
- * Module: demo-dialog.js
- * Demo for multiple ngDialog Usage
- * - ngDialogProvider for default values not supported 
- *   using lazy loader. Include plugin in base.js instead.
- =========================================================*/
-
-(function() {
-    'use strict';
-
-    angular
-        .module('app.elements')
-        .controller('DialogIntroCtrl', DialogIntroCtrl)
-        .controller('DialogMainCtrl', DialogMainCtrl)
-        .controller('InsideCtrl', InsideCtrl)
-        .controller('SecondModalCtrl', SecondModalCtrl);
-
-    DialogIntroCtrl.$inject = ['$scope', 'ngDialog', 'tpl'];
-    // Called from the route state. 'tpl' is resolved before
-    function DialogIntroCtrl($scope, ngDialog, tpl) {
-        
-        activate();
-
-        ////////////////
-
-        function activate() {
-          // share with other controllers
-          $scope.tpl = tpl;
-          // open dialog window
-          ngDialog.open({
-            template: tpl.path,
-            // plain: true,
-            className: 'ngdialog-theme-default'
-          });
-        }
-    }
-
-    DialogMainCtrl.$inject = ['$scope', '$rootScope', 'ngDialog'];
-    // Loads from view
-    function DialogMainCtrl($scope, $rootScope, ngDialog) {
-
-        activate();
-
-        ////////////////
-
-        function activate() {
-            //$rootScope.jsonData = [
-            //    { name: "Peter",   age: 20 },
-            //    { name: "Pablo",   age: 55 },
-            //    { name: "Linda",   age: 20 },
-            //    { name: "Marta",   age: 37 },
-            //    { name: "Othello", age: 20 },
-            //    { name: "Markus",  age: 32 }
-            //];
-          //$rootScope.jsonData = '{"foo": "bar"}';
-          $rootScope.theme = 'ngdialog-theme-default';
-
-          $scope.directivePreCloseCallback = function (value) {
-            if(confirm('Close it? MainCtrl.Directive. (Value = ' + value + ')')) {
-              return true;
-            }
-            return false;
-          };
-
-          $scope.preCloseCallbackOnScope = function (value) {
-            if(confirm('Close it? MainCtrl.OnScope (Value = ' + value + ')')) {
-              return true;
-            }
-            return false;
-          };
-
-          $scope.open = function () {
-            ngDialog.open({ template: 'firstDialogId', controller: 'InsideCtrl', data: {foo: 'some data'} });
-          };
-
-          $scope.openDefault = function () {
-            ngDialog.open({
-              template: 'firstDialogId',
-              controller: 'InsideCtrl',
-              className: 'ngdialog-theme-default'
-            });
-          };
-
-          $scope.openDefaultWithPreCloseCallbackInlined = function () {
-            ngDialog.open({
-              template: 'firstDialogId',
-              controller: 'InsideCtrl',
-              className: 'ngdialog-theme-default',
-              preCloseCallback: function(value) {
-                if (confirm('Close it?  (Value = ' + value + ')')) {
-                  return true;
-                }
-                return false;
-              }
-            });
-          };
-
-          $scope.openConfirm = function () {
-            ngDialog.openConfirm({
-              template: 'modalDialogId',
-              className: 'ngdialog-theme-default'
-            }).then(function (value) {
-              console.log('Modal promise resolved. Value: ', value);
-            }, function (reason) {
-              console.log('Modal promise rejected. Reason: ', reason);
-            });
-          };
-
-          $scope.openConfirmWithPreCloseCallbackOnScope = function () {
-            ngDialog.openConfirm({
-              template: 'modalDialogId',
-              className: 'ngdialog-theme-default',
-              preCloseCallback: 'preCloseCallbackOnScope',
-              scope: $scope
-            }).then(function (value) {
-              console.log('Modal promise resolved. Value: ', value);
-            }, function (reason) {
-              console.log('Modal promise rejected. Reason: ', reason);
-            });
-          };
-
-          $scope.openConfirmWithPreCloseCallbackInlinedWithNestedConfirm = function () {
-            ngDialog.openConfirm({
-              template: 'dialogWithNestedConfirmDialogId',
-              className: 'ngdialog-theme-default',
-              preCloseCallback: function(/*value*/) {
-
-                var nestedConfirmDialog = ngDialog.openConfirm({
-                  template:
-                      '<p>Are you sure you want to close the parent dialog?</p>' +
-                      '<div>' +
-                        '<button type="button" class="btn btn-default" ng-click="closeThisDialog(0)">No' +
-                        '<button type="button" class="btn btn-primary" ng-click="confirm(1)">Yes' +
-                      '</button></div>',
-                  plain: true,
-                  className: 'ngdialog-theme-default'
-                });
-
-                return nestedConfirmDialog;
-              },
-              scope: $scope
-            })
-            .then(function(value){
-              console.log('resolved:' + value);
-              // Perform the save here
-            }, function(value){
-              console.log('rejected:' + value);
-
-            });
-          };
-
-          $scope.openInlineController = function () {
-            $rootScope.theme = 'ngdialog-theme-default';
-
-            ngDialog.open({
-              template: 'withInlineController',
-              controller: ['$scope', '$timeout', function ($scope, $timeout) {
-                var counter = 0;
-                var timeout;
-                function count() {
-                  $scope.exampleExternalData = 'Counter ' + (counter++);
-                  timeout = $timeout(count, 450);
-                }
-                count();
-                $scope.$on('$destroy', function () {
-                  $timeout.cancel(timeout);
-                });
-              }],
-              className: 'ngdialog-theme-default'
-            });
-          };
-
-          $scope.openTemplate = function () {
-            $scope.value = true;
-
-            ngDialog.open({
-              template: $scope.tpl.path,
-              className: 'ngdialog-theme-default',
-              scope: $scope
-            });
-          };
-
-          $scope.openTemplateNoCache = function () {
-            $scope.value = true;
-
-            ngDialog.open({
-              template: $scope.tpl.path,
-              className: 'ngdialog-theme-default',
-              scope: $scope,
-              cache: false
-            });
-          };
-
-          $scope.openTimed = function () {
-            var dialog = ngDialog.open({
-              template: '<p>Just passing through!</p>',
-              plain: true,
-              closeByDocument: false,
-              closeByEscape: false
-            });
-            setTimeout(function () {
-              dialog.close();
-            }, 2000);
-          };
-
-          $scope.openNotify = function () {
-            var dialog = ngDialog.open({
-              template:
-                '<p>You can do whatever you want when I close, however that happens.</p>' +
-                '<div><button type="button" class="btn btn-primary" ng-click="closeThisDialog(1)">Close Me</button></div>',
-              plain: true
-            });
-            dialog.closePromise.then(function (data) {
-              console.log('ngDialog closed' + (data.value === 1 ? ' using the button' : '') + ' and notified by promise: ' + data.id);
-            });
-          };
-
-          $scope.openWithoutOverlay = function () {
-            ngDialog.open({
-              template: '<h2>Notice that there is no overlay!</h2>',
-              className: 'ngdialog-theme-default',
-              plain: true,
-              overlay: false
-            });
-          };
-
-          $rootScope.$on('ngDialog.opened', function (e, $dialog) {
-            console.log('ngDialog opened: ' + $dialog.attr('id'));
-          });
-
-          $rootScope.$on('ngDialog.closed', function (e, $dialog) {
-            console.log('ngDialog closed: ' + $dialog.attr('id'));
-          });
-
-          $rootScope.$on('ngDialog.closing', function (e, $dialog) {
-            console.log('ngDialog closing: ' + $dialog.attr('id'));
-          });
-        $scope.sortType     = 'product'; // set the default sort type
-        $scope.sortReverse  = false;  // set the default sort order
-        $scope.searchName   = '';     // set the default search/filter term
-
-        $scope.products = [
-            { product: 'Product Name' },
-            { product: 'Product Name Two' },
-            { product: 'Product Name Three' },
-            { product: 'Product Name Four' },
-            { product: 'Product Name Five' },
-            { product: 'Product Name Six' },
-            { product: 'Product Name Seven' },
-            { product: 'Product Name Eight' },
-            { product: 'Product Name Nine' },
-            { product: 'Product Name Ten' }
-        ];
-        $scope.addData = function() {
-            $scope.names.push({ 'fname': $scope.fname, 'lname': $scope.lname });
-        };
-        }
-    
-    } // DialogMainCtrl
-
-
-    InsideCtrl.$inject = ['$scope', 'ngDialog'];
-    function InsideCtrl($scope, ngDialog) {
-
-        activate();
-
-        ////////////////
-
-        function activate() {
-            $scope.jsonData = {};
-            $scope.jsonData.products = ['product1','product2','product3'];
-          $scope.dialogModel = {
-            message : 'message from passed scope'
-          };
-          $scope.openSecond = function () {
-            ngDialog.open({
-              template: '<p class="lead m0"><a href="" ng-click="closeSecond()">Close all by click here!</a></h3>',
-              plain: true,
-              closeByEscape: false,
-              controller: 'SecondModalCtrl'
-            });
-          };
-        }
-    }
-
-    SecondModalCtrl.$inject = ['$scope', 'ngDialog'];
-    function SecondModalCtrl($scope, ngDialog) {
-
-        activate();
-
-        ////////////////
-
-        function activate() {
-          $scope.closeSecond = function () {
-            ngDialog.close();
-          };
-        }
-
-    }
-
-
-})();
-
-
-
-
-/**=========================================================
- * Module: access-login.js
- * Demo for login api
- =========================================================*/
-
-(function() {
-    'use strict';
-
-    angular
-        .module('app.elements')
-        .controller('AbnTestController', AbnTestController);
-
-    AbnTestController.$inject = ['$timeout', '$resource'];
-    function AbnTestController($timeout, $resource) {
-        var vm = this;
-
-        activate();
-
-        ////////////////
-
-        /*jshint -W106*/
-        function activate() {
-          vm.my_tree_handler = function(branch) {
-
-            vm.output = 'You selected: ' + branch.label;
-
-            if (branch.data && branch.data.description) {
-              vm.output += '(' + branch.data.description + ')';
-              return vm.output;
-            }
-          };
-
-          // onSelect event handlers
-          var apple_selected = function(branch) {
-            vm.output = 'APPLE! : ' + branch.label;
-            return vm.output;
-          };
-
-          var treedata_avm = [
-            {
-              label: 'Animal',
-              children: [
-                {
-                  label: 'Dog',
-                  data: {
-                    description: 'man\'s best friend'
-                  }
-                }, {
-                  label: 'Cat',
-                  data: {
-                    description: 'Felis catus'
-                  }
-                }, {
-                  label: 'Hippopotamus',
-                  data: {
-                    description: 'hungry, hungry'
-                  }
-                }, {
-                  label: 'Chicken',
-                  children: ['White Leghorn', 'Rhode Island Red', 'Jersey Giant']
-                }
-              ]
-            }, {
-              label: 'Vegetable',
-              data: {
-                definition: 'A plant or part of a plant used as food, typically as accompaniment to meat or fish, such as a cabbage, potato, carrot, or bean.',
-                data_can_contain_anything: true
-              },
-              onSelect: function(branch) {
-                vm.output = 'Vegetable: ' + branch.data.definition;
-                return vm.output;
-              },
-              children: [
-                {
-                  label: 'Oranges'
-                }, {
-                  label: 'Apples',
-                  children: [
-                    {
-                      label: 'Granny Smith',
-                      onSelect: apple_selected
-                    }, {
-                      label: 'Red Delicous',
-                      onSelect: apple_selected
-                    }, {
-                      label: 'Fuji',
-                      onSelect: apple_selected
-                    }
-                  ]
-                }
-              ]
-            }, {
-              label: 'Mineral',
-              children: [
-                {
-                  label: 'Rock',
-                  children: ['Igneous', 'Sedimentary', 'Metamorphic']
-                }, {
-                  label: 'Metal',
-                  children: ['Aluminum', 'Steel', 'Copper']
-                }, {
-                  label: 'Plastic',
-                  children: [
-                    {
-                      label: 'Thermoplastic',
-                      children: ['polyethylene', 'polypropylene', 'polystyrene', ' polyvinyl chloride']
-                    }, {
-                      label: 'Thermosetting Polymer',
-                      children: ['polyester', 'polyurethane', 'vulcanized rubber', 'bakelite', 'urea-formaldehyde']
-                    }
-                  ]
-                }
-              ]
-            }
-          ];
-          
-          var treedata_geography = [
-            {
-              label: 'North America',
-              children: [
-                {
-                  label: 'Canada',
-                  children: ['Toronto', 'Vancouver']
-                }, {
-                  label: 'USA',
-                  children: ['New York', 'Los Angeles']
-                }, {
-                  label: 'Mexico',
-                  children: ['Mexico City', 'Guadalajara']
-                }
-              ]
-            }, {
-              label: 'South America',
-              children: [
-                {
-                  label: 'Venezuela',
-                  children: ['Caracas', 'Maracaibo']
-                }, {
-                  label: 'Brazil',
-                  children: ['Sao Paulo', 'Rio de Janeiro']
-                }, {
-                  label: 'Argentina',
-                  children: ['Buenos Aires', 'Cordoba']
-                }
-              ]
-            }
-          ];
-
-          vm.my_data = treedata_avm;
-          vm.try_changing_the_tree_data = function() {
-            if (vm.my_data === treedata_avm) {
-              vm.my_data = treedata_geography;
-            } else {
-              vm.my_data = treedata_avm;
-            }
-            return vm.my_data;
-          };
-          
-          var tree;
-          // This is our API control variable
-          vm.my_tree = tree = {};
-          vm.try_async_load = function() {
-            
-            vm.my_data = [];
-            vm.doing_async = true;
-            
-            // Request tree data via $resource
-            var remoteTree = $resource('server/treedata.json');
-            
-            return remoteTree.get(function(res){
-              
-              vm.my_data = res.data;
-
-              vm.doing_async = false;
-            
-              return tree.expand_all();
-            
-            // we must return a promise so the plugin 
-            // can watch when it's resolved
-            }).$promise;
-          };
-          
-          // Adds a new branch to the tree
-          vm.try_adding_a_branch = function() {
-            var b;
-            b = tree.get_selected_branch();
-            return tree.add_branch(b, {
-              label: 'New Branch',
-              data: {
-                something: 42,
-                'else': 43
-              }
-            });
-          };
-
-        }
-    }
-})();
-
-
-/**=========================================================
- * Module: scroll.js
- * Make a content box scrollable
- =========================================================*/
-
-(function() {
-    'use strict';
-
-    angular
-        .module('app.elements')
-        .directive('scrollable', scrollable);
-
-    function scrollable () {
-        var directive = {
-            link: link,
-            restrict: 'EA'
-        };
-        return directive;
-
-        function link(scope, element, attrs) {
-          var defaultHeight = 250;
-          element.slimScroll({
-              height: (attrs.height || defaultHeight)
-          });
-        }
-    }
-
-})();
-
-/**=========================================================
- * Module: sortable.js
- * Sortable controller
- =========================================================*/
-(function() {
-    'use strict';
-
-    angular
-        .module('app.elements')
-        .directive('prism', [function() {
-        return {
-            restrict: 'A',
-            link: function ($scope, element, attrs) {
-                element.ready(function() {
-                    Prism.highlightElement(element[0]);
-                });
-            }
-        }
-    }])
-        .controller('SortableController', SortableController);
-    SortableController.$inject = ['$scope'];
-    function SortableController($scope) {
-        var vm = this;
-
-        activate();
-
-        function activate() {
-
-            angular.element(document).ready(function () {
-                //Base Functionality for off-canvas sidebar
-                $('.sliding-panel-button,.sliding-panel-fade-screen,.sliding-panel-close').on('click touchstart',function (e) {
-                    $('.sliding-panel-content,.sliding-panel-fade-screen').toggleClass('is-visible');
-                    e.preventDefault();
-                });
-                //Close off-canvas menu when option is selected
-                //$('.sliding-panel-content ul li a').on('click touchstart',function (e) {
-                //    $('.sliding-panel-content,.sliding-panel-fade-screen').toggleClass('is-visible');
-                //    //e.preventDefault();
-                //});
-            });
-
-
-        }
-    }
-
-})();
-
-/**=========================================================
- * Module: demo-toaster.js
- * Demos for toaster notifications
- =========================================================*/
-
-(function() {
-    'use strict';
-
-    angular
-        .module('app.elements')
-        .controller('ToasterDemoCtrl', ToasterDemoCtrl);
-
-    ToasterDemoCtrl.$inject = ['toaster'];
-    function ToasterDemoCtrl(toaster) {
-        var vm = this;
-
-        activate();
-
-        ////////////////
-
-        function activate() {
-          vm.toaster = {
-              type:  'success',
-              title: 'Title',
-              text:  'Message'
-          };
-
-          vm.pop = function() {
-            toaster.pop(vm.toaster.type, vm.toaster.title, vm.toaster.text);
-          };
-        }
-    }
-})();
-
 (function() {
     'use strict';
 
@@ -3512,66 +3512,60 @@
     'use strict';
 
     angular
-        .module('app.translate')
-        .config(translateConfig)
-        ;
-    translateConfig.$inject = ['$translateProvider'];
-    function translateConfig($translateProvider){
+        .module('app.settings')
+        .run(settingsRun);
 
-      $translateProvider.useStaticFilesLoader({
-          prefix : 'app/i18n/',
-          suffix : '.json'
-      });
+    settingsRun.$inject = ['$rootScope', '$localStorage'];
 
-      $translateProvider.preferredLanguage('en');
-      $translateProvider.useLocalStorage();
-      $translateProvider.usePostCompiling(true);
-      $translateProvider.useSanitizeValueStrategy('sanitizeParameters');
+    function settingsRun($rootScope, $localStorage){
 
-    }
-})();
-(function() {
-    'use strict';
-
-    angular
-        .module('app.translate')
-        .run(translateRun)
-        ;
-    translateRun.$inject = ['$rootScope', '$translate'];
-    
-    function translateRun($rootScope, $translate){
-
-      // Internationalization
-      // ----------------------
-
-      $rootScope.language = {
-        // Handles language dropdown
-        listIsOpen: false,
-        // list of available languages
-        available: {
-          'en':       'English',
-          'es_AR':    'Español'
+      // Global Settings
+      // -----------------------------------
+      $rootScope.app = {
+        name: 'GRAYBOX Snippet Library',
+        description: 'GRAYBOX - Snippet Library',
+        year: ((new Date()).getFullYear()),
+        layout: {
+          isFixed: false,
+          isCollapsed: false,
+          isBoxed: false,
+          isRTL: false,
+          horizontal: true,
+          isFloat: false,
+          asideHover: false,
+          theme: null,
+          asideScrollbar: false
         },
-        // display always the current ui language
-        init: function () {
-          var proposedLanguage = $translate.proposedLanguage() || $translate.use();
-          var preferredLanguage = $translate.preferredLanguage(); // we know we have set a preferred one in app.config
-          $rootScope.language.selected = $rootScope.language.available[ (proposedLanguage || preferredLanguage) ];
-        },
-        set: function (localeId) {
-          // Set the new idiom
-          $translate.use(localeId);
-          // save a reference for the current language
-          $rootScope.language.selected = $rootScope.language.available[localeId];
-          // finally toggle dropdown
-          $rootScope.language.listIsOpen = ! $rootScope.language.listIsOpen;
-        }
+        useFullLayout: true,
+        hiddenFooter: false,
+        offsidebarOpen: false,
+        asideToggled: false,
+        viewAnimation: 'ng-fadeInUp'
       };
 
-      $rootScope.language.init();
+      // Setup the layout mode
+      $rootScope.app.layout.horizontal = ( $rootScope.$stateParams.layout === 'app-h') ;
+
+      // Restore layout settings
+      if( angular.isDefined($localStorage.layout) )
+        $rootScope.app.layout = $localStorage.layout;
+      else
+        $localStorage.layout = $rootScope.app.layout;
+
+      $rootScope.$watch('app.layout', function () {
+        $localStorage.layout = $rootScope.app.layout;
+      }, true);
+
+      // Close submenu when sidebar change from collapsed to normal
+      $rootScope.$watch('app.layout.isCollapsed', function(newValue) {
+        if( newValue === false )
+          $rootScope.$broadcast('closeSidebarMenu');
+      });
 
     }
+
 })();
+
 /**=========================================================
  * Module: angular-grid.js
  * Example for Angular Grid
@@ -4434,60 +4428,66 @@
     'use strict';
 
     angular
-        .module('app.settings')
-        .run(settingsRun);
+        .module('app.translate')
+        .config(translateConfig)
+        ;
+    translateConfig.$inject = ['$translateProvider'];
+    function translateConfig($translateProvider){
 
-    settingsRun.$inject = ['$rootScope', '$localStorage'];
-
-    function settingsRun($rootScope, $localStorage){
-
-      // Global Settings
-      // -----------------------------------
-      $rootScope.app = {
-        name: 'GRAYBOX Snippet Library',
-        description: 'GRAYBOX - Snippet Library',
-        year: ((new Date()).getFullYear()),
-        layout: {
-          isFixed: false,
-          isCollapsed: false,
-          isBoxed: false,
-          isRTL: false,
-          horizontal: true,
-          isFloat: false,
-          asideHover: false,
-          theme: null,
-          asideScrollbar: false
-        },
-        useFullLayout: true,
-        hiddenFooter: false,
-        offsidebarOpen: false,
-        asideToggled: false,
-        viewAnimation: 'ng-fadeInUp'
-      };
-
-      // Setup the layout mode
-      $rootScope.app.layout.horizontal = ( $rootScope.$stateParams.layout === 'app-h') ;
-
-      // Restore layout settings
-      if( angular.isDefined($localStorage.layout) )
-        $rootScope.app.layout = $localStorage.layout;
-      else
-        $localStorage.layout = $rootScope.app.layout;
-
-      $rootScope.$watch('app.layout', function () {
-        $localStorage.layout = $rootScope.app.layout;
-      }, true);
-
-      // Close submenu when sidebar change from collapsed to normal
-      $rootScope.$watch('app.layout.isCollapsed', function(newValue) {
-        if( newValue === false )
-          $rootScope.$broadcast('closeSidebarMenu');
+      $translateProvider.useStaticFilesLoader({
+          prefix : 'app/i18n/',
+          suffix : '.json'
       });
 
+      $translateProvider.preferredLanguage('en');
+      $translateProvider.useLocalStorage();
+      $translateProvider.usePostCompiling(true);
+      $translateProvider.useSanitizeValueStrategy('sanitizeParameters');
+
     }
-
 })();
+(function() {
+    'use strict';
 
+    angular
+        .module('app.translate')
+        .run(translateRun)
+        ;
+    translateRun.$inject = ['$rootScope', '$translate'];
+    
+    function translateRun($rootScope, $translate){
+
+      // Internationalization
+      // ----------------------
+
+      $rootScope.language = {
+        // Handles language dropdown
+        listIsOpen: false,
+        // list of available languages
+        available: {
+          'en':       'English',
+          'es_AR':    'Español'
+        },
+        // display always the current ui language
+        init: function () {
+          var proposedLanguage = $translate.proposedLanguage() || $translate.use();
+          var preferredLanguage = $translate.preferredLanguage(); // we know we have set a preferred one in app.config
+          $rootScope.language.selected = $rootScope.language.available[ (proposedLanguage || preferredLanguage) ];
+        },
+        set: function (localeId) {
+          // Set the new idiom
+          $translate.use(localeId);
+          // save a reference for the current language
+          $rootScope.language.selected = $rootScope.language.available[localeId];
+          // finally toggle dropdown
+          $rootScope.language.listIsOpen = ! $rootScope.language.listIsOpen;
+        }
+      };
+
+      $rootScope.language.init();
+
+    }
+})();
 /**=========================================================
  * Module: animate-enabled.js
  * Enable or disables ngAnimate for element with directive

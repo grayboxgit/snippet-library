@@ -5,16 +5,16 @@
 
 @import "var";
 body {
-  background: #f7f7f7;
+  background: #fff;
   font-family: $font-default;
   margin: 0px;
+  height: 100%;
 }
 section {
   @include outer-container;
   aside { @include span-columns(3); }
   article { @include span-columns(9); }
 }
-$gb-green: #89C637;
 a {
   color:$gb-green;
 }
@@ -36,7 +36,7 @@ header.navigation {
   $navigation-background: $dark-gray;
   $navigation-color: transparentize(white, 0.3);
   $navigation-color-hover: white;
-  $navigation-height: 60px;
+  $navigation-height: 40px;
   $navigation-nav-button-background: $action-color;
   $navigation-nav-button-background-hover: lighten($navigation-background, 10%);
   $navigation-nav-button-border: 1px solid lighten($navigation-nav-button-background, 20%);
@@ -47,8 +47,7 @@ header.navigation {
   $navigation-submenu-width: 12em;
   $horizontal-bar-mode: $large-screen;
 
-  background-color: $navigation-background;
-  border-bottom: 1px solid darken($navigation-background, 10);
+  background-color: #D2D2D2;
   min-height: $navigation-height;
   width: 100%;
   z-index: 999;
@@ -58,17 +57,25 @@ header.navigation {
     @include outer-container;
     position: relative;
     z-index: 9999;
+    h3 {
+      color: rgba($black, .5);
+      margin: 0;
+      display: inline-block;
+      margin-left: 15px;
+      position: relative;
+      top: 8px;
+    }
   }
 
   .logo {
     float: left;
     max-height: $navigation-height;
-    padding-left: $navigation-padding;
-    padding-right: 2em;
+    padding-left: 0;
+    padding-right: 20;
 
     img {
       max-height: $navigation-height;
-      padding: 0.8em 0;
+      padding: 0;
     }
   }
 
@@ -115,26 +122,39 @@ header.navigation {
   .search-bar {
     $search-bar-border-color: $base-border-color;
     $search-bar-border: 1px solid $search-bar-border-color;
-    $search-bar-background: lighten($search-bar-border-color, 10%);
+    $search-bar-background: rgba($black, .2);
 
-    float: left;
-    padding: 0.85em 0.85em 0.7em 0.6em;
+    float: right;
+    padding: 0.25em 0em 0em 0.6em;
     width: 60%;
 
     form {
       position: relative;
+      padding: 0;
 
       input[type=search] {
         @include box-sizing(border-box);
-        background: $navigation-search-background;
-        border-radius: $base-border-radius * 2;
-        border: $navigation-search-border;
-        color: $navigation-color;
+        background: $search-bar-background;
+        border-radius: $base-border-radius * 1;
+        border: none;
+        color: $white;
         font-size: 0.9em;
-        font-style: italic;
+        font-style: normal;
         margin: 0;
         padding: 0.5em 0.8em;
         width: 100%;
+        &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+          color: rgba($black, .5);
+        }
+        &::-moz-placeholder { /* Firefox 19+ */
+          color: rgba($black, .5);
+        }
+        &:-ms-input-placeholder { /* IE 10+ */
+          color: rgba($black, .5);
+        }
+        &:-moz-placeholder { /* Firefox 18- */
+          color: rgba($black, .5);
+        }
 
         @include media($horizontal-bar-mode) {
           width: 100%;
@@ -142,12 +162,12 @@ header.navigation {
       }
 
       button[type=submit] {
-        background: $navigation-search-background;
+        background: none;
         border: none;
         bottom: 0.3em;
         left: auto;
         outline: none;
-        padding: 0 9px;
+        padding: 0 5px;
         position: absolute;
         right: 0.3em;
         top: 0.3em;
@@ -230,6 +250,8 @@ header.navigation {
   padding: $base-spacing;
   width: 100%;
   display: inline-block;
+  position: static;
+  bottom: 0;
   .footer-wrapper {
     max-width: 68em;
     margin-left: auto;
@@ -457,7 +479,19 @@ $color_storm_dust_approx: #666666;
 /*  GLOBAL TEXT STYLES
 ****************************************/
 
+div.page-content {
+  @include outer-container;
+  padding: 0 35px;
+}
 
+span.style-header {
+  font-size: 3.0em;
+  color: #777;
+  margin: 15px 0 35px;
+  padding-bottom: 25px;
+  border-bottom: 1px solid #777;
+  display: block;
+}
 
 
 /****************************************
@@ -465,16 +499,29 @@ $color_storm_dust_approx: #666666;
 ****************************************/
 
 div.page-header {
-  background: #D2E01D;
-  padding: 100px 0;
+  @include outer-container;
+  background: #f3f3f3;
+  padding: 35px;
+  margin-top: 35px;
+  margin-bottom: 35px;
   h1 {
-    text-align: center;
+    text-align: left;
     margin: 0;
     font-size: 4.0em;
     font-weight: 400;
   }
   h3 {
-    text-align: center;
+    text-align: left;
+    margin-bottom:5px;
+    color: #777;
+    text-transform: uppercase;
+  }
+  p {
+    font-size: 12px;
+    color: #777;
+    &:last-of-type {
+      margin-bottom:0;
+    }
   }
 }
 
@@ -516,7 +563,7 @@ div.page-header {
 a.snippet-link-toggle {
   padding: 8px 25px;
   color: $white;
-  background: #89C637;
+  background: $gb-ltgreen;
   border-radius: 4px;
   -webkit-border-radius: 4px;
   color: darken(#89C637, 35%);
@@ -525,7 +572,7 @@ a.snippet-link-toggle {
   font-size: 12px;
   content: "Show Code";
   &:hover {
-    background: darken(#89C637, 5%);
+    background: darken($gb-ltgreen, 10%);
     cursor: pointer;
   }
 }
@@ -606,20 +653,26 @@ a.snippet-link-toggle {
 
 .sliding-panel-button {
   position: fixed;
-  top: 10px;
-  left: 10px;
-  background-color: $gb-green;
+  top: 8px;
+  left: 12px;
+  background-color: transparent;
   color: #fff;
-  padding: 10px 16px;
+  padding: 0px 0px;
   display: inline-block;
   cursor: pointer;
   position: relative;
   outline: none;
   &:hover, &:focus, &:active {
-    background-color: darken($gb-green,10%);
+    //background-color: darken($gb-green,10%);
+    background-color: transparent;
   }
   svg {
     color: #fff;
+    width: 22px;
+    height: 22px;
+    path {
+      fill: rgba($black, .5);
+    }
   }
   img {
     height: 1.3em;
