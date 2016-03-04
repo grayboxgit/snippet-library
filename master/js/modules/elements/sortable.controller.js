@@ -27,18 +27,14 @@
         function activate() {
 
             angular.element(document).ready(function () {
+
                 //Base Functionality for off-canvas sidebar
                 $('.sliding-panel-button,.sliding-panel-fade-screen,.sliding-panel-close').on('click touchstart',function (e) {
                     $('.sliding-panel-content,.sliding-panel-fade-screen').toggleClass('is-visible');
                     e.preventDefault();
                 });
-                //Close off-canvas menu when option is selected
-                //$('.sliding-panel-content ul li a').on('click touchstart',function (e) {
-                //    $('.sliding-panel-content,.sliding-panel-fade-screen').toggleClass('is-visible');
-                //    //e.preventDefault();
-                //});
-            });
 
+            });
 
         }
     }

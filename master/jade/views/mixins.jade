@@ -1,0 +1,38 @@
+mixin snippet(category, title, url)
+	.snippet-container
+
+		// Title of Snippet
+
+		// Snippet Markup (HTML)
+
+		.snippet-markup(ng-include="'app/snippets/#{category}/#{url}/markup.html'")
+
+	// Snippet Copy Table / Raw Resources
+
+	.refill-snippet
+		.refill-control
+			a.snippet-link-toggle(ng-click="showSnippeturl=true" ng-hide="showSnippeturl") Show Code
+			a.snippet-link-toggle(ng-click="showSnippeturl=false" ng-show="showSnippeturl") Hide Code
+		table.snippets-table(ng-show="showSnippeturl")
+			tbody
+				tr
+					// Markup Column HTML / Jade
+					td.snippet
+						.copy-source-container
+							a.copy-source(ngclipboard='', data-clipboard-target='#jade') Copy Jade
+						pre.language-markup
+							code#jade.language-jade(prism ng-include="'master/snippets/#{category}/#{url}/_jade.html'")
+
+					// Styles Column SCSS,SASS/LESS/CSS
+					td.snippet
+						.copy-source-container
+							a.copy-source(ngclipboard='', data-clipboard-target='#scss') Copy Scss
+						pre.language-markup
+							code#scss.language-sass(prism ng-include="'master/snippets/#{category}/#{url}/_scss.scss'")
+
+					// Scripts Column Javascript, jQuery, CoffeeScript
+					td.snippet
+						.copy-source-container
+							a.copy-source(ngclipboard='', data-clipboard-target='#js-1') Copy JavaScript
+						pre.language-markup
+							code#js-1.language-javascript(prism ng-include="'master/snippets/#{category}/#{url}/_js.js'")

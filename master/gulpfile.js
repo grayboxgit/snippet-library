@@ -33,7 +33,7 @@ var paths = {
     snippets: 'snippets/',
     styles: 'sass/',
     scripts: 'js/'
-}
+};
 
 
 // VENDOR CONFIG
@@ -134,7 +134,7 @@ var injectOptions = {
             filepath.substr(filepath.indexOf('app')) +
             '\')';
     }
-}
+};
 //---------------
 // TASKS
 //---------------
@@ -253,18 +253,26 @@ gulp.task('templates:views', function () {
 
 // Snippets + Assets Copy
 
-gulp.task('snippets:views', function () {
+gulp.task('snippets:html', function () {
     log('Building Snippets..');
-
         return gulp.src(source.snippets.views)
             .pipe($.changed(build.snippets.views, {extension: '.html'}))
-            .pipe($.jade())
-            .on('error', handleError)
-            .pipe($.htmlPrettify(prettifyOpts))
             .pipe(gulp.dest(build.snippets.views))
             ;
 });
+gulp.task('snippets:files', function () {
+    //
+    //log('Moving Snippet Javascripts');
+    //return gulp.src('master/snippets/**/*.js')
+    //    .pipe(gulp.dest('app/snippets/'))
+    //    .on('error', handleError);
+    //
+    //log('Moving Snippet Stylesheets');
+    // return gulp.src('master/snippets/**/*.scss')
+    //    .pipe(gulp.dest('app/snippets/'))
+    //    .on('error', handleError);
 
+});
 //---------------
 // WATCH
 //---------------
@@ -280,7 +288,7 @@ gulp.task('watch', function () {
     gulp.watch(source.styles.themes, ['styles:themes']);
     gulp.watch(source.templates.views, ['templates:views']);
     gulp.watch(source.templates.index, ['templates:index']);
-    gulp.watch(source.snippets.views, ['snippets:views']);
+    gulp.watch(source.snippets.views, ['snippets:html', 'snippets:files']);
 
     // a delay before triggering browser reload to ensure everything is compiled
     var livereloadDelay = 1500;
@@ -356,7 +364,8 @@ gulp.task('usesources', function () {
 gulp.task('default', gulpsync.sync([
     'vendor',
     'assets',
-    'snippets:views',
+    'snippets:html',
+    'snippets:files',
     'watch'
 ]), function () {
 
@@ -372,7 +381,8 @@ gulp.task('assets', [
     'styles:themes',
     'templates:index',
     'templates:views',
-    'snippets:views'
+    'snippets:html',
+    'snippets:files'
 ]);
 
 

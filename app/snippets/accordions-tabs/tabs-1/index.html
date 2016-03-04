@@ -1,0 +1,32 @@
+<div class="snippet-container">
+   <!-- Title of Snippet-->
+   <div class="line-behind-text"></div>
+   <!-- Snippet Markup (HTML)-->
+   <!--.snippet-markup(ng-include="'app/snippets/#{category}/#{url}/markup.html'")-->
+</div>
+<!-- Snippet Copy Table / Raw Resources-->
+<div class="refill-snippet">
+   <div class="refill-control"><a ng-click="showSnippet=true" ng-hide="showSnippet" class="snippet-link-toggle">Show Code</a><a ng-click="showSnippet=false" ng-show="showSnippet" class="snippet-link-toggle">Hide Code</a>
+   </div>
+   <table ng-show="showSnippet" class="snippets-table">
+      <tbody>
+         <tr>
+            <!-- Markup Column HTML / Jade-->
+            <td class="snippet">
+               <div class="copy-source-container"><a ngclipboard="" data-clipboard-target="#jade" class="copy-source">Copy Jade</a>
+               </div><pre class="language-markup"></pre>
+            </td>
+            <!-- Styles Column SCSS,SASS/LESS/CSS-->
+            <td class="snippet">
+               <div class="copy-source-container"><a ngclipboard="" data-clipboard-target="#scss" class="copy-source">Copy Scss</a>
+               </div><pre class="language-markup"></pre>
+            </td>
+            <!-- Scripts Column Javascript, jQuery, Coffeescript-->
+            <td class="snippet">
+               <div class="copy-source-container"><a ngclipboard="" data-clipboard-target="#js-1" class="copy-source">Copy JavaScript</a>
+               </div><pre class="language-markup"></pre>
+            </td>
+         </tr>
+      </tbody>
+   </table>
+</div>
