@@ -11,9 +11,9 @@ mixin snippet(category, title, url)
 
 	.refill-snippet
 		.refill-control
-			a.snippet-link-toggle(ng-click="showSnippeturl=true" ng-hide="showSnippeturl") Show Code
-			a.snippet-link-toggle(ng-click="showSnippeturl=false" ng-show="showSnippeturl") Hide Code
-		table.snippets-table(ng-show="showSnippeturl")
+			a.snippet-link-toggle(ng-click="showSnippet-!{url}=true" ng-hide="showSnippet-!{url}") Show Code
+			a.snippet-link-toggle(ng-click="showSnippet-!{url}=false" ng-show="showSnippet-!{url}") Hide Code
+		table.snippets-table(ng-show="showSnippet-!{url}")
 			tbody
 				tr
 					// Markup Column HTML / Jade

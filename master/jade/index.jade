@@ -6,19 +6,14 @@ html(lang="en", data-ng-app="graybox")
 		meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
 
 		meta(name='description', content='{{app.description}}')
-		meta(name='keywords', content='GRAYBOX Snippet Library')
+		meta(name='keywords', content='Snippet Library')
 
 		title(ng-bind="pageTitle()")
 		// Application styles
-		link(rel='stylesheet', href='app/css/app.css', data-ng-if="!app.layout.isRTL")
-		// Themes
-		link(rel='stylesheet', ng-href='{{app.layout.theme}}', data-ng-if="app.layout.theme")
+		link(rel='stylesheet', href='app/css/app.css')
+		script(src='app/js/jquery.min.js')
 
 	body(data-ng-class="layout-h")
-		div(data-preloader)
-		.svgdef(style="display:none;")
-			include _svgDef
 		.wrapper(data-ui-view="", data-autoscroll='false')
 		script(src='app/js/base.js')
 		script(src='app/js/app.js')
-		script(src='app/js/custom.js')

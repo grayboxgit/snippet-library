@@ -5,21 +5,17 @@
    <meta charset="utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
    <meta name="description" content="{{app.description}}">
-   <meta name="keywords" content="GRAYBOX Snippet Library">
+   <meta name="keywords" content="Snippet Library">
    <title ng-bind="pageTitle()"></title>
    <!-- Application styles-->
-   <link rel="stylesheet" href="app/css/app.css" data-ng-if="!app.layout.isRTL">
-   <!-- Themes-->
-   <link rel="stylesheet" ng-href="{{app.layout.theme}}" data-ng-if="app.layout.theme">
+   <link rel="stylesheet" href="app/css/app.css">
+   <script src="app/js/jquery.min.js"></script>
 </head>
 
 <body data-ng-class="layout-h">
-   <div data-preloader></div>
-   <div style="display:none;" class="svgdef"></div>
    <div data-ui-view="" data-autoscroll="false" class="wrapper"></div>
    <script src="app/js/base.js"></script>
    <script src="app/js/app.js"></script>
-   <script src="app/js/custom.js"></script>
 </body>
 
 </html>

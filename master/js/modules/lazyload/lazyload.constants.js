@@ -6,8 +6,9 @@
         .constant('APP_REQUIRES', {
             // jQuery based and standalone scripts
             scripts: {
+                'jquery': ['app/js/jquery.min.js'],
+                'custom': ['app/js/custom.js'],
                 'sortable-table': ['app/js/sortable-table.min.js'],
-                'sortable': ['app/js/sortable.js'],
                 'bs-collapse': ['app/js/bs-collapse.js'],
                 'whirl': ['vendor/whirl/dist/whirl.css'],
                 'classyloader': ['vendor/jquery-classyloader/js/jquery.classyloader.min.js'],
@@ -73,7 +74,6 @@
                 'crossfilter': ['vendor/crossfilter/crossfilter.js'],
                 'colorbrewer': ['vendor/colorbrewer/colorbrewer.js'],
                 'loaders.css': ['vendor/loaders.css/loaders.css'],
-                'custom': ['app/js/custom.js'],
                 'spinkit': ['vendor/spinkit/css/spinkit.css'],
                 'prismjs': ['vendor/prismjs/prism.js'],
                 'clipboard': ['master/node_modules/clipboard/dist/clipboard.min.js']
