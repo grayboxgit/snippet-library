@@ -45,6 +45,12 @@
     'use strict';
 
     angular
+        .module('app.dashboard', []);
+})();
+(function() {
+    'use strict';
+
+    angular
         .module('app.core', [
             'ngRoute',
             'ngAnimate',
@@ -65,13 +71,7 @@
     'use strict';
 
     angular
-        .module('app.dashboard', []);
-})();
-(function() {
-    'use strict';
-
-    angular
-        .module('app.elements', []);
+        .module('app.lazyload', []);
 })();
 (function() {
     'use strict';
@@ -83,25 +83,25 @@
     'use strict';
 
     angular
-        .module('app.lazyload', []);
-})();
-(function() {
-    'use strict';
-
-    angular
         .module('app.icons', []);
 })();
 (function() {
     'use strict';
 
     angular
-        .module('app.pages', []);
+        .module('app.elements', []);
 })();
 (function() {
     'use strict';
 
     angular
         .module('app.loadingbar', []);
+})();
+(function() {
+    'use strict';
+
+    angular
+        .module('app.pages', []);
 })();
 (function() {
     'use strict';
@@ -121,6 +121,20 @@
     'use strict';
 
     angular
+        .module('app.preloader', []);
+})();
+
+
+(function() {
+    'use strict';
+
+    angular
+        .module('app.tables', []);
+})();
+(function() {
+    'use strict';
+
+    angular
         .module('app.settings', []);
 })();
 (function() {
@@ -133,24 +147,10 @@
     'use strict';
 
     angular
-        .module('app.tables', []);
-})();
-(function() {
-    'use strict';
-
-    angular
         .module('app.utils', [
           'app.colors'
           ]);
 })();
-
-(function() {
-    'use strict';
-
-    angular
-        .module('app.preloader', []);
-})();
-
 
 (function() {
     'use strict';
@@ -781,120 +781,6 @@
     'use strict';
 
     angular
-        .module('app.core')
-        .config(coreConfig);
-
-    coreConfig.$inject = ['$controllerProvider', '$compileProvider', '$filterProvider', '$provide', '$animateProvider'];
-    function coreConfig($controllerProvider, $compileProvider, $filterProvider, $provide, $animateProvider){
-
-      var core = angular.module('app.core');
-      // registering components after bootstrap
-      core.controller = $controllerProvider.register;
-      core.directive  = $compileProvider.directive;
-      core.filter     = $filterProvider.register;
-      core.factory    = $provide.factory;
-      core.service    = $provide.service;
-      core.constant   = $provide.constant;
-      core.value      = $provide.value;
-
-      // Disables animation on items with class .ng-no-animation
-      $animateProvider.classNameFilter(/^((?!(ng-no-animation)).)*$/);
-
-    }
-
-})();
-/**=========================================================
- * Module: constants.js
- * Define constants to inject across the application
- =========================================================*/
-
-(function() {
-    'use strict';
-
-    angular
-        .module('app.core')
-        .constant('APP_MEDIAQUERY', {
-          'desktopLG':             1200,
-          'desktop':                992,
-          'tablet':                 768,
-          'mobile':                 480
-        })
-      ;
-
-})();
-(function() {
-    'use strict';
-
-    angular
-        .module('app.core')
-        .run(appRun);
-
-    appRun.$inject = ['$rootScope', '$state', '$stateParams',  '$window', '$templateCache', 'Colors'];
-    
-    function appRun($rootScope, $state, $stateParams, $window, $templateCache, Colors) {
-      
-      // Set reference to access them from any scope
-      $rootScope.$state = $state;
-      $rootScope.$stateParams = $stateParams;
-      $rootScope.$storage = $window.localStorage;
-
-      // Uncomment this to disable template cache
-      /*$rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
-          if (typeof(toState) !== 'undefined'){
-            $templateCache.remove(toState.templateUrl);
-          }
-      });*/
-
-      // Allows to use branding color with interpolation
-      // {{ colorByName('primary') }}
-      $rootScope.colorByName = Colors.byName;
-
-      // cancel click event easily
-      $rootScope.cancel = function($event) {
-        $event.stopPropagation();
-      };
-
-      // Hooks Example
-      // ----------------------------------- 
-
-      // Hook not found
-      $rootScope.$on('$stateNotFound',
-        function(event, unfoundState/*, fromState, fromParams*/) {
-            console.log(unfoundState.to); // "lazy.state"
-            console.log(unfoundState.toParams); // {a:1, b:2}
-            console.log(unfoundState.options); // {inherit:false} + default options
-        });
-      // Hook error
-      $rootScope.$on('$stateChangeError',
-        function(event, toState, toParams, fromState, fromParams, error){
-          console.log(error);
-        });
-      // Hook success
-      $rootScope.$on('$stateChangeSuccess',
-        function(/*event, toState, toParams, fromState, fromParams*/) {
-          // display new view from top
-          $window.scrollTo(0, 0);
-          // Save the route title
-          $rootScope.currTitle = $state.current.title;
-        });
-
-      // Load a title dynamically
-      $rootScope.currTitle = $state.current.title;
-      $rootScope.pageTitle = function() {
-        var title = $rootScope.app.name + ' - ' + ($rootScope.currTitle || $rootScope.app.description);
-        document.title = title;
-        return title;
-      };      
-
-    }
-
-})();
-
-
-(function() {
-    'use strict';
-
-    angular
         .module('app.dashboard')
         .controller('DashboardController', DashboardController);
 
@@ -1112,693 +998,358 @@
         }
     }
 })();
-
 (function() {
     'use strict';
 
     angular
-        .module('app.elements')
-        .controller('AngularCarouselController', AngularCarouselController);
+        .module('app.core')
+        .config(coreConfig);
 
-    function AngularCarouselController() {
-        var vm = this;
+    coreConfig.$inject = ['$controllerProvider', '$compileProvider', '$filterProvider', '$provide', '$animateProvider'];
+    function coreConfig($controllerProvider, $compileProvider, $filterProvider, $provide, $animateProvider){
 
-        activate();
+      var core = angular.module('app.core');
+      // registering components after bootstrap
+      core.controller = $controllerProvider.register;
+      core.directive  = $compileProvider.directive;
+      core.filter     = $filterProvider.register;
+      core.factory    = $provide.factory;
+      core.service    = $provide.service;
+      core.constant   = $provide.constant;
+      core.value      = $provide.value;
 
-        ////////////////
+      // Disables animation on items with class .ng-no-animation
+      $animateProvider.classNameFilter(/^((?!(ng-no-animation)).)*$/);
 
-        function activate() {
-          vm.colors = ['#fc0003', '#f70008', '#f2000d', '#ed0012', '#e80017', '#e3001c', '#de0021', '#d90026', '#d4002b', '#cf0030', '#c90036', '#c4003b', '#bf0040', '#ba0045', '#b5004a', '#b0004f', '#ab0054', '#a60059', '#a1005e', '#9c0063', '#960069', '#91006e', '#8c0073', '#870078', '#82007d', '#7d0082', '#780087', '#73008c', '#6e0091', '#690096', '#63009c', '#5e00a1', '#5900a6', '#5400ab', '#4f00b0', '#4a00b5', '#4500ba', '#4000bf', '#3b00c4', '#3600c9', '#3000cf', '#2b00d4', '#2600d9', '#2100de', '#1c00e3', '#1700e8', '#1200ed', '#0d00f2', '#0800f7', '#0300fc'];
-
-          function getSlide(target, style) {
-              var i = target.length;
-              return {
-                  id: (i + 1),
-                  label: 'slide #' + (i + 1),
-                  img: 'http://lorempixel.com/1200/500/' + style + '/' + ((i + 1) % 10) ,
-                  color: vm.colors[ (i*10) % vm.colors.length],
-                  odd: (i % 2 === 0)
-              };
-          }
-
-          function addSlide(target, style) {
-              target.push(getSlide(target, style));
-          }
-
-          vm.carouselIndex = 3;
-          vm.carouselIndex2 = 0;
-          vm.carouselIndex2 = 1;
-          vm.carouselIndex3 = 5;
-          vm.carouselIndex4 = 5;
-
-          function addSlides(target, style, qty) {
-              for (var i=0; i < qty; i++) {
-                  addSlide(target, style);
-              }
-          }
-
-          // 1st ngRepeat demo
-          vm.slides = [];
-          addSlides(vm.slides, 'sports', 50);
-
-          // 2nd ngRepeat demo
-          vm.slides2 = [];
-          addSlides(vm.slides2, 'sports', 10);
-
-          // 3rd ngRepeat demo
-          vm.slides3 = [];
-          addSlides(vm.slides3, 'people', 50);
-
-          // 4th ngRepeat demo
-          vm.slides4 = [];
-          addSlides(vm.slides4, 'city', 50);
-
-
-          // 5th ngRepeat demo
-          vm.slides6 = [];
-          vm.carouselIndex6 = 0;
-          addSlides(vm.slides6, 'sports', 10);
-          vm.addSlide = function(at) {
-              if(at==='head') {
-                  vm.slides6.unshift(getSlide(vm.slides6, 'people'));
-              } else {
-                  vm.slides6.push(getSlide(vm.slides6, 'people'));
-              }
-          };
-        }
     }
-})();
 
+})();
 /**=========================================================
- * Module: demo-dialog.js
- * Demo for multiple ngDialog Usage
- * - ngDialogProvider for default values not supported 
- *   using lazy loader. Include plugin in base.js instead.
+ * Module: constants.js
+ * Define constants to inject across the application
  =========================================================*/
 
 (function() {
     'use strict';
 
     angular
-        .module('app.elements')
-        .controller('DialogIntroCtrl', DialogIntroCtrl)
-        .controller('DialogMainCtrl', DialogMainCtrl)
-        .controller('InsideCtrl', InsideCtrl)
-        .controller('SecondModalCtrl', SecondModalCtrl);
+        .module('app.core')
+        .constant('APP_MEDIAQUERY', {
+          'desktopLG':             1200,
+          'desktop':                992,
+          'tablet':                 768,
+          'mobile':                 480
+        })
+      ;
 
-    DialogIntroCtrl.$inject = ['$scope', 'ngDialog', 'tpl'];
-    // Called from the route state. 'tpl' is resolved before
-    function DialogIntroCtrl($scope, ngDialog, tpl) {
-        
-        activate();
+})();
+(function() {
+    'use strict';
 
-        ////////////////
+    angular
+        .module('app.core')
+        .run(appRun);
 
-        function activate() {
-          // share with other controllers
-          $scope.tpl = tpl;
-          // open dialog window
-          ngDialog.open({
-            template: tpl.path,
-            // plain: true,
-            className: 'ngdialog-theme-default'
-          });
-        }
-    }
-
-    DialogMainCtrl.$inject = ['$scope', '$rootScope', 'ngDialog'];
-    // Loads from view
-    function DialogMainCtrl($scope, $rootScope, ngDialog) {
-
-        activate();
-
-        ////////////////
-
-        function activate() {
-            //$rootScope.jsonData = [
-            //    { name: "Peter",   age: 20 },
-            //    { name: "Pablo",   age: 55 },
-            //    { name: "Linda",   age: 20 },
-            //    { name: "Marta",   age: 37 },
-            //    { name: "Othello", age: 20 },
-            //    { name: "Markus",  age: 32 }
-            //];
-          //$rootScope.jsonData = '{"foo": "bar"}';
-          $rootScope.theme = 'ngdialog-theme-default';
-
-          $scope.directivePreCloseCallback = function (value) {
-            if(confirm('Close it? MainCtrl.Directive. (Value = ' + value + ')')) {
-              return true;
-            }
-            return false;
-          };
-
-          $scope.preCloseCallbackOnScope = function (value) {
-            if(confirm('Close it? MainCtrl.OnScope (Value = ' + value + ')')) {
-              return true;
-            }
-            return false;
-          };
-
-          $scope.open = function () {
-            ngDialog.open({ template: 'firstDialogId', controller: 'InsideCtrl', data: {foo: 'some data'} });
-          };
-
-          $scope.openDefault = function () {
-            ngDialog.open({
-              template: 'firstDialogId',
-              controller: 'InsideCtrl',
-              className: 'ngdialog-theme-default'
-            });
-          };
-
-          $scope.openDefaultWithPreCloseCallbackInlined = function () {
-            ngDialog.open({
-              template: 'firstDialogId',
-              controller: 'InsideCtrl',
-              className: 'ngdialog-theme-default',
-              preCloseCallback: function(value) {
-                if (confirm('Close it?  (Value = ' + value + ')')) {
-                  return true;
-                }
-                return false;
-              }
-            });
-          };
-
-          $scope.openConfirm = function () {
-            ngDialog.openConfirm({
-              template: 'modalDialogId',
-              className: 'ngdialog-theme-default'
-            }).then(function (value) {
-              console.log('Modal promise resolved. Value: ', value);
-            }, function (reason) {
-              console.log('Modal promise rejected. Reason: ', reason);
-            });
-          };
-
-          $scope.openConfirmWithPreCloseCallbackOnScope = function () {
-            ngDialog.openConfirm({
-              template: 'modalDialogId',
-              className: 'ngdialog-theme-default',
-              preCloseCallback: 'preCloseCallbackOnScope',
-              scope: $scope
-            }).then(function (value) {
-              console.log('Modal promise resolved. Value: ', value);
-            }, function (reason) {
-              console.log('Modal promise rejected. Reason: ', reason);
-            });
-          };
-
-          $scope.openConfirmWithPreCloseCallbackInlinedWithNestedConfirm = function () {
-            ngDialog.openConfirm({
-              template: 'dialogWithNestedConfirmDialogId',
-              className: 'ngdialog-theme-default',
-              preCloseCallback: function(/*value*/) {
-
-                var nestedConfirmDialog = ngDialog.openConfirm({
-                  template:
-                      '<p>Are you sure you want to close the parent dialog?</p>' +
-                      '<div>' +
-                        '<button type="button" class="btn btn-default" ng-click="closeThisDialog(0)">No' +
-                        '<button type="button" class="btn btn-primary" ng-click="confirm(1)">Yes' +
-                      '</button></div>',
-                  plain: true,
-                  className: 'ngdialog-theme-default'
-                });
-
-                return nestedConfirmDialog;
-              },
-              scope: $scope
-            })
-            .then(function(value){
-              console.log('resolved:' + value);
-              // Perform the save here
-            }, function(value){
-              console.log('rejected:' + value);
-
-            });
-          };
-
-          $scope.openInlineController = function () {
-            $rootScope.theme = 'ngdialog-theme-default';
-
-            ngDialog.open({
-              template: 'withInlineController',
-              controller: ['$scope', '$timeout', function ($scope, $timeout) {
-                var counter = 0;
-                var timeout;
-                function count() {
-                  $scope.exampleExternalData = 'Counter ' + (counter++);
-                  timeout = $timeout(count, 450);
-                }
-                count();
-                $scope.$on('$destroy', function () {
-                  $timeout.cancel(timeout);
-                });
-              }],
-              className: 'ngdialog-theme-default'
-            });
-          };
-
-          $scope.openTemplate = function () {
-            $scope.value = true;
-
-            ngDialog.open({
-              template: $scope.tpl.path,
-              className: 'ngdialog-theme-default',
-              scope: $scope
-            });
-          };
-
-          $scope.openTemplateNoCache = function () {
-            $scope.value = true;
-
-            ngDialog.open({
-              template: $scope.tpl.path,
-              className: 'ngdialog-theme-default',
-              scope: $scope,
-              cache: false
-            });
-          };
-
-          $scope.openTimed = function () {
-            var dialog = ngDialog.open({
-              template: '<p>Just passing through!</p>',
-              plain: true,
-              closeByDocument: false,
-              closeByEscape: false
-            });
-            setTimeout(function () {
-              dialog.close();
-            }, 2000);
-          };
-
-          $scope.openNotify = function () {
-            var dialog = ngDialog.open({
-              template:
-                '<p>You can do whatever you want when I close, however that happens.</p>' +
-                '<div><button type="button" class="btn btn-primary" ng-click="closeThisDialog(1)">Close Me</button></div>',
-              plain: true
-            });
-            dialog.closePromise.then(function (data) {
-              console.log('ngDialog closed' + (data.value === 1 ? ' using the button' : '') + ' and notified by promise: ' + data.id);
-            });
-          };
-
-          $scope.openWithoutOverlay = function () {
-            ngDialog.open({
-              template: '<h2>Notice that there is no overlay!</h2>',
-              className: 'ngdialog-theme-default',
-              plain: true,
-              overlay: false
-            });
-          };
-
-          $rootScope.$on('ngDialog.opened', function (e, $dialog) {
-            console.log('ngDialog opened: ' + $dialog.attr('id'));
-          });
-
-          $rootScope.$on('ngDialog.closed', function (e, $dialog) {
-            console.log('ngDialog closed: ' + $dialog.attr('id'));
-          });
-
-          $rootScope.$on('ngDialog.closing', function (e, $dialog) {
-            console.log('ngDialog closing: ' + $dialog.attr('id'));
-          });
-        $scope.sortType     = 'product'; // set the default sort type
-        $scope.sortReverse  = false;  // set the default sort order
-        $scope.searchName   = '';     // set the default search/filter term
-
-        $scope.products = [
-            { product: 'Product Name' },
-            { product: 'Product Name Two' },
-            { product: 'Product Name Three' },
-            { product: 'Product Name Four' },
-            { product: 'Product Name Five' },
-            { product: 'Product Name Six' },
-            { product: 'Product Name Seven' },
-            { product: 'Product Name Eight' },
-            { product: 'Product Name Nine' },
-            { product: 'Product Name Ten' }
-        ];
-        $scope.addData = function() {
-            $scope.names.push({ 'fname': $scope.fname, 'lname': $scope.lname });
-        };
-        }
+    appRun.$inject = ['$rootScope', '$state', '$stateParams',  '$window', '$templateCache', 'Colors'];
     
-    } // DialogMainCtrl
+    function appRun($rootScope, $state, $stateParams, $window, $templateCache, Colors) {
+      
+      // Set reference to access them from any scope
+      $rootScope.$state = $state;
+      $rootScope.$stateParams = $stateParams;
+      $rootScope.$storage = $window.localStorage;
 
+      // Uncomment this to disable template cache
+      /*$rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
+          if (typeof(toState) !== 'undefined'){
+            $templateCache.remove(toState.templateUrl);
+          }
+      });*/
 
-    InsideCtrl.$inject = ['$scope', 'ngDialog'];
-    function InsideCtrl($scope, ngDialog) {
+      // Allows to use branding color with interpolation
+      // {{ colorByName('primary') }}
+      $rootScope.colorByName = Colors.byName;
 
-        activate();
+      // cancel click event easily
+      $rootScope.cancel = function($event) {
+        $event.stopPropagation();
+      };
 
-        ////////////////
+      // Hooks Example
+      // ----------------------------------- 
 
-        function activate() {
-            $scope.jsonData = {};
-            $scope.jsonData.products = ['product1','product2','product3'];
-          $scope.dialogModel = {
-            message : 'message from passed scope'
-          };
-          $scope.openSecond = function () {
-            ngDialog.open({
-              template: '<p class="lead m0"><a href="" ng-click="closeSecond()">Close all by click here!</a></h3>',
-              plain: true,
-              closeByEscape: false,
-              controller: 'SecondModalCtrl'
-            });
-          };
-        }
+      // Hook not found
+      $rootScope.$on('$stateNotFound',
+        function(event, unfoundState/*, fromState, fromParams*/) {
+            console.log(unfoundState.to); // "lazy.state"
+            console.log(unfoundState.toParams); // {a:1, b:2}
+            console.log(unfoundState.options); // {inherit:false} + default options
+        });
+      // Hook error
+      $rootScope.$on('$stateChangeError',
+        function(event, toState, toParams, fromState, fromParams, error){
+          console.log(error);
+        });
+      // Hook success
+      $rootScope.$on('$stateChangeSuccess',
+        function(/*event, toState, toParams, fromState, fromParams*/) {
+          // display new view from top
+          $window.scrollTo(0, 0);
+          // Save the route title
+          $rootScope.currTitle = $state.current.title;
+        });
+
+      // Load a title dynamically
+      $rootScope.currTitle = $state.current.title;
+      $rootScope.pageTitle = function() {
+        var title = $rootScope.app.name + ' - ' + ($rootScope.currTitle || $rootScope.app.description);
+        document.title = title;
+        return title;
+      };      
+
     }
-
-    SecondModalCtrl.$inject = ['$scope', 'ngDialog'];
-    function SecondModalCtrl($scope, ngDialog) {
-
-        activate();
-
-        ////////////////
-
-        function activate() {
-          $scope.closeSecond = function () {
-            ngDialog.close();
-          };
-        }
-
-    }
-
 
 })();
 
-
-
-
-/**=========================================================
- * Module: access-login.js
- * Demo for login api
- =========================================================*/
 
 (function() {
     'use strict';
 
     angular
-        .module('app.elements')
-        .controller('AbnTestController', AbnTestController);
+        .module('app.lazyload')
+        .config(lazyloadConfig);
 
-    AbnTestController.$inject = ['$timeout', '$resource'];
-    function AbnTestController($timeout, $resource) {
-        var vm = this;
+    lazyloadConfig.$inject = ['$ocLazyLoadProvider', 'APP_REQUIRES'];
+    function lazyloadConfig($ocLazyLoadProvider, APP_REQUIRES){
 
-        activate();
+      // Lazy Load modules configuration
+      $ocLazyLoadProvider.config({
+        debug: false,
+        events: true,
+        modules: APP_REQUIRES.modules
+      });
 
-        ////////////////
-
-        /*jshint -W106*/
-        function activate() {
-          vm.my_tree_handler = function(branch) {
-
-            vm.output = 'You selected: ' + branch.label;
-
-            if (branch.data && branch.data.description) {
-              vm.output += '(' + branch.data.description + ')';
-              return vm.output;
-            }
-          };
-
-          // onSelect event handlers
-          var apple_selected = function(branch) {
-            vm.output = 'APPLE! : ' + branch.label;
-            return vm.output;
-          };
-
-          var treedata_avm = [
-            {
-              label: 'Animal',
-              children: [
-                {
-                  label: 'Dog',
-                  data: {
-                    description: 'man\'s best friend'
-                  }
-                }, {
-                  label: 'Cat',
-                  data: {
-                    description: 'Felis catus'
-                  }
-                }, {
-                  label: 'Hippopotamus',
-                  data: {
-                    description: 'hungry, hungry'
-                  }
-                }, {
-                  label: 'Chicken',
-                  children: ['White Leghorn', 'Rhode Island Red', 'Jersey Giant']
-                }
-              ]
-            }, {
-              label: 'Vegetable',
-              data: {
-                definition: 'A plant or part of a plant used as food, typically as accompaniment to meat or fish, such as a cabbage, potato, carrot, or bean.',
-                data_can_contain_anything: true
-              },
-              onSelect: function(branch) {
-                vm.output = 'Vegetable: ' + branch.data.definition;
-                return vm.output;
-              },
-              children: [
-                {
-                  label: 'Oranges'
-                }, {
-                  label: 'Apples',
-                  children: [
-                    {
-                      label: 'Granny Smith',
-                      onSelect: apple_selected
-                    }, {
-                      label: 'Red Delicous',
-                      onSelect: apple_selected
-                    }, {
-                      label: 'Fuji',
-                      onSelect: apple_selected
-                    }
-                  ]
-                }
-              ]
-            }, {
-              label: 'Mineral',
-              children: [
-                {
-                  label: 'Rock',
-                  children: ['Igneous', 'Sedimentary', 'Metamorphic']
-                }, {
-                  label: 'Metal',
-                  children: ['Aluminum', 'Steel', 'Copper']
-                }, {
-                  label: 'Plastic',
-                  children: [
-                    {
-                      label: 'Thermoplastic',
-                      children: ['polyethylene', 'polypropylene', 'polystyrene', ' polyvinyl chloride']
-                    }, {
-                      label: 'Thermosetting Polymer',
-                      children: ['polyester', 'polyurethane', 'vulcanized rubber', 'bakelite', 'urea-formaldehyde']
-                    }
-                  ]
-                }
-              ]
-            }
-          ];
-          
-          var treedata_geography = [
-            {
-              label: 'North America',
-              children: [
-                {
-                  label: 'Canada',
-                  children: ['Toronto', 'Vancouver']
-                }, {
-                  label: 'USA',
-                  children: ['New York', 'Los Angeles']
-                }, {
-                  label: 'Mexico',
-                  children: ['Mexico City', 'Guadalajara']
-                }
-              ]
-            }, {
-              label: 'South America',
-              children: [
-                {
-                  label: 'Venezuela',
-                  children: ['Caracas', 'Maracaibo']
-                }, {
-                  label: 'Brazil',
-                  children: ['Sao Paulo', 'Rio de Janeiro']
-                }, {
-                  label: 'Argentina',
-                  children: ['Buenos Aires', 'Cordoba']
-                }
-              ]
-            }
-          ];
-
-          vm.my_data = treedata_avm;
-          vm.try_changing_the_tree_data = function() {
-            if (vm.my_data === treedata_avm) {
-              vm.my_data = treedata_geography;
-            } else {
-              vm.my_data = treedata_avm;
-            }
-            return vm.my_data;
-          };
-          
-          var tree;
-          // This is our API control variable
-          vm.my_tree = tree = {};
-          vm.try_async_load = function() {
-            
-            vm.my_data = [];
-            vm.doing_async = true;
-            
-            // Request tree data via $resource
-            var remoteTree = $resource('server/treedata.json');
-            
-            return remoteTree.get(function(res){
-              
-              vm.my_data = res.data;
-
-              vm.doing_async = false;
-            
-              return tree.expand_all();
-            
-            // we must return a promise so the plugin 
-            // can watch when it's resolved
-            }).$promise;
-          };
-          
-          // Adds a new branch to the tree
-          vm.try_adding_a_branch = function() {
-            var b;
-            b = tree.get_selected_branch();
-            return tree.add_branch(b, {
-              label: 'New Branch',
-              data: {
-                something: 42,
-                'else': 43
-              }
-            });
-          };
-
-        }
     }
 })();
-
-
-/**=========================================================
- * Module: scroll.js
- * Make a content box scrollable
- =========================================================*/
-
-(function() {
+(function () {
     'use strict';
 
     angular
-        .module('app.elements')
-        .directive('scrollable', scrollable);
+        .module('app.lazyload')
+        .constant('APP_REQUIRES', {
+            // jQuery based and standalone scripts
+            scripts: {
+                'jquery': ['app/js/jquery.min.js'],
+                'custom': ['app/js/custom.js'],
+                'sortable-table': ['app/js/sortable-table.min.js'],
+                'bs-collapse': ['app/js/bs-collapse.js'],
+                'whirl': ['vendor/whirl/dist/whirl.css'],
+                'classyloader': ['vendor/jquery-classyloader/js/jquery.classyloader.min.js'],
+                'animo': ['vendor/animo.js/animo.js'],
+                'fastclick': ['vendor/fastclick/lib/fastclick.js'],
+                'modernizr': ['vendor/modernizr/modernizr.custom.js'],
+                'animate': ['vendor/animate.css/animate.min.css'],
+                'skycons': ['vendor/skycons/skycons.js'],
+                'icons': ['vendor/fontawesome/css/font-awesome.min.css',
+                    'vendor/simple-line-icons/css/simple-line-icons.css'],
+                'weather-icons': ['vendor/weather-icons/css/weather-icons.min.css',
+                    'vendor/weather-icons/css/weather-icons-wind.min.css'],
+                'sparklines': ['vendor/sparkline/index.js'],
+                'wysiwyg': ['vendor/bootstrap-wysiwyg/bootstrap-wysiwyg.js',
+                    'vendor/bootstrap-wysiwyg/external/jquery.hotkeys.js'],
+                'slimscroll': ['vendor/slimScroll/jquery.slimscroll.min.js'],
+                'screenfull': ['vendor/screenfull/dist/screenfull.js'],
+                'vector-map': ['vendor/ika.jvectormap/jquery-jvectormap-1.2.2.min.js',
+                    'vendor/ika.jvectormap/jquery-jvectormap-1.2.2.css'],
+                'vector-map-maps': ['vendor/ika.jvectormap/jquery-jvectormap-world-mill-en.js',
+                    'vendor/ika.jvectormap/jquery-jvectormap-us-mill-en.js'],
+                'loadGoogleMapsJS': ['vendor/load-google-maps/load-google-maps.js'],
+                'flot-chart': ['vendor/Flot/jquery.flot.js'],
+                'flot-chart-plugins': ['vendor/flot.tooltip/js/jquery.flot.tooltip.min.js',
+                    'vendor/Flot/jquery.flot.resize.js',
+                    'vendor/Flot/jquery.flot.pie.js',
+                    'vendor/Flot/jquery.flot.time.js',
+                    'vendor/Flot/jquery.flot.categories.js',
+                    'vendor/flot-spline/js/jquery.flot.spline.min.js'],
+                // jquery core and widgets
+                'jquery-ui': ['vendor/jquery-ui/ui/core.js',
+                    'vendor/jquery-ui/ui/widget.js'],
+                // loads only jquery required modules and touch support
+                'jquery-ui-widgets': ['vendor/jquery-ui/ui/core.js',
+                    'vendor/jquery-ui/ui/widget.js',
+                    'vendor/jquery-ui/ui/mouse.js',
+                    'vendor/jquery-ui/ui/draggable.js',
+                    'vendor/jquery-ui/ui/droppable.js',
+                    'vendor/jquery-ui/ui/sortable.js',
+                    'vendor/jqueryui-touch-punch/jquery.ui.touch-punch.min.js'],
+                'moment': ['vendor/moment/min/moment-with-locales.min.js'],
+                'dc': ['vendor/dc/dc.js'],
+                'inputmask': ['vendor/jquery.inputmask/dist/jquery.inputmask.bundle.js'],
+                'flatdoc': ['vendor/flatdoc/flatdoc.js'],
+                'codemirror': ['vendor/codemirror/lib/codemirror.js',
+                    'vendor/codemirror/lib/codemirror.css'],
+                // modes for common web files
+                'codemirror-modes-web': ['vendor/codemirror/mode/javascript/javascript.js',
+                    'vendor/codemirror/mode/xml/xml.js',
+                    'vendor/codemirror/mode/htmlmixed/htmlmixed.js',
+                    'vendor/codemirror/mode/css/css.js'],
+                'taginput': ['vendor/bootstrap-tagsinput/dist/bootstrap-tagsinput.css',
+                    'vendor/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js'],
+                'filestyle': ['vendor/bootstrap-filestyle/src/bootstrap-filestyle.js'],
+                'parsley': ['vendor/parsleyjs/dist/parsley.min.js'],
+                'fullcalendar': ['vendor/fullcalendar/dist/fullcalendar.min.js',
+                    'vendor/fullcalendar/dist/fullcalendar.css'],
+                'gcal': ['vendor/fullcalendar/dist/gcal.js'],
+                'chartjs': ['vendor/Chart.js/Chart.js'],
+                'morris': ['vendor/raphael/raphael.js',
+                    'vendor/morris.js/morris.js',
+                    'vendor/morris.js/morris.css'],
+                'crossfilter': ['vendor/crossfilter/crossfilter.js'],
+                'colorbrewer': ['vendor/colorbrewer/colorbrewer.js'],
+                'loaders.css': ['vendor/loaders.css/loaders.css'],
+                'spinkit': ['vendor/spinkit/css/spinkit.css'],
+                'prismjs': ['vendor/prismjs/prism.js'],
+                'clipboard': ['master/node_modules/clipboard/dist/clipboard.min.js']
+            },
+            // Angular based script (use the right module name)
+            modules: [
+                {
+                    name: 'angular-ui-bootstrap', files: ['vendor/angular-ui-bootstrap/dist/ui-bootstrap.js']
+                },
+                {
+                    name: 'angular-animate', files: ['vendor/angular-animate/angular-animate.js']
+                },
+                {
+                    name: 'angular-bootstrap', files: ['vendor/angular-bootstrap/ui-bootstrap.js',
+                    'vendor/angular-bootstrap/ui-bootstrap-csp.css']
+                },
+                {
+                    name: 'highcharts-ng', files: ['vendor/highcharts-ng/dist/highcharts-ng.js']
+                },
 
-    function scrollable () {
-        var directive = {
-            link: link,
-            restrict: 'EA'
-        };
-        return directive;
+                {
+                    name: 'toaster', files: ['vendor/angularjs-toaster/toaster.js',
+                    'vendor/angularjs-toaster/toaster.css']
+                },
+                {
+                    name: 'localytics.directives', files: ['vendor/chosen_v1.2.0/chosen.jquery.min.js',
+                    'vendor/chosen_v1.2.0/chosen.min.css',
+                    'vendor/angular-chosen-localytics/chosen.js']
+                },
+                {
+                    name: 'ngDialog', files: ['vendor/ngDialog/js/ngDialog.min.js',
+                    'vendor/ngDialog/css/ngDialog.min.css',
+                    'vendor/ngDialog/css/ngDialog-theme-default.min.css']
+                },
+                {name: 'ngWig', files: ['vendor/ngWig/dist/ng-wig.min.js']},
+                {
+                    name: 'ngTable', files: ['vendor/ng-table/dist/ng-table.min.js',
+                    'vendor/ng-table/dist/ng-table.min.css']
+                },
+                {name: 'ngTableExport', files: ['vendor/ng-table-export/ng-table-export.js']},
+                {
+                    name: 'angularBootstrapNavTree',
+                    files: ['vendor/angular-bootstrap-nav-tree/dist/abn_tree_directive.js',
+                        'vendor/angular-bootstrap-nav-tree/dist/abn_tree.css']
+                },
+                {
+                    name: 'htmlSortable', files: ['vendor/html.sortable/dist/html.sortable.js',
+                    'vendor/html.sortable/dist/html.sortable.angular.js']
+                },
+                {
+                    name: 'xeditable', files: ['vendor/angular-xeditable/dist/js/xeditable.js',
+                    'vendor/angular-xeditable/dist/css/xeditable.css']
+                },
+                {name: 'angularFileUpload', files: ['vendor/angular-file-upload/dist/angular-file-upload.js']},
+                {
+                    name: 'ngImgCrop', files: ['vendor/ng-img-crop/compile/unminified/ng-img-crop.js',
+                    'vendor/ng-img-crop/compile/unminified/ng-img-crop.css']
+                },
+                {
+                    name: 'ui.select', files: ['vendor/angular-ui-select/dist/select.js',
+                    'vendor/angular-ui-select/dist/select.css']
+                },
+                {name: 'ui.codemirror', files: ['vendor/angular-ui-codemirror/ui-codemirror.js']},
+                {
+                    name: 'angular-carousel', files: ['vendor/angular-carousel/dist/angular-carousel.css',
+                    'vendor/angular-carousel/dist/angular-carousel.js']
+                },
+                {name: 'infinite-scroll', files: ['vendor/ngInfiniteScroll/build/ng-infinite-scroll.js']},
+                {
+                    name: 'ui.bootstrap-slider', files: ['vendor/seiyria-bootstrap-slider/dist/bootstrap-slider.min.js',
+                    'vendor/seiyria-bootstrap-slider/dist/css/bootstrap-slider.min.css',
+                    'vendor/angular-bootstrap-slider/slider.js']
+                },
+                {
+                    name: 'ui.bootstrap-slider', files: ['vendor/seiyria-bootstrap-slider/dist/bootstrap-slider.min.js',
+                    'vendor/seiyria-bootstrap-slider/dist/css/bootstrap-slider.min.css',
+                    'vendor/angular-bootstrap-slider/slider.js']
+                },
+                {
+                    name: 'ui.grid', files: ['vendor/angular-ui-grid/ui-grid.min.css',
+                    'vendor/angular-ui-grid/ui-grid.min.js']
+                },
+                {
+                    name: 'textAngular', files: ['vendor/textAngular/dist/textAngular.css',
+                    'vendor/textAngular/dist/textAngular-rangy.min.js',
+                    'vendor/textAngular/dist/textAngular-sanitize.js',
+                    'vendor/textAngular/src/globals.js',
+                    'vendor/textAngular/src/factories.js',
+                    'vendor/textAngular/src/DOM.js',
+                    'vendor/textAngular/src/validators.js',
+                    'vendor/textAngular/src/taBind.js',
+                    'vendor/textAngular/src/main.js',
+                    'vendor/textAngular/dist/textAngularSetup.js'
+                ], serie: true
+                },
+                {name: 'ui.map', files: ['vendor/angular-ui-map/ui-map.js']},
+                {
+                    name: 'datatables', files: ['vendor/datatables/media/css/jquery.dataTables.css',
+                    'vendor/datatables/media/js/jquery.dataTables.js',
+                    'vendor/angular-datatables/dist/angular-datatables.js'], serie: true
+                },
+                {
+                    name: 'angular-jqcloud', files: ['vendor/jqcloud2/dist/jqcloud.css',
+                    'vendor/jqcloud2/dist/jqcloud.js',
+                    'vendor/angular-jqcloud/angular-jqcloud.js']
+                },
+                {
+                    name: 'angularGrid', files: ['vendor/ag-grid/dist/ag-grid.css',
+                    'vendor/ag-grid/dist/ag-grid.js',
+                    'vendor/ag-grid/dist/theme-dark.css',
+                    'vendor/ag-grid/dist/theme-fresh.css']
+                },
+                {
+                    name: 'ng-nestable', files: ['vendor/ng-nestable/src/angular-nestable.js',
+                    'vendor/nestable/jquery.nestable.js']
+                },
+                {name: 'akoenig.deckgrid', files: ['vendor/angular-deckgrid/angular-deckgrid.js']},
+                {
+                    name: 'oitozero.ngSweetAlert', files: ['vendor/sweetalert/dist/sweetalert.css',
+                    'vendor/sweetalert/dist/sweetalert.min.js',
+                    'vendor/angular-sweetalert/SweetAlert.js']
+                },
+                {
+                    name: 'bm.bsTour', files: ['vendor/bootstrap-tour/build/css/bootstrap-tour.css',
+                    'vendor/bootstrap-tour/build/js/bootstrap-tour-standalone.js',
+                    'vendor/angular-bootstrap-tour/dist/angular-bootstrap-tour.js'], serie: true
+                },
+                {
+                    name: 'ui.knob', files: ['vendor/angular-knob/src/angular-knob.js',
+                    'vendor/jquery-knob/dist/jquery.knob.min.js']
+                },
+                {
+                    name: 'ngclipboard', files: ['master/node_modules/ngclipboard/dist/ngclipboard.min.js']
+                },
+                {name: 'easypiechart', files: ['vendor/jquery.easy-pie-chart/dist/angular.easypiechart.min.js']},
+                {
+                    name: 'colorpicker.module', files: ['vendor/angular-bootstrap-colorpicker/css/colorpicker.css',
+                    'vendor/angular-bootstrap-colorpicker/js/bootstrap-colorpicker-module.js']
+                }
+            ]
+        })
+    ;
 
-        function link(scope, element, attrs) {
-          var defaultHeight = 250;
-          element.slimScroll({
-              height: (attrs.height || defaultHeight)
-          });
-        }
-    }
-
-})();
-
-/**=========================================================
- * Module: sortable.js
- * Sortable controller
- =========================================================*/
-(function() {
-    'use strict';
-
-    angular
-        .module('app.elements')
-        .directive('prism', [function() {
-        return {
-            restrict: 'A',
-            link: function ($scope, element, attrs) {
-                element.ready(function() {
-                    Prism.highlightElement(element[0]);
-                });
-            }
-        }
-    }])
-        .controller('SortableController', SortableController);
-    SortableController.$inject = ['$scope'];
-    function SortableController($scope) {
-        var vm = this;
-
-        activate();
-
-        function activate() {
-
-            angular.element(document).ready(function () {
-
-                //Base Functionality for off-canvas sidebar
-                $('.sliding-panel-button,.sliding-panel-fade-screen,.sliding-panel-close').on('click touchstart',function (e) {
-                    $('.sliding-panel-content,.sliding-panel-fade-screen').toggleClass('is-visible');
-                    e.preventDefault();
-                });
-
-            });
-
-        }
-    }
-
-})();
-
-/**=========================================================
- * Module: demo-toaster.js
- * Demos for toaster notifications
- =========================================================*/
-
-(function() {
-    'use strict';
-
-    angular
-        .module('app.elements')
-        .controller('ToasterDemoCtrl', ToasterDemoCtrl);
-
-    ToasterDemoCtrl.$inject = ['toaster'];
-    function ToasterDemoCtrl(toaster) {
-        var vm = this;
-
-        activate();
-
-        ////////////////
-
-        function activate() {
-          vm.toaster = {
-              type:  'success',
-              title: 'Title',
-              text:  'Message'
-          };
-
-          vm.pop = function() {
-            toaster.pop(vm.toaster.type, vm.toaster.title, vm.toaster.text);
-          };
-        }
-    }
 })();
 
 (function() {
@@ -2747,246 +2298,739 @@
 
 })();
 
+
 (function() {
     'use strict';
 
     angular
-        .module('app.lazyload')
-        .config(lazyloadConfig);
+        .module('app.elements')
+        .controller('AngularCarouselController', AngularCarouselController);
 
-    lazyloadConfig.$inject = ['$ocLazyLoadProvider', 'APP_REQUIRES'];
-    function lazyloadConfig($ocLazyLoadProvider, APP_REQUIRES){
+    function AngularCarouselController() {
+        var vm = this;
 
-      // Lazy Load modules configuration
-      $ocLazyLoadProvider.config({
-        debug: false,
-        events: true,
-        modules: APP_REQUIRES.modules
-      });
+        activate();
 
+        ////////////////
+
+        function activate() {
+          vm.colors = ['#fc0003', '#f70008', '#f2000d', '#ed0012', '#e80017', '#e3001c', '#de0021', '#d90026', '#d4002b', '#cf0030', '#c90036', '#c4003b', '#bf0040', '#ba0045', '#b5004a', '#b0004f', '#ab0054', '#a60059', '#a1005e', '#9c0063', '#960069', '#91006e', '#8c0073', '#870078', '#82007d', '#7d0082', '#780087', '#73008c', '#6e0091', '#690096', '#63009c', '#5e00a1', '#5900a6', '#5400ab', '#4f00b0', '#4a00b5', '#4500ba', '#4000bf', '#3b00c4', '#3600c9', '#3000cf', '#2b00d4', '#2600d9', '#2100de', '#1c00e3', '#1700e8', '#1200ed', '#0d00f2', '#0800f7', '#0300fc'];
+
+          function getSlide(target, style) {
+              var i = target.length;
+              return {
+                  id: (i + 1),
+                  label: 'slide #' + (i + 1),
+                  img: 'http://lorempixel.com/1200/500/' + style + '/' + ((i + 1) % 10) ,
+                  color: vm.colors[ (i*10) % vm.colors.length],
+                  odd: (i % 2 === 0)
+              };
+          }
+
+          function addSlide(target, style) {
+              target.push(getSlide(target, style));
+          }
+
+          vm.carouselIndex = 3;
+          vm.carouselIndex2 = 0;
+          vm.carouselIndex2 = 1;
+          vm.carouselIndex3 = 5;
+          vm.carouselIndex4 = 5;
+
+          function addSlides(target, style, qty) {
+              for (var i=0; i < qty; i++) {
+                  addSlide(target, style);
+              }
+          }
+
+          // 1st ngRepeat demo
+          vm.slides = [];
+          addSlides(vm.slides, 'sports', 50);
+
+          // 2nd ngRepeat demo
+          vm.slides2 = [];
+          addSlides(vm.slides2, 'sports', 10);
+
+          // 3rd ngRepeat demo
+          vm.slides3 = [];
+          addSlides(vm.slides3, 'people', 50);
+
+          // 4th ngRepeat demo
+          vm.slides4 = [];
+          addSlides(vm.slides4, 'city', 50);
+
+
+          // 5th ngRepeat demo
+          vm.slides6 = [];
+          vm.carouselIndex6 = 0;
+          addSlides(vm.slides6, 'sports', 10);
+          vm.addSlide = function(at) {
+              if(at==='head') {
+                  vm.slides6.unshift(getSlide(vm.slides6, 'people'));
+              } else {
+                  vm.slides6.push(getSlide(vm.slides6, 'people'));
+              }
+          };
+        }
     }
 })();
-(function () {
+
+/**=========================================================
+ * Module: demo-dialog.js
+ * Demo for multiple ngDialog Usage
+ * - ngDialogProvider for default values not supported 
+ *   using lazy loader. Include plugin in base.js instead.
+ =========================================================*/
+
+(function() {
     'use strict';
 
     angular
-        .module('app.lazyload')
-        .constant('APP_REQUIRES', {
-            // jQuery based and standalone scripts
-            scripts: {
-                'jquery': ['app/js/jquery.min.js'],
-                'custom': ['app/js/custom.js'],
-                'sortable-table': ['app/js/sortable-table.min.js'],
-                'bs-collapse': ['app/js/bs-collapse.js'],
-                'whirl': ['vendor/whirl/dist/whirl.css'],
-                'classyloader': ['vendor/jquery-classyloader/js/jquery.classyloader.min.js'],
-                'animo': ['vendor/animo.js/animo.js'],
-                'fastclick': ['vendor/fastclick/lib/fastclick.js'],
-                'modernizr': ['vendor/modernizr/modernizr.custom.js'],
-                'animate': ['vendor/animate.css/animate.min.css'],
-                'skycons': ['vendor/skycons/skycons.js'],
-                'icons': ['vendor/fontawesome/css/font-awesome.min.css',
-                    'vendor/simple-line-icons/css/simple-line-icons.css'],
-                'weather-icons': ['vendor/weather-icons/css/weather-icons.min.css',
-                    'vendor/weather-icons/css/weather-icons-wind.min.css'],
-                'sparklines': ['vendor/sparkline/index.js'],
-                'wysiwyg': ['vendor/bootstrap-wysiwyg/bootstrap-wysiwyg.js',
-                    'vendor/bootstrap-wysiwyg/external/jquery.hotkeys.js'],
-                'slimscroll': ['vendor/slimScroll/jquery.slimscroll.min.js'],
-                'screenfull': ['vendor/screenfull/dist/screenfull.js'],
-                'vector-map': ['vendor/ika.jvectormap/jquery-jvectormap-1.2.2.min.js',
-                    'vendor/ika.jvectormap/jquery-jvectormap-1.2.2.css'],
-                'vector-map-maps': ['vendor/ika.jvectormap/jquery-jvectormap-world-mill-en.js',
-                    'vendor/ika.jvectormap/jquery-jvectormap-us-mill-en.js'],
-                'loadGoogleMapsJS': ['vendor/load-google-maps/load-google-maps.js'],
-                'flot-chart': ['vendor/Flot/jquery.flot.js'],
-                'flot-chart-plugins': ['vendor/flot.tooltip/js/jquery.flot.tooltip.min.js',
-                    'vendor/Flot/jquery.flot.resize.js',
-                    'vendor/Flot/jquery.flot.pie.js',
-                    'vendor/Flot/jquery.flot.time.js',
-                    'vendor/Flot/jquery.flot.categories.js',
-                    'vendor/flot-spline/js/jquery.flot.spline.min.js'],
-                // jquery core and widgets
-                'jquery-ui': ['vendor/jquery-ui/ui/core.js',
-                    'vendor/jquery-ui/ui/widget.js'],
-                // loads only jquery required modules and touch support
-                'jquery-ui-widgets': ['vendor/jquery-ui/ui/core.js',
-                    'vendor/jquery-ui/ui/widget.js',
-                    'vendor/jquery-ui/ui/mouse.js',
-                    'vendor/jquery-ui/ui/draggable.js',
-                    'vendor/jquery-ui/ui/droppable.js',
-                    'vendor/jquery-ui/ui/sortable.js',
-                    'vendor/jqueryui-touch-punch/jquery.ui.touch-punch.min.js'],
-                'moment': ['vendor/moment/min/moment-with-locales.min.js'],
-                'dc': ['vendor/dc/dc.js'],
-                'inputmask': ['vendor/jquery.inputmask/dist/jquery.inputmask.bundle.js'],
-                'flatdoc': ['vendor/flatdoc/flatdoc.js'],
-                'codemirror': ['vendor/codemirror/lib/codemirror.js',
-                    'vendor/codemirror/lib/codemirror.css'],
-                // modes for common web files
-                'codemirror-modes-web': ['vendor/codemirror/mode/javascript/javascript.js',
-                    'vendor/codemirror/mode/xml/xml.js',
-                    'vendor/codemirror/mode/htmlmixed/htmlmixed.js',
-                    'vendor/codemirror/mode/css/css.js'],
-                'taginput': ['vendor/bootstrap-tagsinput/dist/bootstrap-tagsinput.css',
-                    'vendor/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js'],
-                'filestyle': ['vendor/bootstrap-filestyle/src/bootstrap-filestyle.js'],
-                'parsley': ['vendor/parsleyjs/dist/parsley.min.js'],
-                'fullcalendar': ['vendor/fullcalendar/dist/fullcalendar.min.js',
-                    'vendor/fullcalendar/dist/fullcalendar.css'],
-                'gcal': ['vendor/fullcalendar/dist/gcal.js'],
-                'chartjs': ['vendor/Chart.js/Chart.js'],
-                'morris': ['vendor/raphael/raphael.js',
-                    'vendor/morris.js/morris.js',
-                    'vendor/morris.js/morris.css'],
-                'crossfilter': ['vendor/crossfilter/crossfilter.js'],
-                'colorbrewer': ['vendor/colorbrewer/colorbrewer.js'],
-                'loaders.css': ['vendor/loaders.css/loaders.css'],
-                'spinkit': ['vendor/spinkit/css/spinkit.css'],
-                'prismjs': ['vendor/prismjs/prism.js'],
-                'clipboard': ['master/node_modules/clipboard/dist/clipboard.min.js']
-            },
-            // Angular based script (use the right module name)
-            modules: [
-                {
-                    name: 'angular-ui-bootstrap', files: ['vendor/angular-ui-bootstrap/dist/ui-bootstrap.js']
-                },
-                {
-                    name: 'angular-animate', files: ['vendor/angular-animate/angular-animate.js']
-                },
-                {
-                    name: 'angular-bootstrap', files: ['vendor/angular-bootstrap/ui-bootstrap.js',
-                    'vendor/angular-bootstrap/ui-bootstrap-csp.css']
-                },
-                {
-                    name: 'highcharts-ng', files: ['vendor/highcharts-ng/dist/highcharts-ng.js']
-                },
+        .module('app.elements')
+        .controller('DialogIntroCtrl', DialogIntroCtrl)
+        .controller('DialogMainCtrl', DialogMainCtrl)
+        .controller('InsideCtrl', InsideCtrl)
+        .controller('SecondModalCtrl', SecondModalCtrl);
 
-                {
-                    name: 'toaster', files: ['vendor/angularjs-toaster/toaster.js',
-                    'vendor/angularjs-toaster/toaster.css']
-                },
-                {
-                    name: 'localytics.directives', files: ['vendor/chosen_v1.2.0/chosen.jquery.min.js',
-                    'vendor/chosen_v1.2.0/chosen.min.css',
-                    'vendor/angular-chosen-localytics/chosen.js']
-                },
-                {
-                    name: 'ngDialog', files: ['vendor/ngDialog/js/ngDialog.min.js',
-                    'vendor/ngDialog/css/ngDialog.min.css',
-                    'vendor/ngDialog/css/ngDialog-theme-default.min.css']
-                },
-                {name: 'ngWig', files: ['vendor/ngWig/dist/ng-wig.min.js']},
-                {
-                    name: 'ngTable', files: ['vendor/ng-table/dist/ng-table.min.js',
-                    'vendor/ng-table/dist/ng-table.min.css']
-                },
-                {name: 'ngTableExport', files: ['vendor/ng-table-export/ng-table-export.js']},
-                {
-                    name: 'angularBootstrapNavTree',
-                    files: ['vendor/angular-bootstrap-nav-tree/dist/abn_tree_directive.js',
-                        'vendor/angular-bootstrap-nav-tree/dist/abn_tree.css']
-                },
-                {
-                    name: 'htmlSortable', files: ['vendor/html.sortable/dist/html.sortable.js',
-                    'vendor/html.sortable/dist/html.sortable.angular.js']
-                },
-                {
-                    name: 'xeditable', files: ['vendor/angular-xeditable/dist/js/xeditable.js',
-                    'vendor/angular-xeditable/dist/css/xeditable.css']
-                },
-                {name: 'angularFileUpload', files: ['vendor/angular-file-upload/dist/angular-file-upload.js']},
-                {
-                    name: 'ngImgCrop', files: ['vendor/ng-img-crop/compile/unminified/ng-img-crop.js',
-                    'vendor/ng-img-crop/compile/unminified/ng-img-crop.css']
-                },
-                {
-                    name: 'ui.select', files: ['vendor/angular-ui-select/dist/select.js',
-                    'vendor/angular-ui-select/dist/select.css']
-                },
-                {name: 'ui.codemirror', files: ['vendor/angular-ui-codemirror/ui-codemirror.js']},
-                {
-                    name: 'angular-carousel', files: ['vendor/angular-carousel/dist/angular-carousel.css',
-                    'vendor/angular-carousel/dist/angular-carousel.js']
-                },
-                {name: 'infinite-scroll', files: ['vendor/ngInfiniteScroll/build/ng-infinite-scroll.js']},
-                {
-                    name: 'ui.bootstrap-slider', files: ['vendor/seiyria-bootstrap-slider/dist/bootstrap-slider.min.js',
-                    'vendor/seiyria-bootstrap-slider/dist/css/bootstrap-slider.min.css',
-                    'vendor/angular-bootstrap-slider/slider.js']
-                },
-                {
-                    name: 'ui.bootstrap-slider', files: ['vendor/seiyria-bootstrap-slider/dist/bootstrap-slider.min.js',
-                    'vendor/seiyria-bootstrap-slider/dist/css/bootstrap-slider.min.css',
-                    'vendor/angular-bootstrap-slider/slider.js']
-                },
-                {
-                    name: 'ui.grid', files: ['vendor/angular-ui-grid/ui-grid.min.css',
-                    'vendor/angular-ui-grid/ui-grid.min.js']
-                },
-                {
-                    name: 'textAngular', files: ['vendor/textAngular/dist/textAngular.css',
-                    'vendor/textAngular/dist/textAngular-rangy.min.js',
-                    'vendor/textAngular/dist/textAngular-sanitize.js',
-                    'vendor/textAngular/src/globals.js',
-                    'vendor/textAngular/src/factories.js',
-                    'vendor/textAngular/src/DOM.js',
-                    'vendor/textAngular/src/validators.js',
-                    'vendor/textAngular/src/taBind.js',
-                    'vendor/textAngular/src/main.js',
-                    'vendor/textAngular/dist/textAngularSetup.js'
-                ], serie: true
-                },
-                {name: 'ui.map', files: ['vendor/angular-ui-map/ui-map.js']},
-                {
-                    name: 'datatables', files: ['vendor/datatables/media/css/jquery.dataTables.css',
-                    'vendor/datatables/media/js/jquery.dataTables.js',
-                    'vendor/angular-datatables/dist/angular-datatables.js'], serie: true
-                },
-                {
-                    name: 'angular-jqcloud', files: ['vendor/jqcloud2/dist/jqcloud.css',
-                    'vendor/jqcloud2/dist/jqcloud.js',
-                    'vendor/angular-jqcloud/angular-jqcloud.js']
-                },
-                {
-                    name: 'angularGrid', files: ['vendor/ag-grid/dist/ag-grid.css',
-                    'vendor/ag-grid/dist/ag-grid.js',
-                    'vendor/ag-grid/dist/theme-dark.css',
-                    'vendor/ag-grid/dist/theme-fresh.css']
-                },
-                {
-                    name: 'ng-nestable', files: ['vendor/ng-nestable/src/angular-nestable.js',
-                    'vendor/nestable/jquery.nestable.js']
-                },
-                {name: 'akoenig.deckgrid', files: ['vendor/angular-deckgrid/angular-deckgrid.js']},
-                {
-                    name: 'oitozero.ngSweetAlert', files: ['vendor/sweetalert/dist/sweetalert.css',
-                    'vendor/sweetalert/dist/sweetalert.min.js',
-                    'vendor/angular-sweetalert/SweetAlert.js']
-                },
-                {
-                    name: 'bm.bsTour', files: ['vendor/bootstrap-tour/build/css/bootstrap-tour.css',
-                    'vendor/bootstrap-tour/build/js/bootstrap-tour-standalone.js',
-                    'vendor/angular-bootstrap-tour/dist/angular-bootstrap-tour.js'], serie: true
-                },
-                {
-                    name: 'ui.knob', files: ['vendor/angular-knob/src/angular-knob.js',
-                    'vendor/jquery-knob/dist/jquery.knob.min.js']
-                },
-                {
-                    name: 'ngclipboard', files: ['master/node_modules/ngclipboard/dist/ngclipboard.min.js']
-                },
-                {name: 'easypiechart', files: ['vendor/jquery.easy-pie-chart/dist/angular.easypiechart.min.js']},
-                {
-                    name: 'colorpicker.module', files: ['vendor/angular-bootstrap-colorpicker/css/colorpicker.css',
-                    'vendor/angular-bootstrap-colorpicker/js/bootstrap-colorpicker-module.js']
+    DialogIntroCtrl.$inject = ['$scope', 'ngDialog', 'tpl'];
+    // Called from the route state. 'tpl' is resolved before
+    function DialogIntroCtrl($scope, ngDialog, tpl) {
+        
+        activate();
+
+        ////////////////
+
+        function activate() {
+          // share with other controllers
+          $scope.tpl = tpl;
+          // open dialog window
+          ngDialog.open({
+            template: tpl.path,
+            // plain: true,
+            className: 'ngdialog-theme-default'
+          });
+        }
+    }
+
+    DialogMainCtrl.$inject = ['$scope', '$rootScope', 'ngDialog'];
+    // Loads from view
+    function DialogMainCtrl($scope, $rootScope, ngDialog) {
+
+        activate();
+
+        ////////////////
+
+        function activate() {
+            //$rootScope.jsonData = [
+            //    { name: "Peter",   age: 20 },
+            //    { name: "Pablo",   age: 55 },
+            //    { name: "Linda",   age: 20 },
+            //    { name: "Marta",   age: 37 },
+            //    { name: "Othello", age: 20 },
+            //    { name: "Markus",  age: 32 }
+            //];
+          //$rootScope.jsonData = '{"foo": "bar"}';
+          $rootScope.theme = 'ngdialog-theme-default';
+
+          $scope.directivePreCloseCallback = function (value) {
+            if(confirm('Close it? MainCtrl.Directive. (Value = ' + value + ')')) {
+              return true;
+            }
+            return false;
+          };
+
+          $scope.preCloseCallbackOnScope = function (value) {
+            if(confirm('Close it? MainCtrl.OnScope (Value = ' + value + ')')) {
+              return true;
+            }
+            return false;
+          };
+
+          $scope.open = function () {
+            ngDialog.open({ template: 'firstDialogId', controller: 'InsideCtrl', data: {foo: 'some data'} });
+          };
+
+          $scope.openDefault = function () {
+            ngDialog.open({
+              template: 'firstDialogId',
+              controller: 'InsideCtrl',
+              className: 'ngdialog-theme-default'
+            });
+          };
+
+          $scope.openDefaultWithPreCloseCallbackInlined = function () {
+            ngDialog.open({
+              template: 'firstDialogId',
+              controller: 'InsideCtrl',
+              className: 'ngdialog-theme-default',
+              preCloseCallback: function(value) {
+                if (confirm('Close it?  (Value = ' + value + ')')) {
+                  return true;
                 }
-            ]
-        })
-    ;
+                return false;
+              }
+            });
+          };
+
+          $scope.openConfirm = function () {
+            ngDialog.openConfirm({
+              template: 'modalDialogId',
+              className: 'ngdialog-theme-default'
+            }).then(function (value) {
+              console.log('Modal promise resolved. Value: ', value);
+            }, function (reason) {
+              console.log('Modal promise rejected. Reason: ', reason);
+            });
+          };
+
+          $scope.openConfirmWithPreCloseCallbackOnScope = function () {
+            ngDialog.openConfirm({
+              template: 'modalDialogId',
+              className: 'ngdialog-theme-default',
+              preCloseCallback: 'preCloseCallbackOnScope',
+              scope: $scope
+            }).then(function (value) {
+              console.log('Modal promise resolved. Value: ', value);
+            }, function (reason) {
+              console.log('Modal promise rejected. Reason: ', reason);
+            });
+          };
+
+          $scope.openConfirmWithPreCloseCallbackInlinedWithNestedConfirm = function () {
+            ngDialog.openConfirm({
+              template: 'dialogWithNestedConfirmDialogId',
+              className: 'ngdialog-theme-default',
+              preCloseCallback: function(/*value*/) {
+
+                var nestedConfirmDialog = ngDialog.openConfirm({
+                  template:
+                      '<p>Are you sure you want to close the parent dialog?</p>' +
+                      '<div>' +
+                        '<button type="button" class="btn btn-default" ng-click="closeThisDialog(0)">No' +
+                        '<button type="button" class="btn btn-primary" ng-click="confirm(1)">Yes' +
+                      '</button></div>',
+                  plain: true,
+                  className: 'ngdialog-theme-default'
+                });
+
+                return nestedConfirmDialog;
+              },
+              scope: $scope
+            })
+            .then(function(value){
+              console.log('resolved:' + value);
+              // Perform the save here
+            }, function(value){
+              console.log('rejected:' + value);
+
+            });
+          };
+
+          $scope.openInlineController = function () {
+            $rootScope.theme = 'ngdialog-theme-default';
+
+            ngDialog.open({
+              template: 'withInlineController',
+              controller: ['$scope', '$timeout', function ($scope, $timeout) {
+                var counter = 0;
+                var timeout;
+                function count() {
+                  $scope.exampleExternalData = 'Counter ' + (counter++);
+                  timeout = $timeout(count, 450);
+                }
+                count();
+                $scope.$on('$destroy', function () {
+                  $timeout.cancel(timeout);
+                });
+              }],
+              className: 'ngdialog-theme-default'
+            });
+          };
+
+          $scope.openTemplate = function () {
+            $scope.value = true;
+
+            ngDialog.open({
+              template: $scope.tpl.path,
+              className: 'ngdialog-theme-default',
+              scope: $scope
+            });
+          };
+
+          $scope.openTemplateNoCache = function () {
+            $scope.value = true;
+
+            ngDialog.open({
+              template: $scope.tpl.path,
+              className: 'ngdialog-theme-default',
+              scope: $scope,
+              cache: false
+            });
+          };
+
+          $scope.openTimed = function () {
+            var dialog = ngDialog.open({
+              template: '<p>Just passing through!</p>',
+              plain: true,
+              closeByDocument: false,
+              closeByEscape: false
+            });
+            setTimeout(function () {
+              dialog.close();
+            }, 2000);
+          };
+
+          $scope.openNotify = function () {
+            var dialog = ngDialog.open({
+              template:
+                '<p>You can do whatever you want when I close, however that happens.</p>' +
+                '<div><button type="button" class="btn btn-primary" ng-click="closeThisDialog(1)">Close Me</button></div>',
+              plain: true
+            });
+            dialog.closePromise.then(function (data) {
+              console.log('ngDialog closed' + (data.value === 1 ? ' using the button' : '') + ' and notified by promise: ' + data.id);
+            });
+          };
+
+          $scope.openWithoutOverlay = function () {
+            ngDialog.open({
+              template: '<h2>Notice that there is no overlay!</h2>',
+              className: 'ngdialog-theme-default',
+              plain: true,
+              overlay: false
+            });
+          };
+
+          $rootScope.$on('ngDialog.opened', function (e, $dialog) {
+            console.log('ngDialog opened: ' + $dialog.attr('id'));
+          });
+
+          $rootScope.$on('ngDialog.closed', function (e, $dialog) {
+            console.log('ngDialog closed: ' + $dialog.attr('id'));
+          });
+
+          $rootScope.$on('ngDialog.closing', function (e, $dialog) {
+            console.log('ngDialog closing: ' + $dialog.attr('id'));
+          });
+        $scope.sortType     = 'product'; // set the default sort type
+        $scope.sortReverse  = false;  // set the default sort order
+        $scope.searchName   = '';     // set the default search/filter term
+
+        $scope.products = [
+            { product: 'Product Name' },
+            { product: 'Product Name Two' },
+            { product: 'Product Name Three' },
+            { product: 'Product Name Four' },
+            { product: 'Product Name Five' },
+            { product: 'Product Name Six' },
+            { product: 'Product Name Seven' },
+            { product: 'Product Name Eight' },
+            { product: 'Product Name Nine' },
+            { product: 'Product Name Ten' }
+        ];
+        $scope.addData = function() {
+            $scope.names.push({ 'fname': $scope.fname, 'lname': $scope.lname });
+        };
+        }
+    
+    } // DialogMainCtrl
+
+
+    InsideCtrl.$inject = ['$scope', 'ngDialog'];
+    function InsideCtrl($scope, ngDialog) {
+
+        activate();
+
+        ////////////////
+
+        function activate() {
+            $scope.jsonData = {};
+            $scope.jsonData.products = ['product1','product2','product3'];
+          $scope.dialogModel = {
+            message : 'message from passed scope'
+          };
+          $scope.openSecond = function () {
+            ngDialog.open({
+              template: '<p class="lead m0"><a href="" ng-click="closeSecond()">Close all by click here!</a></h3>',
+              plain: true,
+              closeByEscape: false,
+              controller: 'SecondModalCtrl'
+            });
+          };
+        }
+    }
+
+    SecondModalCtrl.$inject = ['$scope', 'ngDialog'];
+    function SecondModalCtrl($scope, ngDialog) {
+
+        activate();
+
+        ////////////////
+
+        function activate() {
+          $scope.closeSecond = function () {
+            ngDialog.close();
+          };
+        }
+
+    }
+
 
 })();
 
+
+
+
+/**=========================================================
+ * Module: access-login.js
+ * Demo for login api
+ =========================================================*/
+
+(function() {
+    'use strict';
+
+    angular
+        .module('app.elements')
+        .controller('AbnTestController', AbnTestController);
+
+    AbnTestController.$inject = ['$timeout', '$resource'];
+    function AbnTestController($timeout, $resource) {
+        var vm = this;
+
+        activate();
+
+        ////////////////
+
+        /*jshint -W106*/
+        function activate() {
+          vm.my_tree_handler = function(branch) {
+
+            vm.output = 'You selected: ' + branch.label;
+
+            if (branch.data && branch.data.description) {
+              vm.output += '(' + branch.data.description + ')';
+              return vm.output;
+            }
+          };
+
+          // onSelect event handlers
+          var apple_selected = function(branch) {
+            vm.output = 'APPLE! : ' + branch.label;
+            return vm.output;
+          };
+
+          var treedata_avm = [
+            {
+              label: 'Animal',
+              children: [
+                {
+                  label: 'Dog',
+                  data: {
+                    description: 'man\'s best friend'
+                  }
+                }, {
+                  label: 'Cat',
+                  data: {
+                    description: 'Felis catus'
+                  }
+                }, {
+                  label: 'Hippopotamus',
+                  data: {
+                    description: 'hungry, hungry'
+                  }
+                }, {
+                  label: 'Chicken',
+                  children: ['White Leghorn', 'Rhode Island Red', 'Jersey Giant']
+                }
+              ]
+            }, {
+              label: 'Vegetable',
+              data: {
+                definition: 'A plant or part of a plant used as food, typically as accompaniment to meat or fish, such as a cabbage, potato, carrot, or bean.',
+                data_can_contain_anything: true
+              },
+              onSelect: function(branch) {
+                vm.output = 'Vegetable: ' + branch.data.definition;
+                return vm.output;
+              },
+              children: [
+                {
+                  label: 'Oranges'
+                }, {
+                  label: 'Apples',
+                  children: [
+                    {
+                      label: 'Granny Smith',
+                      onSelect: apple_selected
+                    }, {
+                      label: 'Red Delicous',
+                      onSelect: apple_selected
+                    }, {
+                      label: 'Fuji',
+                      onSelect: apple_selected
+                    }
+                  ]
+                }
+              ]
+            }, {
+              label: 'Mineral',
+              children: [
+                {
+                  label: 'Rock',
+                  children: ['Igneous', 'Sedimentary', 'Metamorphic']
+                }, {
+                  label: 'Metal',
+                  children: ['Aluminum', 'Steel', 'Copper']
+                }, {
+                  label: 'Plastic',
+                  children: [
+                    {
+                      label: 'Thermoplastic',
+                      children: ['polyethylene', 'polypropylene', 'polystyrene', ' polyvinyl chloride']
+                    }, {
+                      label: 'Thermosetting Polymer',
+                      children: ['polyester', 'polyurethane', 'vulcanized rubber', 'bakelite', 'urea-formaldehyde']
+                    }
+                  ]
+                }
+              ]
+            }
+          ];
+          
+          var treedata_geography = [
+            {
+              label: 'North America',
+              children: [
+                {
+                  label: 'Canada',
+                  children: ['Toronto', 'Vancouver']
+                }, {
+                  label: 'USA',
+                  children: ['New York', 'Los Angeles']
+                }, {
+                  label: 'Mexico',
+                  children: ['Mexico City', 'Guadalajara']
+                }
+              ]
+            }, {
+              label: 'South America',
+              children: [
+                {
+                  label: 'Venezuela',
+                  children: ['Caracas', 'Maracaibo']
+                }, {
+                  label: 'Brazil',
+                  children: ['Sao Paulo', 'Rio de Janeiro']
+                }, {
+                  label: 'Argentina',
+                  children: ['Buenos Aires', 'Cordoba']
+                }
+              ]
+            }
+          ];
+
+          vm.my_data = treedata_avm;
+          vm.try_changing_the_tree_data = function() {
+            if (vm.my_data === treedata_avm) {
+              vm.my_data = treedata_geography;
+            } else {
+              vm.my_data = treedata_avm;
+            }
+            return vm.my_data;
+          };
+          
+          var tree;
+          // This is our API control variable
+          vm.my_tree = tree = {};
+          vm.try_async_load = function() {
+            
+            vm.my_data = [];
+            vm.doing_async = true;
+            
+            // Request tree data via $resource
+            var remoteTree = $resource('server/treedata.json');
+            
+            return remoteTree.get(function(res){
+              
+              vm.my_data = res.data;
+
+              vm.doing_async = false;
+            
+              return tree.expand_all();
+            
+            // we must return a promise so the plugin 
+            // can watch when it's resolved
+            }).$promise;
+          };
+          
+          // Adds a new branch to the tree
+          vm.try_adding_a_branch = function() {
+            var b;
+            b = tree.get_selected_branch();
+            return tree.add_branch(b, {
+              label: 'New Branch',
+              data: {
+                something: 42,
+                'else': 43
+              }
+            });
+          };
+
+        }
+    }
+})();
+
+
+/**=========================================================
+ * Module: scroll.js
+ * Make a content box scrollable
+ =========================================================*/
+
+(function() {
+    'use strict';
+
+    angular
+        .module('app.elements')
+        .directive('scrollable', scrollable);
+
+    function scrollable () {
+        var directive = {
+            link: link,
+            restrict: 'EA'
+        };
+        return directive;
+
+        function link(scope, element, attrs) {
+          var defaultHeight = 250;
+          element.slimScroll({
+              height: (attrs.height || defaultHeight)
+          });
+        }
+    }
+
+})();
+
+/**=========================================================
+ * Module: sortable.js
+ * Sortable controller
+ =========================================================*/
+(function() {
+    'use strict';
+
+    angular
+        .module('app.elements')
+        .directive('prism', [function() {
+        return {
+            restrict: 'A',
+            link: function ($scope, element, attrs) {
+                element.ready(function() {
+                    Prism.highlightElement(element[0]);
+                });
+            }
+        }
+    }])
+        .controller('SortableController', SortableController);
+    SortableController.$inject = ['$scope'];
+    function SortableController($scope) {
+        var vm = this;
+
+        activate();
+
+        function activate() {
+
+            angular.element(document).ready(function () {
+
+                //Base Functionality for off-canvas sidebar
+                $('.sliding-panel-button,.sliding-panel-fade-screen,.sliding-panel-close').on('click touchstart',function (e) {
+                    $('.sliding-panel-content,.sliding-panel-fade-screen').toggleClass('is-visible');
+                    e.preventDefault();
+                });
+
+            });
+
+        }
+    }
+
+})();
+
+/**=========================================================
+ * Module: demo-toaster.js
+ * Demos for toaster notifications
+ =========================================================*/
+
+(function() {
+    'use strict';
+
+    angular
+        .module('app.elements')
+        .controller('ToasterDemoCtrl', ToasterDemoCtrl);
+
+    ToasterDemoCtrl.$inject = ['toaster'];
+    function ToasterDemoCtrl(toaster) {
+        var vm = this;
+
+        activate();
+
+        ////////////////
+
+        function activate() {
+          vm.toaster = {
+              type:  'success',
+              title: 'Title',
+              text:  'Message'
+          };
+
+          vm.pop = function() {
+            toaster.pop(vm.toaster.type, vm.toaster.title, vm.toaster.text);
+          };
+        }
+    }
+})();
+
+(function() {
+    'use strict';
+
+    angular
+        .module('app.loadingbar')
+        .config(loadingbarConfig)
+        ;
+    loadingbarConfig.$inject = ['cfpLoadingBarProvider'];
+    function loadingbarConfig(cfpLoadingBarProvider){
+      cfpLoadingBarProvider.includeBar = true;
+      cfpLoadingBarProvider.includeSpinner = false;
+      cfpLoadingBarProvider.latencyThreshold = 500;
+      cfpLoadingBarProvider.parentSelector = '.wrapper > section';
+    }
+})();
+(function() {
+    'use strict';
+
+    angular
+        .module('app.loadingbar')
+        .run(loadingbarRun)
+        ;
+    loadingbarRun.$inject = ['$rootScope', '$timeout', 'cfpLoadingBar'];
+    function loadingbarRun($rootScope, $timeout, cfpLoadingBar){
+
+      // Loading bar transition
+      // ----------------------------------- 
+      var thBar;
+      $rootScope.$on('$stateChangeStart', function() {
+          if($('.wrapper > section').length) // check if bar container exists
+            thBar = $timeout(function() {
+              cfpLoadingBar.start();
+            }, 0); // sets a latency Threshold
+      });
+      $rootScope.$on('$stateChangeSuccess', function(event) {
+          event.targetScope.$watch('$viewContentLoaded', function () {
+            $timeout.cancel(thBar);
+            cfpLoadingBar.complete();
+          });
+      });
+
+    }
+
+})();
 /**=========================================================
  * Module: access-login.js
  * Demo for login api
@@ -3101,50 +3145,6 @@
     }
 })();
 
-(function() {
-    'use strict';
-
-    angular
-        .module('app.loadingbar')
-        .config(loadingbarConfig)
-        ;
-    loadingbarConfig.$inject = ['cfpLoadingBarProvider'];
-    function loadingbarConfig(cfpLoadingBarProvider){
-      cfpLoadingBarProvider.includeBar = true;
-      cfpLoadingBarProvider.includeSpinner = false;
-      cfpLoadingBarProvider.latencyThreshold = 500;
-      cfpLoadingBarProvider.parentSelector = '.wrapper > section';
-    }
-})();
-(function() {
-    'use strict';
-
-    angular
-        .module('app.loadingbar')
-        .run(loadingbarRun)
-        ;
-    loadingbarRun.$inject = ['$rootScope', '$timeout', 'cfpLoadingBar'];
-    function loadingbarRun($rootScope, $timeout, cfpLoadingBar){
-
-      // Loading bar transition
-      // ----------------------------------- 
-      var thBar;
-      $rootScope.$on('$stateChangeStart', function() {
-          if($('.wrapper > section').length) // check if bar container exists
-            thBar = $timeout(function() {
-              cfpLoadingBar.start();
-            }, 0); // sets a latency Threshold
-      });
-      $rootScope.$on('$stateChangeSuccess', function(event) {
-          event.targetScope.$watch('$viewContentLoaded', function () {
-            $timeout.cancel(thBar);
-            cfpLoadingBar.complete();
-          });
-      });
-
-    }
-
-})();
 (function() {
     'use strict';
 
@@ -3415,123 +3415,94 @@
     'use strict';
 
     angular
-        .module('app.settings')
-        .run(settingsRun);
+        .module('app.preloader')
+        .directive('preloader', preloader);
 
-    settingsRun.$inject = ['$rootScope', '$localStorage'];
+    preloader.$inject = ['$animate', '$timeout', '$q'];
+    function preloader ($animate, $timeout, $q) {
 
-    function settingsRun($rootScope, $localStorage){
+        var directive = {
+            restrict: 'EAC',
+            template: 
+              '<div class="preloader-progress">' +
+                  '<div class="preloader-progress-bar" ' +
+                       'ng-style="{width: loadCounter + \'%\'}"></div>' +
+              '</div>'
+            ,
+            link: link
+        };
+        return directive;
 
-      // Global Settings
-      // -----------------------------------
-      $rootScope.app = {
-        name: 'GRAYBOX Snippet Library',
-        description: 'GRAYBOX - Snippet Library',
-        year: ((new Date()).getFullYear()),
-        layout: {
-          isFixed: false,
-          isCollapsed: false,
-          isBoxed: false,
-          isRTL: false,
-          horizontal: true,
-          isFloat: false,
-          asideHover: false,
-          theme: null,
-          asideScrollbar: false
-        },
-        useFullLayout: true,
-        hiddenFooter: false,
-        offsidebarOpen: false,
-        asideToggled: false,
-        viewAnimation: 'ng-fadeInUp'
-      };
+        ///////
 
-      // Setup the layout mode
-      $rootScope.app.layout.horizontal = ( $rootScope.$stateParams.layout === 'app-h') ;
+        function link(scope, el) {
 
-      // Restore layout settings
-      if( angular.isDefined($localStorage.layout) )
-        $rootScope.app.layout = $localStorage.layout;
-      else
-        $localStorage.layout = $rootScope.app.layout;
+          scope.loadCounter = 0;
 
-      $rootScope.$watch('app.layout', function () {
-        $localStorage.layout = $rootScope.app.layout;
-      }, true);
+          var counter  = 0,
+              timeout;
 
-      // Close submenu when sidebar change from collapsed to normal
-      $rootScope.$watch('app.layout.isCollapsed', function(newValue) {
-        if( newValue === false )
-          $rootScope.$broadcast('closeSidebarMenu');
-      });
+          // disables scrollbar
+          angular.element('body').css('overflow', 'hidden');
+          // ensure class is present for styling
+          el.addClass('preloader');
 
+          appReady().then(endCounter);
+
+          timeout = $timeout(startCounter);
+
+          ///////
+
+          function startCounter() {
+
+            var remaining = 100 - counter;
+            counter = counter + (0.015 * Math.pow(1 - Math.sqrt(remaining), 2));
+
+            scope.loadCounter = parseInt(counter, 10);
+
+            timeout = $timeout(startCounter, 20);
+          }
+
+          function endCounter() {
+
+            $timeout.cancel(timeout);
+
+            scope.loadCounter = 100;
+
+            $timeout(function(){
+              // animate preloader hiding
+              $animate.addClass(el, 'preloader-hidden');
+              // retore scrollbar
+              angular.element('body').css('overflow', '');
+            }, 300);
+          }
+
+          function appReady() {
+            var deferred = $q.defer();
+            var viewsLoaded = 0;
+            // if this doesn't sync with the real app ready
+            // a custom event must be used instead
+            var off = scope.$on('$viewContentLoaded', function () {
+              viewsLoaded ++;
+              // we know there are at least two views to be loaded 
+              // before the app is ready (1-index.html 2-app*.html)
+              if ( viewsLoaded === 2) {
+                // with resolve this fires only once
+                $timeout(function(){
+                  deferred.resolve();
+                }, 3000);
+
+                off();
+              }
+
+            });
+
+            return deferred.promise;
+          }
+
+        } //link
     }
 
-})();
-
-(function() {
-    'use strict';
-
-    angular
-        .module('app.translate')
-        .config(translateConfig)
-        ;
-    translateConfig.$inject = ['$translateProvider'];
-    function translateConfig($translateProvider){
-
-      $translateProvider.useStaticFilesLoader({
-          prefix : 'app/i18n/',
-          suffix : '.json'
-      });
-
-      $translateProvider.preferredLanguage('en');
-      $translateProvider.useLocalStorage();
-      $translateProvider.usePostCompiling(true);
-      $translateProvider.useSanitizeValueStrategy('sanitizeParameters');
-
-    }
-})();
-(function() {
-    'use strict';
-
-    angular
-        .module('app.translate')
-        .run(translateRun)
-        ;
-    translateRun.$inject = ['$rootScope', '$translate'];
-    
-    function translateRun($rootScope, $translate){
-
-      // Internationalization
-      // ----------------------
-
-      $rootScope.language = {
-        // Handles language dropdown
-        listIsOpen: false,
-        // list of available languages
-        available: {
-          'en':       'English',
-          'es_AR':    'Español'
-        },
-        // display always the current ui language
-        init: function () {
-          var proposedLanguage = $translate.proposedLanguage() || $translate.use();
-          var preferredLanguage = $translate.preferredLanguage(); // we know we have set a preferred one in app.config
-          $rootScope.language.selected = $rootScope.language.available[ (proposedLanguage || preferredLanguage) ];
-        },
-        set: function (localeId) {
-          // Set the new idiom
-          $translate.use(localeId);
-          // save a reference for the current language
-          $rootScope.language.selected = $rootScope.language.available[localeId];
-          // finally toggle dropdown
-          $rootScope.language.listIsOpen = ! $rootScope.language.listIsOpen;
-        }
-      };
-
-      $rootScope.language.init();
-
-    }
 })();
 /**=========================================================
  * Module: angular-grid.js
@@ -4391,6 +4362,128 @@
     }
 })();
 
+(function() {
+    'use strict';
+
+    angular
+        .module('app.settings')
+        .run(settingsRun);
+
+    settingsRun.$inject = ['$rootScope', '$localStorage'];
+
+    function settingsRun($rootScope, $localStorage){
+
+      // Global Settings
+      // -----------------------------------
+      $rootScope.app = {
+        name: 'GRAYBOX Snippet Library',
+        description: 'GRAYBOX - Snippet Library',
+        year: ((new Date()).getFullYear()),
+        layout: {
+          isFixed: false,
+          isCollapsed: false,
+          isBoxed: false,
+          isRTL: false,
+          horizontal: true,
+          isFloat: false,
+          asideHover: false,
+          theme: null,
+          asideScrollbar: false
+        },
+        useFullLayout: true,
+        hiddenFooter: false,
+        offsidebarOpen: false,
+        asideToggled: false,
+        viewAnimation: 'ng-fadeInUp'
+      };
+
+      // Setup the layout mode
+      $rootScope.app.layout.horizontal = ( $rootScope.$stateParams.layout === 'app-h') ;
+
+      // Restore layout settings
+      if( angular.isDefined($localStorage.layout) )
+        $rootScope.app.layout = $localStorage.layout;
+      else
+        $localStorage.layout = $rootScope.app.layout;
+
+      $rootScope.$watch('app.layout', function () {
+        $localStorage.layout = $rootScope.app.layout;
+      }, true);
+
+      // Close submenu when sidebar change from collapsed to normal
+      $rootScope.$watch('app.layout.isCollapsed', function(newValue) {
+        if( newValue === false )
+          $rootScope.$broadcast('closeSidebarMenu');
+      });
+
+    }
+
+})();
+
+(function() {
+    'use strict';
+
+    angular
+        .module('app.translate')
+        .config(translateConfig)
+        ;
+    translateConfig.$inject = ['$translateProvider'];
+    function translateConfig($translateProvider){
+
+      $translateProvider.useStaticFilesLoader({
+          prefix : 'app/i18n/',
+          suffix : '.json'
+      });
+
+      $translateProvider.preferredLanguage('en');
+      $translateProvider.useLocalStorage();
+      $translateProvider.usePostCompiling(true);
+      $translateProvider.useSanitizeValueStrategy('sanitizeParameters');
+
+    }
+})();
+(function() {
+    'use strict';
+
+    angular
+        .module('app.translate')
+        .run(translateRun)
+        ;
+    translateRun.$inject = ['$rootScope', '$translate'];
+    
+    function translateRun($rootScope, $translate){
+
+      // Internationalization
+      // ----------------------
+
+      $rootScope.language = {
+        // Handles language dropdown
+        listIsOpen: false,
+        // list of available languages
+        available: {
+          'en':       'English',
+          'es_AR':    'Español'
+        },
+        // display always the current ui language
+        init: function () {
+          var proposedLanguage = $translate.proposedLanguage() || $translate.use();
+          var preferredLanguage = $translate.preferredLanguage(); // we know we have set a preferred one in app.config
+          $rootScope.language.selected = $rootScope.language.available[ (proposedLanguage || preferredLanguage) ];
+        },
+        set: function (localeId) {
+          // Set the new idiom
+          $translate.use(localeId);
+          // save a reference for the current language
+          $rootScope.language.selected = $rootScope.language.available[localeId];
+          // finally toggle dropdown
+          $rootScope.language.listIsOpen = ! $rootScope.language.listIsOpen;
+        }
+      };
+
+      $rootScope.language.init();
+
+    }
+})();
 /**=========================================================
  * Module: animate-enabled.js
  * Enable or disables ngAnimate for element with directive
@@ -4821,99 +4914,6 @@
     }
 })();
 
-(function() {
-    'use strict';
-
-    angular
-        .module('app.preloader')
-        .directive('preloader', preloader);
-
-    preloader.$inject = ['$animate', '$timeout', '$q'];
-    function preloader ($animate, $timeout, $q) {
-
-        var directive = {
-            restrict: 'EAC',
-            template: 
-              '<div class="preloader-progress">' +
-                  '<div class="preloader-progress-bar" ' +
-                       'ng-style="{width: loadCounter + \'%\'}"></div>' +
-              '</div>'
-            ,
-            link: link
-        };
-        return directive;
-
-        ///////
-
-        function link(scope, el) {
-
-          scope.loadCounter = 0;
-
-          var counter  = 0,
-              timeout;
-
-          // disables scrollbar
-          angular.element('body').css('overflow', 'hidden');
-          // ensure class is present for styling
-          el.addClass('preloader');
-
-          appReady().then(endCounter);
-
-          timeout = $timeout(startCounter);
-
-          ///////
-
-          function startCounter() {
-
-            var remaining = 100 - counter;
-            counter = counter + (0.015 * Math.pow(1 - Math.sqrt(remaining), 2));
-
-            scope.loadCounter = parseInt(counter, 10);
-
-            timeout = $timeout(startCounter, 20);
-          }
-
-          function endCounter() {
-
-            $timeout.cancel(timeout);
-
-            scope.loadCounter = 100;
-
-            $timeout(function(){
-              // animate preloader hiding
-              $animate.addClass(el, 'preloader-hidden');
-              // retore scrollbar
-              angular.element('body').css('overflow', '');
-            }, 300);
-          }
-
-          function appReady() {
-            var deferred = $q.defer();
-            var viewsLoaded = 0;
-            // if this doesn't sync with the real app ready
-            // a custom event must be used instead
-            var off = scope.$on('$viewContentLoaded', function () {
-              viewsLoaded ++;
-              // we know there are at least two views to be loaded 
-              // before the app is ready (1-index.html 2-app*.html)
-              if ( viewsLoaded === 2) {
-                // with resolve this fires only once
-                $timeout(function(){
-                  deferred.resolve();
-                }, 3000);
-
-                off();
-              }
-
-            });
-
-            return deferred.promise;
-          }
-
-        } //link
-    }
-
-})();
 (function() {
     'use strict';
 

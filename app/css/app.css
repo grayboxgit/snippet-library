@@ -533,7 +533,6 @@ header.navigation .search-bar form button[type=submit] img {
 }
 
 .refill-snippet {
-  margin-top: 4.5em;
   padding: 0 1em;
 }
 .refill-snippet table {
@@ -731,7 +730,7 @@ a.snippet-link-toggle {
   text-transform: uppercase;
   font-weight: 600;
   font-size: 12px;
-  content: "Show Code";
+  content: "Show XXX Code";
 }
 a.snippet-link-toggle:hover {
   background: #98b025;
@@ -1078,6 +1077,18 @@ pre.line-numbers > code {
   display: block;
   padding-right: 0.8em;
   text-align: right;
+}
+
+iframe {
+  border: none;
+}
+
+.is-open {
+  display: block !important;
+}
+
+.snippet-title {
+  text-align: center;
 }
 
 /****************************************

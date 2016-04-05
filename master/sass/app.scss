@@ -364,7 +364,7 @@ $silver:  silver;
   }
 }
 .refill-snippet {
-  margin-top: 4.5em;
+  //margin-top: 4.5em;
   padding: 0 1em;
   table {
     border-collapse: collapse;
@@ -572,7 +572,7 @@ a.snippet-link-toggle {
   text-transform: uppercase;
   font-weight: 600;
   font-size: 12px;
-  content: "Show Code";
+  content: "Show XXX Code";
   &:hover {
     background: darken($gb-ltgreen, 10%);
     cursor: pointer;
@@ -935,6 +935,17 @@ pre.line-numbers {
   }
 }
 
+iframe {
+  border: none;
+}
+
+.is-open {
+  display: block !important;
+}
+
+.snippet-title {
+  text-align: center;
+}
 
 
 @import "starter";
