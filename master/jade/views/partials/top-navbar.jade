@@ -11,12 +11,14 @@ header.navigation(role='banner')
 			img(src='app/img/logo.png', alt='Logo Image')
 		h3 Graybox Snippet Library
 		a#js-mobile-menu.navigation-menu-button(href='javascript:void(0)') MENU
-		.navigation-tools
-			.search-bar
+		//.navigation-tools
+			//.search-bar
 				form(role='search')
 					input(type='search', ng-model="search" placeholder="Search Snippets" )
 					button(type='submit')
 						img(src='https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/search-icon.png', alt='Search Icon')
 div.page-header
-	h3 How to Use:
-	p Lorem ipsum dolor sit amet, erat nostrud probatus duo at, iisque constituam ut pro, eam purto nostro lobortis ex. Ne minim oblique nostrum sed. Epicuri interpretaris concludaturque id vix, vix iisque intellegat no, nostrum explicari at usu. Vidit luptatum dissentias an his, et nam recteque dissentiunt, nec ex dico gloriatur.
+	a.howto-link-toggle(ng-click="showHelp = !showHelp") ?
+	div.page-header-content(ng-show="showHelp")
+		h3 How to Use:
+		p Lorem ipsum dolor sit amet, erat nostrud probatus duo at, iisque constituam ut pro, eam purto nostro lobortis ex. Ne minim oblique nostrum sed. Epicuri interpretaris concludaturque id vix, vix iisque intellegat no, nostrum explicari at usu. Vidit luptatum dissentias an his, et nam recteque dissentiunt, nec ex dico gloriatur.

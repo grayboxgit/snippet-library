@@ -250,6 +250,15 @@ section article {
 section article:last-child {
   margin-right: 0;
 }
+section.ng-scope h2 {
+  color: #333;
+  text-align: center;
+  font-weight: 400;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 25px;
+  margin-bottom: 25px;
+  margin-top: 25px;
+}
 
 a {
   color: #89C637;
@@ -293,6 +302,7 @@ header.navigation .navigation-wrapper h3 {
   position: relative;
   top: 8px;
   font-size: 1.25em;
+  text-align: right;
 }
 header.navigation .logo {
   float: left;
@@ -659,15 +669,16 @@ div.page-header {
   max-width: 68em;
   margin-left: auto;
   margin-right: auto;
-  background: #f3f3f3;
-  padding: 35px;
-  margin-top: 35px;
-  margin-bottom: 35px;
 }
 div.page-header::after {
   clear: both;
   content: "";
   display: table;
+}
+div.page-header .page-header-content {
+  background: #f3f3f3;
+  padding: 35px;
+  margin-top: 0px;
 }
 div.page-header h1 {
   text-align: left;
@@ -688,6 +699,24 @@ div.page-header p {
 }
 div.page-header p:last-of-type {
   margin-bottom: 0;
+}
+div.page-header a.howto-link-toggle {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 40px;
+  width: 40px;
+  background: #777;
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+  padding-top: 3px;
+  font-weight: 700;
+  font-size: 22px;
+  color: #ccc;
+}
+div.page-header a.howto-link-toggle:hover {
+  cursor: pointer;
 }
 
 /****************************************

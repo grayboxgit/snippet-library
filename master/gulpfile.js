@@ -1,11 +1,12 @@
-var args = require('yargs').argv,
-    path = require('path'),
-    through = require('through2'),
-    gulp = require('gulp'),
-    $ = require('gulp-load-plugins')(),
-    gulpsync = $.sync(gulp),
-    PluginError = $.util.PluginError,
-    del = require('del');
+var args =          require('yargs').argv,
+    path =          require('path'),
+    through =       require('through2'),
+    gulp =          require('gulp'),
+    $ =             require('gulp-load-plugins')(),
+    gulpsync =      $.sync(gulp),
+    PluginError =   $.util.PluginError,
+    del =           require('del'),
+    jade =          require('gulp-jade');
 
 // production mode (see build task)
 var isProduction = false;
@@ -63,10 +64,10 @@ var source = {
     ],
     templates: {
         index: [paths.markup + 'index.*'],
-        views: [paths.markup + '**/*.*', '!' + paths.markup + 'index.*']
+        views: [paths.markup + '**/*.*', '!' + paths.markup + 'index.*'],
     },
     snippets: {
-        views: [paths.snippets + '**/*.*', '!' + paths.snippets + 'index.*'],
+        views: [paths.snippets + '**/**/*.*', '!' + paths.snippets + 'index.*']
     },
     styles: {
         app: [paths.styles + '*.*'],
@@ -246,8 +247,7 @@ gulp.task('templates:views', function () {
             .pipe($.jade())
             .on('error', handleError)
             .pipe($.htmlPrettify(prettifyOpts))
-            .pipe(gulp.dest(build.templates.views))
-            ;
+            .pipe(gulp.dest(build.templates.views));
     }
 });
 
@@ -259,6 +259,13 @@ gulp.task('snippets:html', function () {
             .pipe($.changed(build.snippets.views, {extension: '.html'}))
             .pipe(gulp.dest(build.snippets.views))
             ;
+});
+gulp.task('snippets:jade', function () {
+    log('Compiling the snippet jade files');
+        return gulp.src('snippets/**/*.jade')
+            .pipe(jade())
+            .pipe(gulp.dest(build.snippets.views));
+
 });
 gulp.task('snippets:files', function () {
     //
@@ -288,7 +295,7 @@ gulp.task('watch', function () {
     gulp.watch(source.styles.themes, ['styles:themes']);
     gulp.watch(source.templates.views, ['templates:views']);
     gulp.watch(source.templates.index, ['templates:index']);
-    gulp.watch(source.snippets.views, ['snippets:html', 'snippets:files']);
+    gulp.watch(source.snippets.views, ['snippets:html', 'snippets:jade', 'snippets:files']);
 
     // a delay before triggering browser reload to ensure everything is compiled
     var livereloadDelay = 1500;
@@ -365,6 +372,7 @@ gulp.task('default', gulpsync.sync([
     'vendor',
     'assets',
     'snippets:html',
+    'snippets:jade',
     'snippets:files',
     'watch'
 ]), function () {
@@ -382,6 +390,7 @@ gulp.task('assets', [
     'templates:index',
     'templates:views',
     'snippets:html',
+    'snippets:jade',
     'snippets:files'
 ]);
 

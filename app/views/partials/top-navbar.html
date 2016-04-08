@@ -13,20 +13,17 @@
          <img src="app/img/logo.png" alt="Logo Image" />
       </a>
       <h3>Graybox Snippet Library</h3><a id="js-mobile-menu" href="javascript:void(0)" class="navigation-menu-button">MENU</a>
-      <div class="navigation-tools">
-         <div class="search-bar">
-            <form role="search">
-               <input type="search" ng-model="search" placeholder="Search Snippets" />
-               <button type="submit">
-                  <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/search-icon.png" alt="Search Icon" />
-               </button>
-            </form>
-         </div>
-      </div>
+      <!--.navigation-tools//.search-bar
+	form(role='search')
+		input(type='search', ng-model="search" placeholder="Search Snippets" )
+		button(type='submit')
+			img(src='https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/search-icon.png', alt='Search Icon')-->
    </div>
 </header>
-<div class="page-header">
-   <h3>How to Use:</h3>
-   <p>Lorem ipsum dolor sit amet, erat nostrud probatus duo at, iisque constituam ut pro, eam purto nostro lobortis ex. Ne minim oblique nostrum sed. Epicuri interpretaris concludaturque id vix, vix iisque intellegat no, nostrum explicari at usu. Vidit luptatum
-      dissentias an his, et nam recteque dissentiunt, nec ex dico gloriatur.</p>
+<div class="page-header"><a ng-click="showHelp = !showHelp" class="howto-link-toggle">?</a>
+   <div ng-show="showHelp" class="page-header-content">
+      <h3>How to Use:</h3>
+      <p>Lorem ipsum dolor sit amet, erat nostrud probatus duo at, iisque constituam ut pro, eam purto nostro lobortis ex. Ne minim oblique nostrum sed. Epicuri interpretaris concludaturque id vix, vix iisque intellegat no, nostrum explicari at usu. Vidit
+         luptatum dissentias an his, et nam recteque dissentiunt, nec ex dico gloriatur.</p>
+   </div>
 </div>
